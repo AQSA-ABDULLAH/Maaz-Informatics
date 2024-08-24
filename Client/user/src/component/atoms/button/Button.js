@@ -1,0 +1,39 @@
+import React from "react";
+import styles from "./button.module.css";
+
+const Button = (props) => {
+    const {
+        btnText,
+        primary,
+        secondary,
+        size,
+        radius,
+        bgColor,
+        textColor,
+        width,
+        icon,
+        btnClick
+    } = props;
+
+    const buttonStyle = {
+        backgroundColor:
+            bgColor || (primary ? "#75AAF0" : secondary ? "#7BC1FA" : "transparent"),
+        color: textColor || "#fffffff",
+        borderRadius: radius || "40px",
+        fontSize: size || "16px",
+        width: width || "auto",
+        transition: "background-color 0.3s ease, color 0.3s ease",
+    };
+
+    return (
+        <button
+            className={styles.btn}
+            style={buttonStyle}
+            onClick={btnClick}
+        >
+            {icon}
+            {btnText}
+        </button>
+    )
+}
+export default Button;
