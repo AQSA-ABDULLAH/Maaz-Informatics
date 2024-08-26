@@ -6,16 +6,17 @@
     width: 100%;
 }
 .notification_bar {
-    background-color: #AB6DBA;
+    background-color: #9f29bd; 
     color: white;
-    padding: 10px 20px;
+    padding: 6px 20px;
+    padding-top: 12px;
     text-align: center;
     align-items: center;
     font-size: 14px;
 }
 
 .learn_more_link {
-    color: #FFD700; /* Gold-like color for the link */
+    color: white;
     text-decoration: underline;
 }
 
@@ -42,13 +43,13 @@ li {
 }
 
 .logo {
-    width: 80px; /* Adjust the width */
-    height: auto; /* Maintain aspect ratio */
+    width: 80px;
+    height: auto;
 }
 
 .navLink {
     display: flex;
-    gap: 30px; /* Adjust gap between links */
+    gap: 30px;
     margin: 0;
     align-items: center;
 }
@@ -58,12 +59,12 @@ li {
     font-size: 14px;
     font-weight: 500;
     padding: 10px;
-    position: relative; /* For positioning dropdown arrow */
+    position: relative;
 }
 
 .navLink li:hover {
-    color: #174FA0;
-    border-bottom: 2px solid #174FA0;
+    color: #0066CC;
+    border-bottom: 2px solid #0066CC;
 }
 
 .dropdown_arrow {

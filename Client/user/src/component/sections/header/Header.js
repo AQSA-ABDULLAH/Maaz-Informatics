@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./header.module.css";
-import Button from "../../component/atoms/button/Button";
+import Button from "../../atoms/button/Button";
 
 const Navbar = () => {
     return (
@@ -19,7 +19,7 @@ const Navbar = () => {
                         <Link to="/">
                             <img
                                 className={styles.logo}
-                                src="path/to/logo.png" // Ensure this path points to your logo
+                                src="path/to/logo.png"
                                 alt="Logo"
                             />
                         </Link>
@@ -53,7 +53,7 @@ const Navbar = () => {
 
                     <div className={styles.button_div}>
                         <Button
-                            bgColor={"#FF7A00"}
+                            bgColor={"#61AC8A"}
                             btnText={"Book Demo"}
                             textColor={"white"}
                             radius={"20px"}
