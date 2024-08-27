@@ -1,38 +1,42 @@
 .impactSection {
-    background-color: #9f29bd;
-    color: white;
-    padding: 4rem 12rem;
-    text-align: center;
-  }
-  
-  .impactSection h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem; 
-  }
-  
-  .impactGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem 3rem;
-  }
-  
-  
-  .impactItem {
-    background-color: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255);
-    padding: 1.5rem;
-    border-radius: 8px;
-  }
-  
-  .impactItem h3 {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-  }
-  
-  .impactItem p {
-    font-size: 0.9rem;
-    margin: 0;
-  }
+  background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #bb8bc7);
+  color: white;
+  padding: 4rem 12rem;
+  text-align: center;
+}
+
+.impactSection h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 4rem;
+  color: white;
+}
+
+.impactGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem 3rem;
+}
+
+.impactItem {
+  /* background-color: rgba(255, 255, 255, 0.1); */
+  border: 1px solid rgba(255, 255, 255);
+  padding: 1.5rem;
+  border-radius: 8px;
+}
+
+.impactItem h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.impactItem p {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+
   
   
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './section4.module.css';
+import { WEBSITE_NAME } from '../../../constant/Website_Name';
 
 export default function Section4() {
   return (
@@ -12,7 +13,7 @@ export default function Section4() {
         </div>
         <div className={styles.impactItem}>
           <h3>91%</h3>
-          <p>Users Find Wysa Helpful</p>
+          <p>Users Find {WEBSITE_NAME} Helpful</p>
         </div>
         <div className={styles.impactItem}>
           <h3>500 million</h3>
@@ -46,4 +47,6 @@ export default function Section4() {
     </div>
   );
 }
+
+
 
