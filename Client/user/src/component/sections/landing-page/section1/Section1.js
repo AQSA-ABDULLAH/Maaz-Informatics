@@ -7,7 +7,7 @@ function Section1() {
     <div className={styles.sectionContainer}>
       <div className={styles.textContainer}>
         <h1>Mental health that meets people where they are</h1>
-        <p>Completely anonymous.<br />No stigma. No limits.</p>
+        <h3>Completely anonymous.<br />No stigma. No limits.</h3>
         <p>
         {WEBSITE_NAME}'s clinically validated AI gives immediate support as the first step of care, 
           and human coaching for those who need more. Transform how supported your teams and families feel.
