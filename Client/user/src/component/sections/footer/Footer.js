@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './footer.module.css';
+import {WEBSITE_NAME} from '../../constant/Website_Name';
 
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
@@ -9,24 +10,25 @@ function Footer() {
 
             <div className={styles.section}>
                 <p className={styles.disclaimer}>
-                    <strong>Disclaimer:</strong> Wysa is not designed to assist with crises such as abuse, severe mental health conditions
-                    that may cause feelings of suicide, harm to self, and any other medical emergencies. Wysa cannot and will not offer
+                    <strong>Disclaimer:</strong> {WEBSITE_NAME} is not designed to assist with crises such as abuse, severe mental health conditions
+                    that may cause feelings of suicide, harm to self, and any other medical emergencies. {WEBSITE_NAME} cannot and will not offer
                     medical or clinical advice. It can only suggest that users seek advanced and professional medical help. Please reach
                     out to your country-specific suicide hotline in case of an emergency.
                 </p>
                 <p className={styles.disclaimer}>
-                    You must be at least 18 years of age to use Wysa. If you are between 13 and 18 years of age, please read through the
+                    You must be at least 18 years of age to use {WEBSITE_NAME}. If you are between 13 and 18 years of age, please read through the
                     Terms of Service and Privacy Policy along with your parents or legal guardian to understand eligibility before use.
-                    Wysa is not designed to be used by children under 13.
+                    {WEBSITE_NAME} is not designed to be used by children under 13.
                 </p>
             </div>
+
 
             <footer className={styles.footer}>
                 <div className={styles.container}>
 
                     {/* Company Logo and Description */}
                     <div className={styles.logoSection}>
-                        <img src="/path-to-your-logo.png" alt="Company Logo" className={styles.logo} />
+                        <img src="/assest/logo/logo.png" alt="Company Logo" className={styles.logo} />
                         <p className={styles.description}>
                             Your company's short description goes here. Describe your mission, values, or any other important information.
                         </p>
