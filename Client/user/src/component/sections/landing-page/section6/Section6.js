@@ -1,31 +1,32 @@
 import React from 'react';
 import styles from './section6.module.css';
+import { WEBSITE_NAME } from '../../../constant/Website_Name';
 
 function Section6() {
   const newsItems = [
     {
       title: "Fast Company",
-      description: "Employees are bringing about mental health days, but not because they don’t need them",
+      description: `Employees are bringing about mental health days, but not because they don’t need them.`,
       link: "#",
     },
     {
       title: "MedCity News",
-      description: "Report: Employed Individuals Experience Worse Anxiety, Depression Than National Average",
+      description: `Report: Employed Individuals Experience Worse Anxiety, Depression Than National Average`,
       link: "#",
     },
     {
       title: "Travelers",
-      description: "Travelers Introduces Mental Health App for Injured Employees",
+      description: `Travelers Introduces Mental Health App for Injured Employees`,
       link: "#",
     },
     {
       title: "TechCrunch",
-      description: "How to obtain FDA buy-in and unlock non-dilutive funding for your health startup",
+      description: `How to obtain FDA buy-in and unlock non-dilutive funding for your health startup`,
       link: "#",
     },
     {
       title: "CB Insights",
-      description: "The Digital Health 150: The most promising digital health companies of 2022",
+      description: `The Digital Health 150: The most promising digital health companies of 2022`,
       link: "#",
     },
   ];
@@ -47,3 +48,4 @@ function Section6() {
 }
 
 export default Section6;
+
