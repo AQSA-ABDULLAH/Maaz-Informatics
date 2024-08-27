@@ -1,0 +1,16 @@
+.section {
+    background: #003366; /* or the specific blue color you want */
+    padding: 30px 20px;
+    color: white;
+    text-align: center;
+  }
+  
+  .disclaimer {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  

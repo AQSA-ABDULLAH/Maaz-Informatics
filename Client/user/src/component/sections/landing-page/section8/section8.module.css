@@ -1,0 +1,23 @@
+.section {
+    background: white;
+    padding: 50px 20px;
+    text-align: center;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 40px;
+    color: #333;
+  }
+  
+  .certifications {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .certifications img {
+    max-width: 100px;
+    margin: 0 10px;
+  }
+  
