@@ -14,7 +14,7 @@ export default function Section7() {
         <button className={styles.demoButton}>Schedule a Demo</button>
       </div>
       <div className={styles.imageWrapper}>
-        <img src="your-image-path.jpg" alt="Happy person" className={styles.image} />
+        <img src="/assest/images/landing-page/9930219-808225_955898.png" alt="Happy person" className={styles.image} />
       </div>
     </div>
   );
