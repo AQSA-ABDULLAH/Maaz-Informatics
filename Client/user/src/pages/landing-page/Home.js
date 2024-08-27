@@ -8,7 +8,6 @@ import Section5 from '../../component/sections/landing-page/section5/Section5';
 import Section6 from '../../component/sections/landing-page/section6/Section6';
 import Section7 from '../../component/sections/landing-page/section7/Section7';
 import Section8 from '../../component/sections/landing-page/section8/Section8';
-import Section9 from '../../component/sections/landing-page/section9/Section9';
 
 function Home() {
     return (
@@ -22,7 +21,6 @@ function Home() {
                 <Section6 />
                 <Section7 />
                 <Section8 />
-                <Section9 />
             </div>
         </>
     )
