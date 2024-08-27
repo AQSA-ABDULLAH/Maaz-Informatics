@@ -9,7 +9,7 @@
     background-color: #9f29bd; 
     color: white;
     padding: 6px 20px;
-    padding-top: 12px;
+    padding-top: 22px;
     text-align: center;
     align-items: center;
     font-size: 14px;
@@ -33,23 +33,24 @@ li {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 10px 20px;
+    padding: 8px 45px;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .logo_div {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
 }
 
 .logo {
-    width: 80px;
+    width: 140px;
+    padding-top: 5px;
     height: auto;
 }
 
 .navLink {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     margin: 0;
     align-items: center;
 }
@@ -70,10 +71,6 @@ li {
 .dropdown_arrow {
     font-size: 10px;
     margin-left: 5px;
-}
-
-.button_div {
-    margin-right: 20px;
 }
 
 .btn Button {

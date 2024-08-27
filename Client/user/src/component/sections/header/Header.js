@@ -19,7 +19,7 @@ const Navbar = () => {
                         <Link to="/">
                             <img
                                 className={styles.logo}
-                                src="path/to/logo.png"
+                                src="/assest/logo/logo.png"
                                 alt="Logo"
                             />
                         </Link>
