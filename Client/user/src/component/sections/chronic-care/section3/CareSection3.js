@@ -43,7 +43,7 @@ function CareSection3() {
       <div className={styles.button_div}>
           <Button
             bgColor={"#61AC8A"}
-            btnText={"Learn More"}
+            btnText={"Book a Demo"}
             textColor={"white"}
             radius={"30px"}
             size={"20px"}
