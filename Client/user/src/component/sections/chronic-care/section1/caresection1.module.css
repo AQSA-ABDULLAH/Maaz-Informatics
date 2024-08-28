@@ -1,0 +1,39 @@
+.sectionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(150deg, #9c4ab1 40%, #0066CC 130%);
+    color: white;
+    padding: 80px 60px;
+  }
+  
+  .textContainer {
+    max-width: 55%;
+  }
+  
+  .textContainer h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    margin-bottom: 2.5rem;
+  }
+  
+  .textContainer p {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .learnMoreButton {
+    background-color: #61AC8A;
+    color: white;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .learnMoreButton:hover {
+    background-color: #e0e0e0;
+  }
