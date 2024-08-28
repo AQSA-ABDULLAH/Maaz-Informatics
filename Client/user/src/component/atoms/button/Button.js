@@ -11,17 +11,18 @@ const Button = (props) => {
         bgColor,
         textColor,
         width,
+        fontWeight,
         icon,
         btnClick
     } = props;
 
     const buttonStyle = {
-        backgroundColor:
-            bgColor || (primary ? "#75AAF0" : secondary ? "#7BC1FA" : "transparent"),
-        color: textColor || "#fffffff",
+        backgroundColor: bgColor || (primary ? "#75AAF0" : secondary ? "#7BC1FA" : "transparent"),
+        color: textColor || "#ffffff",
         borderRadius: radius || "40px",
         fontSize: size || "16px",
         width: width || "auto",
+        fontWeight: fontWeight || "normal",
         transition: "background-color 0.3s ease, color 0.3s ease",
     };
 
@@ -34,6 +35,7 @@ const Button = (props) => {
             {icon}
             {btnText}
         </button>
-    )
+    );
 }
+
 export default Button;

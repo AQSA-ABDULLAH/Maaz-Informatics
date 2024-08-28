@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import styles from "./caresection3.module.css";
 
 function CareSection3() {
   return (
