@@ -1,0 +1,60 @@
+.sectionContainer {
+    background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #b273c2);
+    padding: 6rem 2rem;
+    text-align: center;
+    color: white;
+  }
+  
+  .title {
+    font-size: 2.3rem;
+    text-align: center;
+    margin-bottom: 4rem;
+    letter-spacing: -0.02rem;
+    font-weight: 700;
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+    color: white;
+  }
+  
+  .gridContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  
+  .gridItem {
+    border: 1px solid white;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .number {
+    font-size: 2.5rem;
+    font-weight: 500;
+  }
+  
+  .text {
+    font-size: 1.3rem;
+    margin-top: 0.5rem;
+  }
+  
+  .demoButton {
+    margin-top: 6rem;
+    padding: 0.75rem 2rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+    background-color: transparent;
+    color: white;
+    border: 1px solid white;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  .demoButton:hover {
+    background-color: white;
+    color: #9f29bd;
+  }
+  

@@ -1,0 +1,72 @@
+.sectionContainer {
+    padding: 4rem 0;
+    max-width: 75%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sectionContainer h2,
+.textContainer h3 {
+    font-weight: 700;
+    color: #9f29bd;
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.sectionContainer h2{
+    font-size: 2.3rem;
+    text-align: center;
+    margin-top: 4rem;
+    letter-spacing: -0.07rem;
+}
+
+
+.sectionHeader p{
+    text-align: center;
+    font-size: 20px;
+    padding: 1rem 4rem 8em;
+}
+
+.stepContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+}
+
+.stepReverse {
+    flex-direction: row-reverse;
+}
+
+.textContainer {
+    flex: 1;
+    padding: 2rem;
+}
+
+.textContainer h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+}
+
+.textContainer p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.image {
+    flex: 1;
+    max-width: 440px;
+    margin-left: 2rem;
+    align-self: center;
+}
+
+.stepContainer:nth-child(even) .image {
+    order: -1;
+    margin-left: 0;
+    margin-right: 2rem;
+}
+
+.button_div{
+    margin-top: 3rem;
+}

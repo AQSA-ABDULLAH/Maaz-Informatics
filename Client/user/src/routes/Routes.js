@@ -4,6 +4,7 @@ import Header from "../component/sections/header/Header";
 import styles from './routes.module.css';
 import Home from "../pages/landing-page/Home";
 import Footer from "../component/sections/footer/Footer";
+import ChronicCare from "../pages/chronic-care/ChronicCare";
 // import About from "../pages/home/About";
 
 function AppRoutes() {
@@ -16,6 +17,7 @@ function AppRoutes() {
             </div>
                 <Routes>
                     <Route path="/" element={<Home />} />
+                    <Route path="/chronic-care" element={<ChronicCare />} />
                 </Routes>
 
                 {!noHeaderPaths.includes(location.pathname) && <Footer/>}
