@@ -1,0 +1,58 @@
+.careSection {
+    background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #b273c2);
+    color: white;
+    text-align: center;
+    padding: 6rem 0rem;
+  }
+  
+  .title {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: white;
+  }
+  
+  .subtitle {
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-bottom: 2.8rem;
+  }
+  
+  .features {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+    max-width: 80rem;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+  
+  .feature {
+    flex: 1 1 20%;
+    margin: 20px;
+    max-width: 300px;
+  }
+  
+  .icon {
+    width: 200px;
+    margin-bottom: 1rem;
+  }
+  
+  .feature h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1.8rem;
+  }
+  
+  .feature p {
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+  
+  .button_div {
+    margin-top: 5rem;
+  }
+
+  

@@ -11,7 +11,7 @@ function CareSection2() {
           <h2>Why Our CCM Program?</h2>
           <p>Our 'done for you' Chronic Care Management (CCM) service offers a new revenue stream for providers
             and fills a major care gap for patients. This new telephonic service comes bundled with 24/7 digital
-            psychosocial support through **YourService**.</p>
+            psychosocial support through {WEBSITE_NAME}.</p>
         </div>
 
         <div className={styles.stepContainer}>
@@ -29,7 +29,7 @@ function CareSection2() {
           <div className={styles.textContainer}>
             <h3>Comprehensive Patient Support</h3>
             <p>
-              Chronic patients often lack sufficient mental health support. Partnering with **YourService** ensures these individuals receive comprehensive care that benefits both their physical and mental health needs. This comes at no cost to you or to the patient.
+              Chronic patients often lack sufficient mental health support. Partnering with {WEBSITE_NAME} ensures these individuals receive comprehensive care that benefits both their physical and mental health needs. This comes at no cost to you or to the patient.
             </p>
           </div>
         </div>
@@ -49,7 +49,7 @@ function CareSection2() {
           <div className={styles.textContainer}>
             <h3>Proven Results</h3>
             <p>
-              **YourService** is proven to effectively reduce symptoms of depression and anxiety while also helping patients effectively manage pain and associated mental health challenges, leading to better overall health outcomes.
+              {WEBSITE_NAME} is proven to effectively reduce symptoms of depression and anxiety while also helping patients effectively manage pain and associated mental health challenges, leading to better overall health outcomes.
             </p>
           </div>
         </div>
@@ -69,4 +69,5 @@ function CareSection2() {
   )
 }
 
-export default CareSection2
+export default CareSection2;
+
