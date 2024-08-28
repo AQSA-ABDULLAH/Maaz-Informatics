@@ -5,6 +5,7 @@ import CareSection2 from '../../component/sections/chronic-care/section2/CareSec
 import CareSection3 from '../../component/sections/chronic-care/section3/CareSection3';
 import CareSection4 from '../../component/sections/chronic-care/section4/CareSection4';
 import CareSection5 from '../../component/sections/chronic-care/section5/CareSection5';
+import CareSection6 from '../../component/sections/chronic-care/section6/CareSection6';
 
 function ChronicCare() {
   return (
@@ -15,6 +16,7 @@ function ChronicCare() {
                 <CareSection3 />
                 <CareSection4 />
                 <CareSection5 />
+                <CareSection6 />
             </div>
         </>
   )
