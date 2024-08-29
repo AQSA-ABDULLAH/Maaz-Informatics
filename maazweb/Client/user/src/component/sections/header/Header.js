@@ -1,9 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import Button from "../../atoms/button/Button";
 
 const Navbar = () => {
+    // State to manage which dropdown is visible
+    const [dropdownVisible, setDropdownVisible] = useState("");
+
+    const handleMouseEnter = (menu) => {
+        setDropdownVisible(menu);
+    };
+
+    const handleMouseLeave = () => {
+        setDropdownVisible("");
+    };
+
     return (
         <>
             <div className={styles.header}>
@@ -19,36 +30,65 @@ const Navbar = () => {
                         <Link to="/">
                             <img
                                 className={styles.logo}
-                                src="/assest/logo/logo.png"
+                                src="/assets/logo/logo.png"
                                 alt="Logo"
                             />
                         </Link>
                     </div>
 
                     <ul className={styles.navLink}>
-                        <Link to="/for-work">
-                            <li>For Work <span className={styles.dropdown_arrow}>▾</span></li>
-                        </Link>
+                        <li
+                            onMouseEnter={() => handleMouseEnter("forWork")}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <Link to="/for-work">For Work <span className={styles.dropdown_arrow}>▾</span></Link>
+                            {dropdownVisible === "forWork" && (
+                                <ul className={styles.dropdown}>
+                                    <li><Link to="/for-work/service1">Service 1</Link></li>
+                                    <li><Link to="/for-work/service2">Service 2</Link></li>
+                                </ul>
+                            )}
+                        </li>
 
-                        <Link to="/for-nhs">
-                            <li>For NHS <span className={styles.dropdown_arrow}>▾</span></li>
-                        </Link>
+                        <li
+                            onMouseEnter={() => handleMouseEnter("forNhs")}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <Link to="/for-nhs">For NHS <span className={styles.dropdown_arrow}>▾</span></Link>
+                            {dropdownVisible === "forNhs" && (
+                                <ul className={styles.dropdown}>
+                                    <li><Link to="/for-nhs/service1">Service 1</Link></li>
+                                    <li><Link to="/for-nhs/service2">Service 2</Link></li>
+                                </ul>
+                            )}
+                        </li>
 
-                        <Link to="/chronic-care">
-                            <li>Chronic Care</li>
-                        </Link>
+                        <li>
+                            <Link to="/chronic-care">Chronic Care</Link>
+                        </li>
 
-                        <Link to="/clinical-evidence">
-                            <li>Clinical Evidence</li>
-                        </Link>
+                        <li>
+                            <Link to="/clinical-evidence">Clinical Evidence</Link>
+                        </li>
 
-                        <Link to="/case-studies">
-                            <li>Case Studies & Reports</li>
-                        </Link>
+                        <li>
+                            <Link to="/case-studies">Case Studies & Reports</Link>
+                        </li>
 
-                        <Link to="/about-us">
-                            <li>About Us <span className={styles.dropdown_arrow}>▾</span></li>
-                        </Link>
+                        <li
+                            onMouseEnter={() => handleMouseEnter("aboutUs")}
+                            onMouseLeave={handleMouseLeave}
+                        >
+                            <Link to="/about-us">About Us <span className={styles.dropdown_arrow}>▾</span></Link>
+                            {dropdownVisible === "aboutUs" && (
+                                <ul className={styles.dropdown}>
+                                    <li><Link to="/about-us/team">Team</Link></li>
+                                    <li><Link to="/about-us/faq">FAQ</Link></li>
+                                    <li><Link to="/about-us/careers">Careers</Link></li>
+                                    <li><Link to="/about-us/contact-us">Contact Us</Link></li>
+                                </ul>
+                            )}
+                        </li>
                     </ul>
 
                     <div className={styles.button_div}>
@@ -67,3 +107,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
