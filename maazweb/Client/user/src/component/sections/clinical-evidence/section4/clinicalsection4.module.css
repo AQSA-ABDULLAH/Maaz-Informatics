@@ -1,0 +1,48 @@
+.sectionContainer {
+    text-align: center;
+    padding: 3rem 0rem;
+    background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #bb8bc7);
+    color: white;
+    margin: 4rem 0rem 1rem;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    color: white;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+  }
+  
+  .description {
+    font-size: 1.05rem;
+    margin: 0rem auto 3rem;
+    line-height: 1.5;
+    max-width: 69rem;
+    text-align: left;
+  }
+  
+  .gridContainer {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .gridItem {
+    padding: 0.2rem;
+    border-radius: 5px;
+    border: 3px solid white;
+    width: 350px;
+  }
+  
+  .gridNumber {
+    font-size: 2.5rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+  }
+  
+  .gridText {
+    font-size: 1.3rem;
+  }
+  

@@ -5,6 +5,7 @@ import styles from './routes.module.css';
 import Home from "../pages/landing-page/Home";
 import Footer from "../component/sections/footer/Footer";
 import ChronicCare from "../pages/chronic-care/ChronicCare";
+import ClinicalEvidence from "../pages/clinical-evidence/ClinicalEvidence";
 // import About from "../pages/home/About";
 
 function AppRoutes() {
@@ -18,6 +19,7 @@ function AppRoutes() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/chronic-care" element={<ChronicCare />} />
+                    <Route path="/clinical-evidence" element={<ClinicalEvidence />} />
                 </Routes>
 
                 {!noHeaderPaths.includes(location.pathname) && <Footer/>}

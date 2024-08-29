@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from "./caresection1.module.css";
-import { WEBSITE_NAME } from '../../../constant/Website_Name';
 
 function CareSection1() {
     return (
