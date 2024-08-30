@@ -1,10 +1,11 @@
 /* Header CSS */
 
-.header{
+.header {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
+
 .notification_bar {
     background-color: #9f29bd; 
     color: white;
@@ -59,8 +60,10 @@ li {
     color: #333;
     font-size: 14px;
     font-weight: 500;
-    padding: 10px;
+    padding: 10px 10px 0px;
+    margin-bottom: 10px;
     position: relative;
+    cursor: pointer;
 }
 
 .navLink li:hover {
@@ -76,3 +79,39 @@ li {
 .btn Button {
     font-weight: 600;
 }
+
+/* Dropdown CSS */
+.dropdown {
+    position: absolute;
+    top: 115%;
+    left: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    min-width: 160px;
+    z-index: 1000;
+    display: none;
+}
+
+.navLink li:hover .dropdown {
+    display: block;
+}
+
+.dropdown li {
+    padding: 10px 15px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.dropdown li:hover {
+    background-color: #f2f2f2;
+    border: none;
+}
+
+.dropdown li a {
+    color: #333;
+    text-decoration: none;
+}
+
+
+
