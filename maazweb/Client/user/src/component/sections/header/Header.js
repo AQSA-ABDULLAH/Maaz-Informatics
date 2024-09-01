@@ -50,19 +50,6 @@ const Navbar = () => {
                             )}
                         </li>
 
-                        <li
-                            onMouseEnter={() => handleMouseEnter("forNhs")}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <Link to="/for-nhs">For NHS <span className={styles.dropdown_arrow}>▾</span></Link>
-                            {dropdownVisible === "forNhs" && (
-                                <ul className={styles.dropdown}>
-                                    <li><Link to="/for-nhs/service1">Service 1</Link></li>
-                                    <li><Link to="/for-nhs/service2">Service 2</Link></li>
-                                </ul>
-                            )}
-                        </li>
-
                         <li>
                             <Link to="/chronic-care">Chronic Care</Link>
                         </li>
