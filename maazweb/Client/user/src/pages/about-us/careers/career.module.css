@@ -1,0 +1,53 @@
+.careerSection {
+  padding: 13rem 0rem 0rem;
+}
+
+.desContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  max-width: 70rem;
+  margin: auto;
+}
+
+.imageContainer {
+  flex: 1;
+  margin-right: 40px;
+}
+
+.careerImage {
+  width: 150%;
+  height: auto;
+}
+
+.contentContainer {
+  flex: 2;
+  padding-left: 10rem;
+}
+
+.contentContainer h2 {
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.contentContainer ul {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.contentContainer ul li {
+  font-size: 16px;
+  list-style-type: disc;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.contentContainer p {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+  padding-bottom: 20px;
+}

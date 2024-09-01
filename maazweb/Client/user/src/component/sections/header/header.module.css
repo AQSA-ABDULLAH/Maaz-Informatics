@@ -9,8 +9,7 @@
 .notification_bar {
     background-color: #9f29bd; 
     color: white;
-    padding: 6px 20px;
-    padding-top: 22px;
+    padding: 40px 0px 9px 0px;
     text-align: center;
     align-items: center;
     font-size: 14px;
@@ -44,7 +43,7 @@ li {
 }
 
 .logo {
-    width: 140px;
+    width: 45px;
     padding-top: 5px;
     height: auto;
 }
@@ -57,13 +56,16 @@ li {
 }
 
 .navLink li {
-    color: #333;
-    font-size: 14px;
+    font-size: 17px;
     font-weight: 500;
     padding: 10px 10px 0px;
     margin-bottom: 10px;
     position: relative;
     cursor: pointer;
+}
+
+.navLink li a {
+    color: #333;
 }
 
 .navLink li:hover {
@@ -83,7 +85,7 @@ li {
 /* Dropdown CSS */
 .dropdown {
     position: absolute;
-    top: 115%;
+    top: 105%;
     left: 0;
     background-color: white;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);

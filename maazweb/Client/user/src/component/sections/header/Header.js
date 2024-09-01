@@ -30,7 +30,7 @@ const Navbar = () => {
                         <Link to="/">
                             <img
                                 className={styles.logo}
-                                src="/assets/logo/logo.png"
+                                src="/assest/logo/logo.jpg"
                                 alt="Logo"
                             />
                         </Link>
@@ -46,19 +46,6 @@ const Navbar = () => {
                                 <ul className={styles.dropdown}>
                                     <li><Link to="/for-work/service1">Service 1</Link></li>
                                     <li><Link to="/for-work/service2">Service 2</Link></li>
-                                </ul>
-                            )}
-                        </li>
-
-                        <li
-                            onMouseEnter={() => handleMouseEnter("forNhs")}
-                            onMouseLeave={handleMouseLeave}
-                        >
-                            <Link to="/for-nhs">For NHS <span className={styles.dropdown_arrow}>▾</span></Link>
-                            {dropdownVisible === "forNhs" && (
-                                <ul className={styles.dropdown}>
-                                    <li><Link to="/for-nhs/service1">Service 1</Link></li>
-                                    <li><Link to="/for-nhs/service2">Service 2</Link></li>
                                 </ul>
                             )}
                         </li>
