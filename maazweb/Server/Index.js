@@ -5,6 +5,9 @@ require("dotenv").config();  // Load environment variables before using them
 const port = process.env.PORT;
 const app = express();
 
+// Routes
+const userRoutes = require('./routes/Users.js');
+
 // Middleware to parse JSON bodies
 app.use(express.json());
 
@@ -24,6 +27,8 @@ app.listen(port, () => {
   console.log(`Server is running at http://localhost:${port}`);
 });
 
+// Load Routes
+app.use('/api/user', userRoutes);
 
 // MongoDB connection
 const mongoose = require('mongoose');

@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import GlobalRoute from "./routes/GlobalRoute";
+import { Route, Routes } from "react-router-dom";
+import { Provider } from 'react-redux';
 
-function App() {
+import store from './redux/store'; // Import your Redux store
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Provider store={store}>
+      <Routes basename="/netlify.app">
+        <Route path="*" element={<GlobalRoute />} />
+      </Routes>
+      </Provider>
+    </>
   );
-}
+};
 
 export default App;
