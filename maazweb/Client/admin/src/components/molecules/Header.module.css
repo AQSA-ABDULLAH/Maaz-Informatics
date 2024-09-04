@@ -1,0 +1,65 @@
+.topHeader {
+    display: flex;
+    align-items: center;
+    background-color: #FAFAFA;
+    height: 75px;
+    padding-left: 32px;
+    border-radius:0 10px 0 0;
+    border-bottom-width: 2px;
+    flex-shrink: 0;
+    border-bottom-color: #D9D9D9;
+    border-bottom-style: dashed;
+}
+.hamburger {
+    display: none; /* Hide by default */
+    align-items: center;
+}
+.navbar {
+    margin-left: 0px;
+}
+.icon {
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.menuIcon {
+    display: none;
+}
+.content{
+    display: flex;
+    flex:1;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 24px;
+    flex-direction: row;
+}
+
+.btn {
+    background-color:  #7E22CE;
+    padding: 0.70rem 1rem;
+    text-transform: uppercase;
+    bottom: 20px;
+    align-self: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 14px;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* Show hamburger menu on small screens */
+@media screen and (max-width: 1068px) {
+    .hamburger {
+        display: flex;
+    }
+    .topHeader{
+        width: 100%;
+        border-radius: 0px 0px 0px 0px;
+        height: 70px;
+    }
+    .navbar {
+        margin-left: 16px;
+    }
+}

@@ -3,6 +3,7 @@ import styles from "./Routes.module.css";
 import Header from "../components/molecules/Header";
 import Login from "../pages/Login/Login";
 import AdminDashboard from "../pages/Dashboard/AdminDashboard";
+import ErrorPage from "../pages/404/ErrorPage"
 
 const RoutesStack = ({ openSidebar, setOpenSidebar }) => {
   const location = useLocation();
