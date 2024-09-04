@@ -1,0 +1,4 @@
+export const ADD_ABOUT_US='ADD_ABOUT_US';
+export const ADD_ABOUT_US_SUCCESS='ADD_ABOUT_US_SUCCESS';
+export const ADD_ABOUT_US_FAIL='ADD_ABOUT_US_FAIL';
+

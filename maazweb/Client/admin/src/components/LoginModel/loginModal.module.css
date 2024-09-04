@@ -1,0 +1,129 @@
+  .modal_content {
+    z-index: 1100;
+    top: 50%; /* Vertically center */
+    left: 50%; /* Horizontally center */
+    transform: translate(-50%, -50%);
+    background-color: white;
+    position: fixed;
+    padding: 40px 40px 40px 0px;
+    width: 730px;
+    height: 500px;
+    border-radius: 30px;
+    transition: 0.5s ease-in;
+    display: flex;
+  }
+  .logo_container {
+    flex-grow: 1;
+  }
+  .image{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .logo_image{
+    width: 11rem; 
+    height: auto; 
+  }
+  .login_image{
+    width: 20rem;
+    height: auto;
+    margin-right: 10px;
+    margin-top: 15px;
+  }
+  .login_form_container {
+    padding-top: 20px;
+    width: 320px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #b491d2;
+  }
+  .login_form_container > form {
+    width: 80%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .login_form > div {
+    margin: 25px 0px;
+    font-size: 32px;
+    font-weight: 600;
+    letter-spacing: -2px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .login_form > input,
+  .passwordInput > input {
+    margin: 10px 0px;
+    padding: 12px 8px;
+    border-radius: 5px;
+    border: none;
+  }
+  .passwordInput {
+    position: relative;
+  
+    padding: 0px;
+    margin: 0px;
+  }
+  .passwordInput > input {
+    height: 100%;
+    width: 100%;
+  }
+  .toggleIcon {
+    position: absolute;
+    top: 30%;
+    right: 10px;
+    width: 22px;
+    height: auto;
+    aspect-ratio: 1/1;
+  }
+  .toggleIcon:hover {
+    cursor: pointer;
+  }
+  
+  .login_form > label {
+    margin: 0px 0px 5px;
+    font-size: 14px;
+    color: white;
+  }
+  .login_form > label > input {
+    margin: 0px 5px;
+  }
+  .login_form > label > input:hover {
+    cursor: pointer;
+  }
+  .login_form > label > span {
+    float: right;
+  }
+  .login_form > label > span > a {
+    text-decoration: none;
+    color: white;
+  }
+  .login_form > button {
+    margin: 20px 0px;
+  }
+  .login_form > small {
+    text-align: center;
+  }
+  .login_form > small > a {
+    color: rgb(247, 131, 18);
+    margin: 0px 5px;
+  }
+  
+  
+  @media screen and (max-width:1068px) {
+    .modal-content{
+        height: 100% ;
+        width: 100%;
+        /* background-image: url('/client/admin/public/assets/image/error/error.png'); */
+        justify-content: center;
+        align-items: center;
+        background-image: none;
+        border-radius: 0px;
+        /* padding: 20p; */
+        margin: 0;
+  
+    }
+  }

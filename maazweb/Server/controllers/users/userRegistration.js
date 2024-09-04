@@ -44,53 +44,55 @@ class UserController {
             // Generate JWT Token using the saved user object
             const token = createToken(savedUser, false, "1d");
 
-            // Send Registration mail to user
-            const template = await compileEmailTemplate({
-                fileName: "register.mjml",
-                data: {
-                    firstName,
-                },
-            });
+            res.json({ status: "success", message: "registration Success", token });
 
-            try {
-                await mailer.sendMail(email, "Mail Verification", template);
-                return res.status(201).send({
-                    status: "success",
-                    message: "User created successfully",
-                    token: token,
-                });
-            } catch (error) {
-                console.error("Failed to send Create User email:", error);
-                return res.status(500).send({
-                    error: "Failed to send Create User email.",
-                });
-            }
+            // Send Registration mail to user
+            // const template = await compileEmailTemplate({
+            //     fileName: "register.mjml",
+            //     data: {
+            //         firstName,
+            //     },
+            // });
+
+            // try {
+            //     await mailer.sendMail(email, "Mail Verification", template);
+            //     return res.status(201).send({
+            //         status: "success",
+            //         message: "User created successfully",
+            //         token: token,
+            //     });
+            // } catch (error) {
+            //     console.error("Failed to send Create User email:", error);
+            //     return res.status(500).send({
+            //         error: "Failed to send Create User email.",
+            //     });
+            // }
         } catch (error) {
             console.error("Error in user registration:", error);
             return res.status(500).json({ error: "Failed to register" });
         }
     }
     
-    static mailVerification = async (req, res) => {
-        try {
-            const id = req.params.id; 
-            console.log(id);
-            const user = await User.findById(id);
+    // static mailVerification = async (req, res) => {
+    //     try {
+    //         const id = req.params.id; 
+    //         console.log(id);
+    //         const user = await User.findById(id);
             
-            if (!user) {
-                return res.status(404).json({ error: "User not found" });
-            }
+    //         if (!user) {
+    //             return res.status(404).json({ error: "User not found" });
+    //         }
     
-            user.is_verified = true; 
+    //         user.is_verified = true; 
     
-            await user.save(); 
+    //         await user.save(); 
     
-            return res.status(200).json(user); 
-        } catch (error) {
-            console.error("Error in user verification", error);
-            return res.status(500).json({ error: "Failed to verify user" });
-        }
-    };
+    //         return res.status(200).json(user); 
+    //     } catch (error) {
+    //         console.error("Error in user verification", error);
+    //         return res.status(500).json({ error: "Failed to verify user" });
+    //     }
+    // };
     
 }
 
