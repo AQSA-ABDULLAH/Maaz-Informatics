@@ -15,33 +15,23 @@ export const Main = [
   {
 
     icon: <BsCreditCard2FrontFill size={20} />,
-    text: "Bookings",
+    text: "About",
     route:'/bookings'
 
   },
   {
-    icon: <BsCreditCard2FrontFill size={20} />,
-    text: "Rental Booking",
-    route:'/rental_booking'
-  },
-  {
-    icon: <BsCreditCard2FrontFill size={20} />,
-    text: "Manage Shipments",
-    route:'/manage-shipments'
-  },
-  {
     icon: <BiSolidContact size={20}/>,
-    text: "Manage Parcels",
+    text: "Home",
     route:'/ParcelList'
   },
   {
     icon: <BiSolidContact size={20}/>,
-    text: "Transport Managment",
+    text: "home",
     route:'/transport-managment'
   },
   {
     icon: <FaUsers size={20}/>,
-    text: "Manage Employees",
+    text: "home",
     route:'/manageEmployees'
   },
 ];

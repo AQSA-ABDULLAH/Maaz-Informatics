@@ -16,6 +16,7 @@ function LoginModal({ onClose }) {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
+
   console.log(loading, error, payload);
   const handleSubmit = (e) => {
     e.preventDefault();
