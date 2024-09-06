@@ -1,0 +1,58 @@
+.container {
+    background-color: #fff;
+    width: auto;
+    height: 82.2vh;
+    border-bottom-right-radius: 10px;
+    overflow-y: scroll;
+}
+  
+.tabBar {
+    padding: 8px;
+    padding-left: 2rem;
+    border-bottom: 2px dashed #e0e0e0;
+    overflow-x: auto;
+}
+
+.scrollableTab::-webkit-scrollbar {
+    display: none;
+}
+
+.scrollableTab {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -ms-overflow-style: none;  
+    scrollbar-width: none; 
+}
+  
+.btn_wrapper {
+    display: inline-block;
+    padding-left: 10px;
+}
+  
+@media screen and (max-width: 1068px) {
+    .container {
+      height: 100vh;
+      padding: 0rem;
+    }
+    .btn_wrapper {
+        margin: 5px;
+    }
+    .tabBar {
+      padding: 5px;
+      border-radius: 0px;
+    }
+}
+  
+@media screen and (max-width: 630px) {
+    .btn_wrapper {
+      margin: 5px;
+    }
+    .tabBar {
+      padding: 5px;
+      border-radius: 0px;
+    }
+    .container {
+      padding: 0rem;
+    }
+}

@@ -2,47 +2,47 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./AddSliderForm.module.css";
 import Button from "../buttons/Button";
-import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
-import { getDownloadURL } from "firebase/storage";
-import { app } from "../../../firebase";
+// import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
+// import { getDownloadURL } from "firebase/storage";
+// import { app } from "../../../firebase";
 
 const AddSliderForm = () => {
   const [heading, setHeading] = useState("");
   const [content, setContent] = useState("");
-  const [image, setImage] = useState("");
-  const [imgperc, setImagePrec] = useState("");
-  const [imageUrl, setImageUrl] = useState("");
+  // const [image, setImage] = useState("");
+  // const [imgperc, setImagePrec] = useState("");
+  // const [imageUrl, setImageUrl] = useState("");
 
-  useEffect(() => {
-    image && uploadFile(image, "imageUrl");
-  }, [image]);
+  // useEffect(() => {
+  //   image && uploadFile(image, "imageUrl");
+  // }, [image]);
  
 
   // FIREBASE SETUP HERE
-  const uploadFile = (file) => {
-    const storage = getStorage(app);
-    const storageRef = ref(storage, 'SliderImages/' + file.name);
-    const uploadTask = uploadBytesResumable(storageRef, file);
+  // const uploadFile = (file) => {
+  //   const storage = getStorage(app);
+  //   const storageRef = ref(storage, 'SliderImages/' + file.name);
+  //   const uploadTask = uploadBytesResumable(storageRef, file);
 
-    uploadTask.on('state_changed',
-      (snapshot) => {
-        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log('Upload is ' + progress + '% done');
-        setImagePrec(progress); // Update image upload progress
-      },
-      (error) => {
-        console.error('Error uploading file:', error);
-      },
-      () => {
-        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          setImageUrl(downloadURL); // Update imageUrl directly
-          console.log('File available at', downloadURL);
-        });
+  //   uploadTask.on('state_changed',
+  //     (snapshot) => {
+  //       const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+  //       console.log('Upload is ' + progress + '% done');
+  //       setImagePrec(progress); // Update image upload progress
+  //     },
+  //     (error) => {
+  //       console.error('Error uploading file:', error);
+  //     },
+  //     () => {
+  //       getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //         setImageUrl(downloadURL); // Update imageUrl directly
+  //         console.log('File available at', downloadURL);
+  //       });
 
 
-      }
-    );
-  }
+  //     }
+  //   );
+  // }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,7 +50,7 @@ const AddSliderForm = () => {
     const formData = new FormData();
     formData.append('heading', heading);
     formData.append('content', content);
-    formData.append('image', imageUrl);
+    // formData.append('image', imageUrl);
 
 
     try {
@@ -84,9 +84,11 @@ const AddSliderForm = () => {
       <div className={styles.addFormContainer}>
         <FormTop text={"new slider"} />
         <form action="" className={styles.addForm}>
+
           <div className={styles.formRow}>
             <div className={styles.formField}>
-              <label htmlFor="">background image</label> {imgperc > 0 && "Uploading " + imgperc + "%"}
+
+              {/* <label htmlFor="">background image</label> {imgperc > 0 && "Uploading " + imgperc + "%"}
               <div className={`${styles.imgUpload} ${styles.sliderUpload}`}>
                 <input type="file" name="sliderImg" id="sliderImg" accept="image/png, image/jpeg"
                   onChange={(e) => setImage(e.target.files[0])}
@@ -97,7 +99,7 @@ const AddSliderForm = () => {
                     alt="icon"
                   />
                 </label>
-              </div>
+              </div> */}
             </div>
 
             <div className={styles.formField}>

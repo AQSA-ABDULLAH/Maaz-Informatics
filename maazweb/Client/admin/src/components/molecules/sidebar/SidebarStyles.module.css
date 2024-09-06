@@ -19,10 +19,12 @@
 }
 
 .logo img{
-   width: 10.5rem;
+   width: 5rem;
    height: auto;
    display: flex;
-   margin-left: 20px;
+   align-items: center;
+  margin: auto;
+  padding: 20px 0px 0px;
 }
 
 .spaceY {
@@ -63,9 +65,7 @@
 
 .icon {
     width: 20%;
-
     font-size: 0.8rem;
-
 }
 
 .headingText {

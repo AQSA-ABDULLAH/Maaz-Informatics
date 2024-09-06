@@ -3,7 +3,8 @@ import styles from "./Routes.module.css";
 import Header from "../components/molecules/Header";
 import Login from "../pages/Login/Login";
 import AdminDashboard from "../pages/Dashboard/AdminDashboard";
-import ErrorPage from "../pages/404/ErrorPage"
+import WebsiteContent from "../pages/Websitecontent/main/WebsiteContent";
+import ErrorPage from "../pages/404/ErrorPage";
 
 const RoutesStack = ({ openSidebar, setOpenSidebar }) => {
   const location = useLocation();
@@ -37,6 +38,7 @@ const RoutesStack = ({ openSidebar, setOpenSidebar }) => {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/" element={<AdminDashboard />} />
+          <Route path="/website-content" element={<WebsiteContent />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

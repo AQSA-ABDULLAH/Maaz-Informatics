@@ -18,9 +18,9 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
           openSidebar ? `${styles.activeSidebar}` : ""
         } `}
       >
-        <div className={styles.logo}>
+        {/* <div className={styles.logo}>
          <img src="/assets/logo/LogoDark.png" alt=""/>
-        </div>
+        </div> */}
 
         {/* <div className={styles.spaceY}>
           <NavLink to={"/"} className={styles.sideLink} onClick={handleLinkClick}>
@@ -30,6 +30,10 @@ const Sidebar = ({ openSidebar, setOpenSidebar }) => {
             <p className={styles.linkText}>Dashboard</p>
           </NavLink>
         </div> */}
+
+        <div className={styles.logo}>
+          <img src="/logo/logo.png" alt="Logo" />
+        </div>
 
         {/* Data.js->Main */}
         <div className={` ${styles.linksBlock} `}>
