@@ -1,0 +1,8 @@
+.btn {
+    transition: 0.3s;
+  }
+  
+  .btn:hover {
+    transform: scale(1.02); /* this will make the button slightly larger */
+    opacity: 0.8; /* this will make the button slightly transparent */
+  }

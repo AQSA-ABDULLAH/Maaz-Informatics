@@ -1,0 +1,114 @@
+/* trainersForm styles */
+.addFormContainer{
+    /* margin-top: 4rem; */
+    width: 100%;
+    border-radius: 0.625rem;
+    border: 1px solid lightgray;
+}
+.formTop{
+font-size: 1rem;
+font-style: normal;
+font-weight: 700;
+line-height: 1.75rem;
+text-transform: capitalize;
+padding: 1.5rem 1.5rem 1.5rem 2.5rem;
+}
+.addForm{
+    padding: 1.5rem 2.5rem;
+    background-color: #fafafa;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    /* background-color: red; */
+}
+.formRow{
+    display: flex;
+    /* align-items: stretch; */
+    /* align-items: flex-start; */
+    justify-content: space-between;
+    width: 100%;
+    /* background-color: purple; */
+}
+.formField:first-child{
+    width: 48%;
+    /* background-color: yellow; */
+}
+.formField:last-child{
+    width: 48%;
+    /* background-color: yellow; */
+}
+.formField input[type="text"]{
+    width: 100%;
+    padding: .5rem;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    background-color: #fff;
+}
+.formField input[type="file"]{
+    display: none;
+}
+label{
+    display: block;
+    text-transform: capitalize;
+}
+.imgUpload{
+    background-color:#fff;
+    height: 80px;
+    width: 80px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.625rem;
+    border: 1px dashed lightgray;
+}
+.formBottom{
+    padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* testimonialsForm CSS */
+.formField textarea{
+    width: 100%;
+    resize: none;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+.colItem:last-child{
+    margin-top: 2.5rem;
+    /* background-color: green !important; */
+}
+.colItem .imgUpload{
+    border-radius: 50% !important;
+    /* background-color: red; */
+    margin-top: 10px;
+    /* height: 80px;
+    width: 80px; */
+}
+/* sliderForm styles */
+.imgUpload.sliderUpload{
+    width: 100%;
+    height: 90%;
+}
+.colItem.minorSpace{
+    margin-top: 1rem !important;
+    /* background-color: red; */
+}
+.sliderTextArea{
+    border: 1px solid lightgray !important;
+}
+@media (max-width:768px) {
+    .addForm{
+        padding: 1rem;
+    }
+    .formRow{
+        flex-direction: column;
+    }
+    .formField:first-child{
+        width: 100%;
+    }
+    .formField:last-child{
+        width: 100%;
+    }
+}

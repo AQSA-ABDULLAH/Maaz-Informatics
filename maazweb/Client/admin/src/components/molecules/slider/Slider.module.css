@@ -1,0 +1,9 @@
+.container{
+    padding: 32px;
+    height: 75vh;
+    overflow-y: scroll;
+    width: 100%;
+}
+.space{
+    margin-top: 4rem;
+}

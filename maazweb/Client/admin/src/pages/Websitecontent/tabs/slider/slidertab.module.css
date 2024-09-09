@@ -1,0 +1,11 @@
+.container {
+  padding: 32px;
+  height: 75vh;
+  overflow-y: scroll;
+  width: 100%;
+}
+.btn {
+  display: flex;
+  justify-content: flex-end;
+  margin: 2rem;
+}

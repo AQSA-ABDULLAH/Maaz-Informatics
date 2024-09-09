@@ -1,0 +1,128 @@
+.sidebar {
+    background-color: #FAFAFA;
+    height: 90vh;
+    margin: 20px;
+    color: #fff;
+    border-radius: 20px 0 0 20px;
+    width: 15.3rem;
+    padding: 1rem;
+    position: absolute;
+    min-height:660px;
+    overflow-y: auto;
+    top: 0;
+    left: 0;
+    transition: all 0.3s ease-in;
+    border-Right-width: 2px;
+    /* flex-shrink: 0; */
+    border-Right-color: #D9D9D9;
+    border-Right-style: dashed;
+}
+
+.logo img{
+   width: 5rem;
+   height: auto;
+   display: flex;
+   align-items: center;
+  margin: auto;
+  padding: 20px 0px 0px;
+}
+
+.spaceY {
+    margin-top: 1rem;
+}
+
+.sideLink {
+    display: flex;
+    padding: 7.5px 12px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+    margin-top: .5rem;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: large;
+    transition: all .5s ease-in-out;
+    color: #000;
+    text-decoration: none;
+}
+
+.active {
+    background-color: #7E22CE;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    padding-left: 1rem;
+}
+
+.sideLink:hover {
+    padding-right: 1rem;
+    transition: all .2s ease-in-out;
+    color: #fff;
+    background-color: #7E22CE;
+    border-radius: 10px;
+}
+
+.icon {
+    width: 20%;
+    font-size: 0.8rem;
+}
+
+.headingText {
+    color: #3c6382;
+}
+
+.linkText {
+    width: 80%;
+    text-transform: capitalize;
+    font-size: 0.8rem;
+    margin-bottom: 0px;
+}
+
+.linksBlock h5 {
+    font-weight: 300;
+    text-transform: capitalize;
+}
+
+
+.linksContainer {
+    margin-top: 1rem;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 3%;
+    right: 10%;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: none;
+}
+
+/* media queries */
+@media screen and (max-width:1068px) {
+    .sidebar {
+        width: 18.8rem;
+        left: -80%;
+        height: 100vh;
+        margin: 0px;
+        border-radius: 0;
+
+    }
+
+    .activeSidebar {
+        left: -0%;
+        transition: all 1s ease-out;
+    }
+
+    .closeIcon {
+        display: block;
+    }
+
+    .active {
+
+        color: #fff;
+
+    }
+
+}
