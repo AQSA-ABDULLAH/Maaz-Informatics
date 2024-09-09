@@ -58,48 +58,54 @@ const BlogTab = () => {
     // API SETUP
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+    
+        // Check if required fields are filled
         if (!imageUrl || !heading || !category || !writtenby || !content) {
             setError(true);
-            return false;
+            return;
         }
         setError(false);
-
-        const formData = new FormData();
-        formData.append('image', imageUrl);
-        formData.append('heading', heading);
-        formData.append('category', category);
-        formData.append('writtenby', writtenby);
-        formData.append('content', content);
-        console.log("this is an iamge",imageUrl)
-        console.log(formData)
-
+    
+        // Create a plain object instead of FormData
+        const blogData = {
+            imageUrl,   // Firebase URL of the image
+            heading,
+            category,
+            writtenby,
+            content
+        };
+    
         try {
-            const response = await axios.post("http://localhost:5000/api/blogs/create-blog", formData, {
-                headers: { 'Authorization': localStorage.getItem('token') }
+            // Send the data as JSON, not FormData
+            const response = await axios.post("http://localhost:5000/api/blogs/create-blog", blogData, {
+                headers: { 
+                    'Authorization': localStorage.getItem('token'), 
+                    'Content-Type': 'application/json'  // Make sure to use the correct content type
+                }
             });
-
-            console.log(formData)
+    
+            // Handle the response
             if (response.data.status === "success") {
                 Swal.fire(
                     'Add New Blog!',
-                    'You have been added new blog succesfully.',
+                    'You have successfully added a new blog.',
                     'success'
                 );
                 navigate('/');
             } else {
                 alert("Failed to submit data. Please try again.");
             }
-
+    
             if (response.data.code === 403 && response.data.message === "Token Expired") {
                 localStorage.setItem('token', null);
             }
-
+    
         } catch (error) {
-            console.log(error);
+            console.error("An error occurred while submitting the data:", error);
             alert("An error occurred while submitting the data. Please try again.");
         }
     };
+    
 
 
 

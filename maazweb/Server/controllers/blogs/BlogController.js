@@ -4,7 +4,8 @@ const BlogModal = require("../../models/Blogs");
 class BlogController {
     static createBlog = async (req, res) => {
         const { image, heading, category, writtenby, content } = req.body;
-        if (!image) return res.status(400).send({ status: "failed", message: `Image URL is required` });
+        console.log(image, heading, category, writtenby, content);
+        // if (!image) return res.status(400).send({ status: "failed", message: `Image URL is required` });
         if (!heading) return res.status(400).send({ status: "failed", message: `Heading is required` });
         if (!category) return res.status(400).send({ status: "failed", message: `Category is required` });
         if (!writtenby) return res.status(400).send({ status: "failed", message: `Writter name is required` });
