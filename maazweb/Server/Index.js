@@ -7,6 +7,7 @@ const app = express();
 
 // Routes
 const userRoutes = require('./routes/Users.js');
+const blogsRoutes = require("./routes/Blogs.js");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -29,6 +30,7 @@ app.listen(port, () => {
 
 // Load Routes
 app.use('/api/user', userRoutes);
+app.use("/api/blogs",blogsRoutes);
 
 // MongoDB connection
 const mongoose = require('mongoose');

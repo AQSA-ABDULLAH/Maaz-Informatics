@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const BlogController = require("../controllers/blogs&news/blogController");
+const BlogController = require("../controllers/blogs/BlogController");
 
 //PROTECTED ROUTES
 router.post("/create-blog", BlogController.createBlog);
