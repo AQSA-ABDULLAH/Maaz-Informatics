@@ -59,7 +59,7 @@ const Navbar = () => {
                         </li>
 
                         <li>
-                            <Link to="/case-studies">Case Studies & Reports</Link>
+                            <Link to="/blog&news">Case Studies & Reports</Link>
                         </li>
 
                         <li
