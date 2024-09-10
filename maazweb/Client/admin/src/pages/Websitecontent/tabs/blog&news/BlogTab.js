@@ -68,7 +68,7 @@ const BlogTab = () => {
         setError(false);
     
         const blogData = {
-            image: imageUrl,   // Change this to 'image' instead of 'imageUrl'
+            image: imageUrl,
             heading,
             category,
             writtenby,
