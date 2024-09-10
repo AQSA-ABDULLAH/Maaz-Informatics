@@ -46,16 +46,17 @@ const AddClient = ({ onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!Image || !imageUrl) {  // Fix: Ensure both the file and URL are present
+        if (!imageUrl) {  // Fix: Ensure both the file and URL are present
             setError(true);
             return false;
         }
 
-        const formData = new FormData();
-        formData.append('Image', imageUrl);  // Pass the image URL to the backend
+        const teamData = {
+            image: imageUrl,
+        };
 
         try {
-            const response = await axios.post("https://transport-hub-tawny.vercel.app/api/cars/addCar", formData, {
+            const response = await axios.post("http://localhost:5000/api/teams/add-partner", teamData, {
                 headers: { 'Authorization': localStorage.getItem('token') }
             });
 
