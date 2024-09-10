@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maazinfo/login.dart';
+import 'package:maazinfo/nickname.dart';
+import 'package:maazinfo/otp.dart';
 
 void main() {
   runApp(SignUpApp());
@@ -15,7 +17,32 @@ class SignUpApp extends StatelessWidget {
   }
 }
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
+  @override
+  _SignUpScreenState createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  final _formKey = GlobalKey<FormState>();
+  final TextEditingController nameController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
+
+  String? nameErrorText;
+  String? emailErrorText;
+  String? passwordErrorText;
+  String? countryErrorText;
+
+  @override
+  void dispose() {
+    nameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    countryController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     // Getting the size of the screen
@@ -67,65 +94,151 @@ class SignUpScreen extends StatelessWidget {
             ),
           ),
 
-          // Form Content
-          Center(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-              height: screenHeight * 0.5,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "SIGN UP",
-                    style: TextStyle(
-                      fontSize: screenHeight * 0.04, // Responsive font size
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.05),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: "Email ID",
-                      labelStyle: TextStyle(color: Colors.grey),
-                      border: OutlineInputBorder(),
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.03),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: "Password",
-                      labelStyle: TextStyle(color: Colors.grey),
-                      border: OutlineInputBorder(),
-                    ),
-                    obscureText: true,
-                  ),
-                  SizedBox(height: screenHeight * 0.05),
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => LoginScreen()),
-                      );
-                    },
-                    child: Text(
-                      'LOGIN',
-                      style: TextStyle(
-                        fontSize: screenHeight * 0.025,
-                        color: Colors.purple,
-                        fontFamily: 'Arial',
+          // Form Content wrapped in SingleChildScrollView
+          SingleChildScrollView(
+            child: Center(
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
+                child: Form(
+                  key: _formKey, // Form key for validation
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      // Image/Icon on top (placeholder or custom)
+                      Padding(
+                        padding: const EdgeInsets.only(top: 90),
+                        child: Image.network(
+                          'assets/heart.png', // Add your image URL here
+                          height: screenHeight * 0.25,
+                        ),
                       ),
-                    ),
+                      /*SizedBox(height: screenHeight * 0.03),
+
+                      // Name TextField with validation
+                      TextFormField(
+                        controller: nameController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.person),
+                          labelText: "Name",
+                          errorText: nameErrorText,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),*/
+                      SizedBox(height: screenHeight * 0.02),
+
+                      // Email TextField with validation
+                      TextFormField(
+                        controller: emailController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.email),
+                          labelText: "Email",
+                          errorText: emailErrorText,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+
+                      // Password TextField with validation
+                      TextFormField(
+                        controller: passwordController,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.lock),
+                          labelText: "Password",
+                          errorText: passwordErrorText,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+
+                      // Country TextField (optional, no validation added)
+                      TextFormField(
+                        controller: countryController,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.map),
+                          labelText: "Country",
+                          errorText: countryErrorText,
+                          border: OutlineInputBorder(),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.03),
+
+                      // Sign Up Button with validation logic
+                      SizedBox(
+                        width: double.infinity,
+                        height: screenHeight * 0.07,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            setState(() {
+                              nameErrorText = nameController.text.isEmpty ? "The username cannot be empty!" : null;
+                              emailErrorText = emailController.text.isEmpty ? "Email cannot be empty!" : null;
+                              passwordErrorText = passwordController.text.isEmpty ? "Password cannot be empty!" : null;
+                              countryErrorText = countryController.text.isEmpty ? "This field cannot be empty!" : null;
+                            });
+
+                            if (nameErrorText == null &&
+                                emailErrorText == null &&
+                                passwordErrorText == null &&
+                                countryErrorText == null) {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => VerificationScreen(),
+                                ),
+                              );
+                            }
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.blue, // Background color
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25),
+                            ),
+                          ),
+                          child: Text(
+                            'Sign Up',
+                            style: TextStyle(
+                              fontSize: screenHeight * 0.025,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(height: screenHeight * 0.02),
+
+                      // Already have an account
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Already have an account? ',
+                            style: TextStyle(
+                              fontSize: screenHeight * 0.02,
+                              color: Colors.black,
+                            ),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => LoginScreen(),
+                                ),
+                              );
+                            },
+                            child: Text(
+                              'LOGIN',
+                              style: TextStyle(
+                                fontSize: screenHeight * 0.02,
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  Text(
-                    'if you have an account already',
-                    style: TextStyle(
-                      fontSize: screenHeight * 0.025,
-                      color: Colors.grey,
-                      fontFamily: 'Arial',
-                    ),
-                  ),
-                ],
+                ),
               ),
             ),
           ),

@@ -1,7 +1,63 @@
 import 'package:flutter/material.dart';
+import 'package:maazinfo/HomeScreen.dart';
+import 'package:maazinfo/journey.dart';
+import 'package:maazinfo/nav.dart';
 import 'package:maazinfo/therapist.dart';
+// Import
 
-class SelfCareScreen extends StatelessWidget {
+class SelfCareScreen extends StatefulWidget {
+  @override
+  _SelfCareScreenState createState() => _SelfCareScreenState();
+}
+
+class _SelfCareScreenState extends State<SelfCareScreen> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+
+    if (index == 0) {
+      // Navigate to DashboardScreen when Home icon is tapped
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => DashboardScreen(nickname: '',)),
+      );
+    } else {
+      // Handle other navigation items
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Navigation for this item is not yet implemented')),
+      );
+    }
+
+    if (index == 1) {
+      // Navigate to DashboardScreen when Home icon is tapped
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => JourneyScreen()),
+      );
+    } else {
+      // Handle other navigation items
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Navigation for this item is not yet implemented')),
+      );
+    }
+
+    if (index == 2) {
+      // Navigate to DashboardScreen when Home icon is tapped
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => NavScreen()),
+      );
+    } else {
+      // Handle other navigation items
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Navigation for this item is not yet implemented')),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -57,13 +113,19 @@ class SelfCareScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    'SELF CARE',
-                    style: TextStyle(
-                      fontSize: screenWidth * 0.06,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        'SELF CARE',
+                        style: TextStyle(
+                          fontSize: screenWidth * 0.03,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      Spacer(),
+                      Icon(Icons.more_vert, color: Colors.black), // Three dots icon
+                    ],
                   ),
                   SizedBox(height: screenHeight * 0.12),
                   Expanded(
@@ -106,6 +168,8 @@ class SelfCareScreen extends StatelessWidget {
             label: 'Chat',
           ),
         ],
+        currentIndex: _selectedIndex,
+        onTap: _onItemTapped,
       ),
     );
   }
@@ -144,6 +208,7 @@ class SelfCareScreen extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
+                fontFamily: 'Itim-Regular',
                 fontSize: screenWidth * 0.045,
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

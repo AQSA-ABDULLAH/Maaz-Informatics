@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:maazinfo/HomeScreen.dart';
 
-class NicknameScreen extends StatelessWidget {
+class NicknameScreen extends StatefulWidget {
+  @override
+  _NicknameScreenState createState() => _NicknameScreenState();
+}
+
+class _NicknameScreenState extends State<NicknameScreen> {
   final TextEditingController _nicknameController = TextEditingController();
+  bool _isChecked = false; // Checkbox value for terms and conditions
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // Background circles with gradient
           Positioned(
             top: -20,
             right: -20,
@@ -47,16 +55,26 @@ class NicknameScreen extends StatelessWidget {
               ),
             ),
           ),
+          // Center content
           Center(
             child: Padding(
               padding: const EdgeInsets.all(32.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  // Image added here
+                  Image.asset(
+                    'assets/play.png', // Path to your image
+                    width: 150, // Adjust width according to your needs
+                    height: 150, // Adjust height according to your needs
+                  ),
+                  SizedBox(height: 16), // Add spacing between the image and text
+
                   Text(
                     'Welcome to',
                     style: TextStyle(
-                      fontSize: 24,
+                      fontFamily: 'Itim-Regular',
+                      fontSize: 20,
                       color: Colors.purple,
                       fontWeight: FontWeight.bold,
                     ),
@@ -65,42 +83,80 @@ class NicknameScreen extends StatelessWidget {
                   Text(
                     'MAAZ INFORMATICS',
                     style: TextStyle(
-                      fontSize: 28,
-                      color: Colors.purple,
+                      fontFamily: 'Itim-Regular',
+                      fontSize: 24,
+                      color: Colors.blue,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 8),
                   Text(
                     'We are excited to have you here. Choose a nickname..',
                     textAlign: TextAlign.center,
                     style: TextStyle(
+                      fontFamily: 'Itim-Regular',
                       fontSize: 18,
-                      color: Colors.blue,
+                      color: Colors.black,
                     ),
                   ),
-                  SizedBox(height: 32),
-                  TextField(
-                    controller: _nicknameController,
-                    decoration: InputDecoration(
-                      hintText: 'Choose a nickname...',
-                      border: OutlineInputBorder(
+                  SizedBox(height: 8),
+
+                  // Gradient border container for TextField
+                  Container(
+                    padding: EdgeInsets.all(2), // Border width
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [Colors.purple, Colors.blue], // Gradient border colors
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                      ),
+                      borderRadius: BorderRadius.circular(8), // Border radius
+                    ),
+                    child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Background color of the TextField
                         borderRadius: BorderRadius.circular(8),
-                        borderSide: BorderSide(
-                          width: 2.0,
-                          color: Colors.blue,
+                      ),
+                      child: TextField(
+                        controller: _nicknameController,
+                        decoration: InputDecoration(
+                          hintText: 'Choose a nickname...',
+                          hintStyle: TextStyle(fontFamily: 'Itim-Regular'),
+                          border: InputBorder.none, // Removing the default border
                         ),
                       ),
-                      contentPadding: EdgeInsets.symmetric(
-                        horizontal: 16,
-                        vertical: 14,
-                      ),
                     ),
                   ),
+
+                  SizedBox(height: 16),
+
+                  // Checkbox with Terms of Service
+                  Row(
+                    children: [
+                      Checkbox(
+                        value: _isChecked,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            _isChecked = value ?? false;
+                          });
+                        },
+                      ),
+                      Expanded(
+                        child: Text(
+                          'I agree to our Terms of Service and Privacy Policy.',
+                          style: TextStyle(fontSize: 14, fontFamily: 'Itim-Regular'),
+                        ),
+                      ),
+                    ],
+                  ),
                   SizedBox(height: 32),
+
+                  // Continue Button
                   ElevatedButton(
                     onPressed: () {
-                      if (_nicknameController.text.isNotEmpty) {
+                      if (_nicknameController.text.isNotEmpty && _isChecked) {
+                        // Navigate to DashboardScreen if nickname is entered and checkbox is checked
                         Navigator.push(
                           context,
                           MaterialPageRoute(
@@ -109,15 +165,41 @@ class NicknameScreen extends StatelessWidget {
                             ),
                           ),
                         );
-                      } else {
+                      } else if (!_isChecked) {
+                        // Show error if checkbox is not checked
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
-                            content: Text('Please enter a nickname'),
+                            content: Text(
+                              'Please agree to the Terms of Service',
+                              style: TextStyle(fontFamily: 'Itim-Regular'),
+                            ),
+                          ),
+                        );
+                      } else {
+                        // Show error if nickname is not entered
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            content: Text(
+                              'Please enter a nickname',
+                              style: TextStyle(fontFamily: 'Itim-Regular'),
+                            ),
                           ),
                         );
                       }
                     },
-                    child: Text('Continue'),
+                    child: Text(
+                      'Continue',
+                      style: TextStyle(fontFamily: 'Itim-Regular'),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 50,
+                        vertical: 15,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
                   ),
                 ],
               ),

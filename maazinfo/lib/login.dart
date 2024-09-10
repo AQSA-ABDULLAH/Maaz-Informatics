@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:maazinfo/HomeScreen.dart';
 import 'package:maazinfo/nickname.dart';
-
+import 'package:maazinfo/signup.dart'; // Assuming you have a signup.dart file
 
 class LoginScreen extends StatelessWidget {
   @override
@@ -13,6 +14,7 @@ class LoginScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
+          // Positioned circles for decoration
           Positioned(
             top: -20,
             right: -20,
@@ -51,66 +53,162 @@ class LoginScreen extends StatelessWidget {
               ),
             ),
           ),
+
           Center(
-            child: Container(
+            child: SingleChildScrollView(
               padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.1),
-              height: screenHeight * 0.5,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    "LOGIN",
-                    style: TextStyle(
-                      fontSize: screenHeight * 0.04,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.purple,
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.05),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: "Email ID",
-                      labelStyle: TextStyle(color: Colors.grey),
-                      border: OutlineInputBorder(),
-                    ),
+                  // Add the top image here
+                  Image.asset(
+                    'assets/login.png', // Path to the image you added
+                    width: screenWidth * 0.5,
+                    height: screenHeight * 0.25,
                   ),
                   SizedBox(height: screenHeight * 0.03),
+
+                  // Text for "Email"
                   TextField(
                     decoration: InputDecoration(
-                      labelText: "Password",
-                      labelStyle: TextStyle(color: Colors.grey),
+                      prefixIcon: Icon(Icons.email),
+                      labelText: "Email",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Itim-Regular',
+                      ),
                       border: OutlineInputBorder(),
                     ),
-                    obscureText: true,
                   ),
-                  SizedBox(height: screenHeight * 0.05),
+
+                  SizedBox(height: screenHeight * 0.02),
+
+                  // Text for "Password"
+                  TextField(
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(Icons.lock),
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        color: Colors.black,
+                        fontFamily: 'Itim-Regular',
+                      ),
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+
+                  // Forgot Password link
+                  Align(
+                    alignment: Alignment.centerRight,
+                    child: TextButton(
+                      onPressed: () {
+                        // Handle Forgot Password press
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ForgotPasswordScreen(), // Create this screen
+                          ),
+                        );
+                      },
+                      child: Text(
+                        "Forgot Password?",
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontFamily: 'Itim-Regular',
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: screenHeight * 0.03),
+
+                  // Login Button
                   ElevatedButton(
                     onPressed: () {
-                      // Navigate to NicknameScreen
+                      // Navigate to DashboardScreen
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => NicknameScreen ()),
+                        MaterialPageRoute(
+                          builder: (context) => DashboardScreen(nickname: '',),
+                        ),
                       );
                     },
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(vertical: screenHeight * 0.02),
-                      child: Text(
-                        "Login",
-                        style: TextStyle(fontSize: screenHeight * 0.025),
-                      ),
-                    ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
+                      backgroundColor: Colors.blue, // Background color similar to the sign-up button
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
+                        borderRadius: BorderRadius.circular(25), // Rounded corners
+                      ),
+                      padding: EdgeInsets.symmetric(
+                        vertical: screenHeight * 0.02, // Vertical padding
+                        horizontal: screenWidth * 0.3, // Horizontal padding to expand button
                       ),
                     ),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(
+                        fontSize: screenHeight * 0.025, // Adjust font size
+                        fontFamily: 'Itim-Regular',
+                        color: Colors.white, // Font color white to match sign-up button
+                      ),
+                    ),
+                  ),
+
+                  SizedBox(height: screenHeight * 0.03),
+
+                  // Sign Up Section
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Don't have an account? ",
+                        style: TextStyle(
+                          fontFamily: 'Itim-Regular',
+                          color: Colors.black,
+                          fontSize: screenHeight * 0.025,
+                        ),
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignUpApp(),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "SIGN UP",
+                          style: TextStyle(
+                            fontFamily: 'Itim-Regular',
+                            fontSize: screenHeight * 0.025,
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+// Placeholder for Forgot Password Screen
+class ForgotPasswordScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Forgot Password')),
+      body: Center(
+        child: Text(
+          'Forgot Password Screen',
+          style: TextStyle(fontSize: 24),
+        ),
       ),
     );
   }
