@@ -15,7 +15,7 @@ import Career from "../pages/about-us/careers/Career";
 
 function AppRoutes() {
     const location = useLocation();
-    const noHeaderPaths = ["/404"];
+    const noHeaderPaths = ["/404", "/blog&news/:id"];
     return (
         <>
             <div className={styles.header_container}>

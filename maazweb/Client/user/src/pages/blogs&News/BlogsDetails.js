@@ -9,7 +9,7 @@ export default function BlogsDetails() {
   const params = useParams();
 
   const getBlogData = async() =>{
-    axios.get(`https://transport-hub-tawny.vercel.app/api/blogs/get-blog/${params.id}`)
+    axios.get(`http://localhost:5000/api/blogs/get-blog/${params.id}`)
     .then(res => {
         console.log(res.data);
         setData(res.data.data);
