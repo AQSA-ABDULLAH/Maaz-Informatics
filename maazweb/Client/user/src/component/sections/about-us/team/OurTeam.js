@@ -14,51 +14,7 @@ export default function OurTeam() {
       <div className={style.teamGrid}>
 
         <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/1.png" alt="Team Member 1" />
-          <p>Team Member 1</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/2.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/3.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/4.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/5.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/6.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/7.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
-        </div>
-
-        <div className={style.teamMember}>
-          <img src="/assest/images/about-us/team/2.png" alt="Team Member 2" />
-          <p>Team Member 2</p>
-          <span>Role</span>
+          
         </div>
         
       </div>

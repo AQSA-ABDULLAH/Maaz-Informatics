@@ -1,0 +1,43 @@
+.homeContainer{
+  padding: 7.6rem 0rem 0rem;
+}
+  
+.image{
+ width: 100%;
+ height: auto;
+}
+
+.blogSection {
+  display: flex;
+  flex-direction: row;
+  padding: 3rem 6rem;
+  height: 100%;
+  gap: 55px;
+  width: 100%;
+}
+
+.blogContainer {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 15px;
+}
+
+.filterContainer{
+  width: 28%;
+}
+
+/* STYLE FOR BLOG DETAILS */
+.blog_container{
+  margin: 2rem 7rem;
+}
+
+.blog_description{
+  display: flex;
+  flex-direction: row;
+  gap: 65px;
+}
+
+.blog_content{
+  width: 78%;
+}

@@ -59,6 +59,7 @@ const BlogTab = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
     
+    
         // Check if required fields are filled
         if (!imageUrl || !heading || !category || !writtenby || !content) {
             setError(true);
@@ -66,25 +67,23 @@ const BlogTab = () => {
         }
         setError(false);
     
-        // Create a plain object instead of FormData
         const blogData = {
-            imageUrl,   // Firebase URL of the image
+            image: imageUrl,
             heading,
             category,
             writtenby,
             content
         };
+        
     
         try {
-            // Send the data as JSON, not FormData
             const response = await axios.post("http://localhost:5000/api/blogs/create-blog", blogData, {
                 headers: { 
                     'Authorization': localStorage.getItem('token'), 
-                    'Content-Type': 'application/json'  // Make sure to use the correct content type
+                    'Content-Type': 'application/json'
                 }
             });
     
-            // Handle the response
             if (response.data.status === "success") {
                 Swal.fire(
                     'Add New Blog!',
@@ -105,6 +104,7 @@ const BlogTab = () => {
             alert("An error occurred while submitting the data. Please try again.");
         }
     };
+    
     
 
 
