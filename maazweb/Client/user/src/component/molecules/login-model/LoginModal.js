@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
-import Button from "../atoms/button/Button";
+import Button from "../../atoms/button/Button";
 import { useDispatch } from "react-redux";
-import { signUpWithEmail } from "../../redux/containers/auth/actions";
+import { signUpWithEmail } from "../../../redux/containers/auth/actions";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./LoginModal.css";
-import OAuth from "./googleAuth/OAuth";
 
 function LoginModal({ onClose }) {
   const navigate = useNavigate();
@@ -125,7 +124,6 @@ function LoginModal({ onClose }) {
               Don't have an account? <Link to="/signup">Register.</Link>
             </small>
 
-            <OAuth />
           </form>
         </div>
       </div>

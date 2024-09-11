@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./signup.module.css";
-import Form from "../../molecules/Form";
+import Form from "../../../atoms/signup-form/Form";
 const Signup = () => {
   return (
     <>

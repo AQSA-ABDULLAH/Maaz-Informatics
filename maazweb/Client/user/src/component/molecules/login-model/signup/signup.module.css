@@ -1,6 +1,6 @@
 .background{
     background: linear-gradient(rgba(50, 116, 163, 0.6), rgb(22, 66, 97)),
-                url('../../../../public/assets/images/signup/image1.png');
+                url('../../../../../public/assest/images/signup/250253-379060_525244.png');
 }
 
 .signupContainer{
@@ -28,7 +28,7 @@
     height: 100%;
     width: 38%;
     /* width: 20.9rem;  */
-    background-image: url('../../../../public/assets/images/signup/image3.jpg');
+    background-image: url('../../../../../public/assest/images/signup/250253-379060_525244.png');
     background-size: cover;
     background-position: bottom center;
     text-align: center;
