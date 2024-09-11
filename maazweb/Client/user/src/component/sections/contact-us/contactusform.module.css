@@ -90,3 +90,14 @@
     background-color: #0066cc; /* Blue on hover */
   }
   
+  /* Status message */
+.statusMessage {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #61ac8a; /* Green shade for success */
+  }
+  
+  .statusMessage.error {
+    color: red; /* Red for error messages */
+  }
+  

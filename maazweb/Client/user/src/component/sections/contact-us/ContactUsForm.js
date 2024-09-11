@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";  // Import axios
 import styles from "./contactusform.module.css";
 
 function ContactUsForm() {
@@ -10,13 +11,40 @@ function ContactUsForm() {
     message: "",
   });
 
+  const [statusMessage, setStatusMessage] = useState(""); // For status feedback
+
+  // Handle form input changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  // Handle form submission
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form data:", formData);
+
+    try {
+      // Post form data to the backend
+      const response = await axios.post(
+        "http://localhost:5000/api/contactus/send-message",
+        formData
+      );
+
+      if (response.status === 201) {
+        setStatusMessage("Message sent successfully!");
+        setFormData({
+          name: "",
+          country: "",
+          email: "",
+          phoneno: "",
+          message: "",
+        }); // Clear the form after success
+      } else {
+        setStatusMessage("Failed to send message.");
+      }
+    } catch (error) {
+      console.error("Error sending message:", error);
+      setStatusMessage("Error sending message. Please try again.");
+    }
   };
 
   return (
@@ -96,9 +124,11 @@ function ContactUsForm() {
         </div>
 
         <button type="submit" className={styles.submitButton}>Send Message</button>
+        {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
       </form>
     </div>
   );
 }
 
 export default ContactUsForm;
+
