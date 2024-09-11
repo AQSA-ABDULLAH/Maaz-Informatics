@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from "./caresection3.module.css";
 import Button from '../../../atoms/button/Button';
-import { WEBSITE_NAME } from '../../../constant/Website_Name';
+import { WEBSITE_NAME } from '../../../constant/WebsiteConstants';
 
 function CareSection3() {
   return (

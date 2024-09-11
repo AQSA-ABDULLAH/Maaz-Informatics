@@ -28,7 +28,7 @@ function AppRoutes() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
-    const noHeaderPaths = ["/404", "/blog&news/:id", "/signup", "/login"];
+    const noHeaderPaths = ["/404", "/signup", "/login"];
 
     // Monitor the scroll position to add the "scrolled" class
     useEffect(() => {

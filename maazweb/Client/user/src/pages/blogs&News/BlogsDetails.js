@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import style from './blogsNews.module.css';
 import { useParams } from 'react-router-dom';
+import { API_URL } from '../../component/constant/WebsiteConstants'; 
 
 export default function BlogsDetails() {
   const [data, setData] = useState([]);
@@ -9,7 +10,7 @@ export default function BlogsDetails() {
   const params = useParams();
 
   const getBlogData = async() =>{
-    axios.get(`http://localhost:5000/api/blogs/get-blog/${params.id}`)
+    axios.get(`${API_URL}/api/blogs/get-blog/${params.id}`)
     .then(res => {
         console.log(res.data);
         setData(res.data.data);
