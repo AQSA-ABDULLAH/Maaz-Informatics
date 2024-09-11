@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./contactus.module.css"
-import ContactUsForm from '../../../component/sections/contact-us/ContactUsForm';
+import ContactUsForm from '../../../component/molecules/contact-us/ContactUsForm';
 
 function ContactUs() {
     return (

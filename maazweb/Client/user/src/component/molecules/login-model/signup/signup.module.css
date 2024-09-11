@@ -1,0 +1,78 @@
+.background{
+    background: linear-gradient(rgba(50, 116, 163, 0.6), rgb(22, 66, 97)),
+                url('../../../../public/assets/images/signup/image1.png');
+}
+
+.signupContainer{
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.signup{
+    background-color: #fff;
+    height: 92vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 65%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+.imgContainer{
+    display: block;
+    height: 100%;
+    width: 38%;
+    /* width: 20.9rem;  */
+    background-image: url('../../../../public/assets/images/signup/image3.jpg');
+    background-size: cover;
+    background-position: bottom center;
+    text-align: center;
+    padding-top: 1rem;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    filter: brightness(100%) contrast(70%) saturate(190%);
+}
+.imgContainer img{
+    height: 90px;
+    width: 200px;
+}
+.formContainer{
+    height: 100%;
+    width: 65%;
+}
+.formTop{
+    background-color: #9d66cc;
+    padding: 3rem 0rem 2rem 1.75rem; /* top right bottom left */
+    border-top-right-radius: 10px;
+}
+.formTop h3{
+    text-transform: uppercase;
+}
+
+
+/* Responsive code add here */
+ @media only screen and (max-width: 1084px) {
+    .imgContainer{
+        display: none;
+    }
+    .formContainer{
+        height: 100%;
+        width: 100%;
+        padding-bottom: 3rem;
+    }
+
+    .membership{
+        width: 70%;
+    }
+ }
+@media screen and (max-width: 767px) {
+
+    .membership{
+        width: 80%;
+    }
+}
