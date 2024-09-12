@@ -5,12 +5,38 @@ const compileEmailTemplate = require("../../helpers/compile-email-template.js");
 const mailer = require("../../libs/mailer.js");
 
 class UserController {
-    static userRegistration = async (req, res) => {
+    static userRegistration = async(req, res) => {
         try {
-            const { firstName, lastName, email, phoneNumber, password, confirmPassword, city, zipCode, address, profilePicture } = req.body;
+            const {
+                userName,
+                firstName,
+                lastName,
+                middleName,
+                email,
+                phoneNumber,
+                password,
+                confirmPassword,
+                country,
+                status,
+                profilePicture,
+            } = req.body;
 
-            if ( !email || !country || !password || !confirmPassword) {
-                return res.status(422).json({ error: "Please fill in all fields properly" });
+            console.log(userName,
+                firstName,
+                lastName,
+                middleName,
+                email,
+                phoneNumber,
+                password,
+                confirmPassword,
+                country,
+                status,
+                profilePicture, )
+
+            if (!email || !password || !confirmPassword || !country) {
+                return res
+                    .status(422)
+                    .json({ error: "Please fill in all fields properly" });
             }
 
             const userExist = await User.findOne({ email: email });
@@ -28,14 +54,15 @@ class UserController {
             // Hashing Password
             const hashedPassword = await hashPassword(password);
             const user = new User({
+                userName,
                 firstName,
                 lastName,
+                middleName,
                 email,
                 phoneNumber,
                 password: hashedPassword,
-                city,
-                zipCode,
-                address,
+                country,
+                status,
                 profilePicture,
             });
 
@@ -71,30 +98,28 @@ class UserController {
             console.error("Error in user registration:", error);
             return res.status(500).json({ error: "Failed to register" });
         }
-    }
-    
+    };
+
     // static mailVerification = async (req, res) => {
     //     try {
-    //         const id = req.params.id; 
+    //         const id = req.params.id;
     //         console.log(id);
     //         const user = await User.findById(id);
-            
+
     //         if (!user) {
     //             return res.status(404).json({ error: "User not found" });
     //         }
-    
-    //         user.is_verified = true; 
-    
-    //         await user.save(); 
-    
-    //         return res.status(200).json(user); 
+
+    //         user.is_verified = true;
+
+    //         await user.save();
+
+    //         return res.status(200).json(user);
     //     } catch (error) {
     //         console.error("Error in user verification", error);
     //         return res.status(500).json({ error: "Failed to verify user" });
     //     }
     // };
-    
 }
-
 
 module.exports = { UserController };
