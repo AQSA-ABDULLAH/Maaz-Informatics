@@ -44,20 +44,6 @@
   color: #ffffff;
 }
 
-.btn {
-  padding: 10px 20px;
-  font-size: 0.7em;
-  background-color: #ec1f3e;
-  color: #ffffff;
-  border: none;
-  border-radius: 40px;
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.btn:hover {
-  background-color: #d43b52;
-}
 .swiper-pagination-bullet {
   width: 12px;
   height: 4px;
@@ -79,6 +65,6 @@
 }
 
 .swiper-pagination-bullet-active {
-  background-color: #d43b52;
+  background-color: #9f29bd;
   animation: activeDotAnimation 1s ease-in-out;
 }

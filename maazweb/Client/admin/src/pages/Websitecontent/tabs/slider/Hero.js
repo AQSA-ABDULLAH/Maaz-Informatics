@@ -1,30 +1,32 @@
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import SwiperSlider from "../../../../components/molecules/slider/Swiperslider";
+import "./slidertab.module.css";
+import { API_URL } from "../../../../constants/WebsiteConstants";
 
 const Hero = () => {
-  const data = [
-    {
-      image: "/assets/image/sliderhero/image.png",
-      title: "Welcome to TheBodyDoctors",
-      caption: "Discover the power within and soar to new heights.",
-      buttonText: "Join us",
-    },
-    {
-      image: "/assets/image/sliderhero/image.png",
-      title: "Unleash Your Potential",
-      caption: "Embark on thrilling quests and create unforgettable memories.",
-      buttonText: "Join us",
-    },
-    {
-      image: "/assets/image/sliderhero/image.png",
-      title: "Embrace Tranquility",
-      caption: "Find serenity in nature's embrace and rejuvenate your soul",
-      buttonText: "Join us",
-    },
-  ];
+  const [sliderData, setSliderData] = useState([]);
 
-  return <SwiperSlider data={data} />;
+  // Fetch slider images from the backend API
+  useEffect(() => {
+    const fetchSliderImages = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/slider/get-slider`);
+        if (response.data && response.data.status === "success") {
+          setSliderData(response.data.data);  // Assuming the slider images array is in response.data.data
+        } else {
+          console.error("Failed to fetch slider images");
+        }
+      } catch (error) {
+        console.error("Error fetching slider images:", error);
+      }
+    };
+
+    fetchSliderImages();
+  }, []);
+
+  // Pass the fetched slider data to SwiperSlider component
+  return <SwiperSlider data={sliderData} />;
 };
 
 export default Hero;
