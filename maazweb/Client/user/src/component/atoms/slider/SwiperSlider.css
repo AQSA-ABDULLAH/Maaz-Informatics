@@ -1,0 +1,152 @@
+.mySwiper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.custcard {
+  position: relative;
+  height: 28rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-left: 15em;
+  color: #ffffff;
+}
+
+.background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.header {
+  font-size: 3.3em;
+  line-height: 0;
+  margin-bottom: 1em;
+  text-transform: uppercase;
+  text-decoration: double;
+}
+
+.caption {
+  font-size: 1em;
+  margin-bottom: 40px;
+}
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1em;
+  background-color: #EC1F3E;
+  color: #ffffff;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn:hover {
+  background-color: #d43b52;
+}
+
+.swiper-pagination-bullet {
+  width: 12px;
+  height: 4px;
+  border-radius: 10%;
+  background-color: #ffffff;
+  margin: 8px;
+  transition: background-color 0.3s ease, width 0.3s ease;
+}
+
+@keyframes activeDotAnimation {
+  0% {
+    width: 8px;
+  }
+
+  50% {
+    width: 16px;
+  }
+
+  100% {
+    width: 8px;
+  }
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #d43b52;
+  animation: activeDotAnimation 1s ease-in-out;
+}
+
+@media (max-width: 1040px) {
+  .custcard {
+    height: 450px;
+    width: 100%;
+  }
+
+  .background-image {
+    width: 100%;
+    height: 100%;
+
+  }
+
+  .header {
+    font-size: 30px;
+  }
+
+  .caption {
+    font-size: 14px;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .custcard {
+    height: 350px;
+    width: auto;
+    padding-left: 5em;
+    padding-right: 2em;
+  }
+
+  .header {
+    font-size: 20px;
+    margin-top: 5rem;
+  }
+
+  .caption {
+    font-size: 12px;
+  }
+
+  .button {
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .custcard {
+    height: 250px; 
+    padding-left: 3em;
+    padding-right: 3em;
+  }
+
+  .header {
+    font-size: 15px; 
+    margin-top: 6.5rem;
+    word-break: all;
+  }
+
+  .caption {
+    font-size: 10px; 
+  }
+
+  .right-container header{
+    font-size: 12px;
+  }
+}

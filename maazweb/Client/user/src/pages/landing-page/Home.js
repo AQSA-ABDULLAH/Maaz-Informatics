@@ -8,12 +8,14 @@ import Section5 from '../../component/sections/landing-page/section5/Section5';
 import Section6 from '../../component/sections/landing-page/section6/Section6';
 import Section7 from '../../component/sections/landing-page/section7/Section7';
 import Section8 from '../../component/sections/landing-page/section8/Section8';
+import Hero from '../../component/molecules/hero/Hero';
 
 function Home() {
     return (
         <>
             <div className={styles.homeContainer}>
-                <Section1 />
+                {/* <Section1 /> */}
+                <Hero />
                 <Section2 />
                 <Section3 />
                 <Section4 />
