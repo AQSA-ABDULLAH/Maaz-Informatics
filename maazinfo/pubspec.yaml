@@ -17,23 +17,33 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
+
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/maaz-logo.jpg"
+
 flutter:
   uses-material-design: true
 
   assets:
-    - assets/maaz-logo.png
+    - assets/maaz-logo.jpg
     - assets/couch.jpg
+    - assets/play.png
+    - assets/login.png
+    - assets/heart.png
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
   #
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
+  fonts:
+    - family: Itim-Regular
+      fonts:
+        - asset: fonts/Itim-Regular.ttf
+
+            #fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

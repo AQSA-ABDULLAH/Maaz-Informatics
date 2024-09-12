@@ -5,7 +5,7 @@ import Button from "../../../components/atoms/buttons/Button";
 import { Tab } from "../../../constants/WebsiteContentTab";
 import AboutTab from '../tabs/about/AboutTab';
 import SliderTab from '../tabs/slider/SliderTab';
-import GalleryTab from '../tabs/gallery/GalleryTab';
+import TeamTab from '../tabs/client-partner/TeamTab';
 import BlogTab from "../tabs/blog&news/BlogTab";
 
 const WebsiteContent = () => {
@@ -49,7 +49,7 @@ const WebsiteContent = () => {
       case 0:
         return <AboutTab />
       case 1:
-        return <GalleryTab />
+        return <TeamTab />
       case 2:
         return <SliderTab />
       case 3:

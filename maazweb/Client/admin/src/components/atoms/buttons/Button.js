@@ -1,4 +1,3 @@
-// Button.js
 import React from "react";
 import "./Button.module.css";
 
@@ -15,13 +14,13 @@ const Button = (props) => {
     bw,
     width, 
     btnClick,
-    hoverColor,
+    hoverColor, // Using hoverColor prop
     padding,
   } = props;
 
   const buttonStyle = {
     backgroundColor:
-      bgColor || (primary ? "#7E22CE" : secondary ? "#6c757d" : "transparent"),
+      bgColor || (primary ? "#9f29bd" : secondary ? "#61AC8A" : "transparent"),
     color: textColor || "#ffffff",
     borderRadius: radius || "40px",
     fontSize: size || "16px",
@@ -41,8 +40,8 @@ const Button = (props) => {
       className="btn" 
       style={{
         ...buttonStyle,
-        backgroundColor: hovered ?  hoverColor: buttonStyle.backgroundColor,
-        cursor: "pointer" // to change the cursor to pointer on hover
+        backgroundColor: hovered ? hoverColor || "#0066CC" : buttonStyle.backgroundColor, // Default hoverColor applied
+        cursor: "pointer",
       }} 
       onClick={btnClick}
       onMouseEnter={toggleHover}
@@ -54,3 +53,4 @@ const Button = (props) => {
 };
 
 export default Button;
+

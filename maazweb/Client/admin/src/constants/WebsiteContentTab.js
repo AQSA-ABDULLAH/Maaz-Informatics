@@ -5,8 +5,8 @@ export const Tab = [
     onClick: '/aboutus'
   },
   {
-    text: "Gallery",
-    onClick: '/gallery'
+    text: "Team",
+    onClick: '/team'
   },
   {
     text: "Slider",

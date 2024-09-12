@@ -15,6 +15,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, // This line removes the debug banner
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        fontFamily: 'Itim-Regular',
       ),
       initialRoute: '/',
       routes: {

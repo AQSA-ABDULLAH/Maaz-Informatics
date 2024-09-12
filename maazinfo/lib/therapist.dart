@@ -1,16 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:maazinfo/login.dart';
-import 'package:maazinfo/signup.dart';
+
 
 class TherapistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(''),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
       body: Stack(
         children: [
           // Background gradient circles
@@ -53,37 +47,46 @@ class TherapistScreen extends StatelessWidget {
             ),
           ),
           // Main content of the screen
-          Center(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 40.0),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
                   'THERAPIST',
                   style: TextStyle(
+                    fontFamily: 'Itim-Regular',
                     fontSize: 28,
                     fontWeight: FontWeight.bold,
                     color: Colors.purple,
                   ),
                 ),
+                SizedBox(height: 8),
+                Container(
+                  width: 100,
+                  height: 2,
+                  color: Colors.white,
+                ),
                 SizedBox(height: 20),
                 Text(
                   'WELCOME TO HAVEN!',
-                  style: TextStyle(fontSize: 24),
+                  style: TextStyle(fontSize: 24,fontFamily: 'Itim-Regular'),
                 ),
                 SizedBox(height: 20),
-                Image.asset(
-                  'assets/couch.jpg', // Replace with your image path
-                  height: 100,
+                Center(
+                  child: Image.asset(
+                    'assets/couch.jpg', // Replace with your image path
+                    height: 100,
+                  ),
                 ),
                 SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // Navigate to LoginScreen when the button is pressed
-                    Navigator.of(context).pushReplacement(
-                      MaterialPageRoute(builder: (context) => SignUpApp()),
-                    );
-                  },
-                  child: Text('Therapy'),
+                Center(
+                  child: ElevatedButton(
+                    onPressed: () {
+
+                    },
+                    child: Text('Therapy'),
+                  ),
                 ),
               ],
             ),
