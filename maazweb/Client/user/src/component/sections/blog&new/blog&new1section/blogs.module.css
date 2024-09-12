@@ -1,0 +1,50 @@
+.Container {
+    display: flex;
+    flex-direction: column;
+}
+
+.blogCard {
+    display: flex;
+    flex-direction: row;
+    gap: 22px;
+}
+
+.border{
+    margin: 50px 0px 37px; 
+    border-bottom: 2px solid #e7e5e5;
+}
+
+.blogImage{
+    width: 20rem;
+    height: 13rem;
+
+}
+
+.blog h2{
+    font-size: 20px;    
+}
+
+.blog p{
+    font-size: 16px;
+    margin: 15px 0px 0px;
+}
+
+.blogBottom{
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.blogBottom p{
+    color: #999999;
+    font-size: 14px;
+}
+
+.blogBottom button{
+    border: none;
+    background-color: white;
+    color: #7E22CE;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 13px;
+}
