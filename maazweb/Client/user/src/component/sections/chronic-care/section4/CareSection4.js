@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./caresection4.module.css";
-import { WEBSITE_NAME } from '../../../constant/Website_Name';
+import { WEBSITE_NAME } from '../../../constant/WebsiteConstants';
 
 function CareSection4() {
   return (
