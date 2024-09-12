@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './footer.module.css';
-import {WEBSITE_NAME} from '../../constant/Website_Name';
+import {WEBSITE_NAME} from '../../constant/WebsiteConstants';
 
 import { FaFacebookF, FaTwitter, FaLinkedinIn, FaInstagram } from 'react-icons/fa';
 
