@@ -120,6 +120,7 @@ class UserController {
     //         return res.status(500).json({ error: "Failed to verify user" });
     //     }
     // };
+    
 }
 
 module.exports = { UserController };
