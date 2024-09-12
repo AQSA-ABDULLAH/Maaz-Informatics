@@ -19,7 +19,7 @@
 
 .clientGrid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Ensures 4 columns */
+    grid-template-columns: repeat(4, 1fr);
     gap: 35px;
 }
 
