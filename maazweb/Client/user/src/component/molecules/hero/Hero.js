@@ -1,33 +1,32 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import SwiperSlider from "../../atoms/slider/SwiperSlider";
 import "./hero.module.css";
-import useUserAction from "../../../../utils/customHooks/useUserAction";
+import { API_URL } from "../../constant/WebsiteConstants";  // Adjust the path as per your project structure
 
 const Hero = () => {
-  const { reduxState } = useUserAction();
+  const [sliderData, setSliderData] = useState([]);
 
-  const data = [
-    {
-      image: "/assets/image/home/image.png",
-      title: "Welcome to The TransportHub",
-      caption: "Discover the power within and soar to new heights.",
-      buttonText: reduxState.isSignedIn ? "Welcome aboard" : "JOIN WITH US",
-    },
-    {
-      image: "/assets/image/home/goods.png",
-      title: "Unleash Your Potential",
-      caption: "Embark on thrilling quests and create unforgettable memories.",
-      buttonText: reduxState.isSignedIn ? "Welcome aboard" : "JOIN WITH US",
-    },
-    {
-      image: "/assets/image/home/parcelpickup.png",
-      title: "Embrace Tranquility",
-      caption: "Find serenity in nature's embrace and rejuvenate your soul",
-      buttonText: reduxState.isSignedIn ? "Welcome at TransportHub" : "JOIN WITH US",
-    },
-  ]; 
+  // Fetch slider images from the backend API
+  useEffect(() => {
+    const fetchSliderImages = async () => {
+      try {
+        const response = await axios.get(`${API_URL}/api/slider/get-slider`);
+        if (response.data && response.data.status === "success") {
+          setSliderData(response.data.data);  // Assuming the slider images array is in response.data.data
+        } else {
+          console.error("Failed to fetch slider images");
+        }
+      } catch (error) {
+        console.error("Error fetching slider images:", error);
+      }
+    };
 
-  return <SwiperSlider data={data} />;
+    fetchSliderImages();
+  }, []);
+
+  // Pass the fetched slider data to SwiperSlider component
+  return <SwiperSlider data={sliderData} />;
 };
 
 export default Hero;

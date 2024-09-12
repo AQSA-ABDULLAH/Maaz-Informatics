@@ -12,9 +12,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "./SwiperSlider.css";
 import "swiper/css/effect-creative";
-import Button from "../../atoms/button/Button";
 import useUserAction from "../../../utils/customHooks/useUserAction";
-import LoginModal from "../../LoginModal/LoginModal";
 import { useNavigate } from "react-router-dom";
 import useModalToggler from "../../../utils/customHooks/useModalToggler";
 
@@ -67,17 +65,14 @@ const SwiperSlider = ({ data }) => {
               alt={slide.caption}
               className="background-image"
             />
-            <h1 className="header">{slide.title}</h1>
-            <p className="caption">{slide.caption}</p>
-            <Button
+            {/* <Button
               btnText={slide.buttonText}
               primary
               btnClick={reduxState.isSignedIn ? userAction : toggleIsOpen}
-            />
+            /> */}
           </div>
         </SwiperSlide>
       ))}
-      {isOpen ? <LoginModal onClose={toggleIsOpen} /> : ""}
     </Swiper>
   );
 };
