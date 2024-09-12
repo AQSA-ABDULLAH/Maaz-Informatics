@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import SwiperSlider from "../../../../components/molecules/slider/Swiperslider";
-import "./slidertab.module.css";
-import { API_URL } from "../../../../constants/WebsiteConstants";
+import SwiperSlider from "../../atoms/slider/SwiperSlider";
+import "./hero.module.css";
+import { API_URL } from "../../constant/WebsiteConstants";  // Adjust the path as per your project structure
 
 const Hero = () => {
   const [sliderData, setSliderData] = useState([]);

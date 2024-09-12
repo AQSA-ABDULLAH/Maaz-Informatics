@@ -12,6 +12,7 @@ const teamRoutes = require("./routes/ClientPartner.js");
 const faqsRoutes = require("./routes/FAQs.js");
 const contactusRoutes = require("./routes/ContactUs.js");
 const jobRoutes = require("./routes/Jobs.js");
+const sliderRoutes = require("./routes/Slider.js");
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -39,6 +40,7 @@ app.use("/api/teams",teamRoutes);
 app.use("/api/faqs",faqsRoutes);
 app.use("/api/contactus",contactusRoutes);
 app.use("/api/career",jobRoutes);
+app.use("/api/slider",sliderRoutes);
 
 // MongoDB connection
 const mongoose = require('mongoose');

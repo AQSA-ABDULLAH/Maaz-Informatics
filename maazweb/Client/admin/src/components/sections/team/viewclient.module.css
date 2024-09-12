@@ -1,0 +1,66 @@
+.clientContainer {
+    padding: 20px;
+    text-align: center;
+    max-width: 80rem;
+    margin: auto;
+}
+
+.clientContainer h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.clientContainer p{
+    font-size: 1rem;
+    font-weight: 400;
+    margin-bottom: 3rem;
+}
+
+.clientGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+.clientCard {
+    text-align: center;
+    transition: transform 0.2s ease;
+    background-color: #fff;
+}
+
+.clientCard img {
+    width: 230px;
+    height: 230px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.clientCard h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
+}
+
+.clientCard p {
+    font-size: 1rem;
+    color: #666;
+}
+
+.clientCard:hover {
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 1024px) {
+    .clientGrid {
+      grid-template-columns: repeat(2, 1fr); /* Show 2 columns on medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .clientGrid {
+      grid-template-columns: repeat(1, 1fr); /* Show 1 column on small screens */
+    }
+  }
+  
+

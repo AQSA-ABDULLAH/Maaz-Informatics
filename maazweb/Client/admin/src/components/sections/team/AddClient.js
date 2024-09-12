@@ -7,10 +7,11 @@ import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { getDownloadURL } from "firebase/storage";
 import { app } from "../../../firebase";
 import Button from "../../atoms/buttons/Button";
+import { API_URL } from "../../../constants/WebsiteConstants";
 
 const AddClient = ({ onClose }) => {
-    const [Image, setImage] = useState(null);  // Fix: Default to null
-    const [imageUrl, setImageUrl] = useState("");  // Stores Firebase image URL
+    const [Image, setImage] = useState(null);
+    const [imageUrl, setImageUrl] = useState("");
     const [error, setError] = useState(false);
 
     // Firebase file upload handler
@@ -23,7 +24,7 @@ const AddClient = ({ onClose }) => {
     // Function to upload image to Firebase
     const uploadFile = (file) => {
         const storage = getStorage(app);
-        const storageRef = ref(storage, 'Team/' + file.name);  // Folder for storing images
+        const storageRef = ref(storage, 'Team/' + file.name);
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on('state_changed',
@@ -36,7 +37,7 @@ const AddClient = ({ onClose }) => {
             },
             () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                    setImageUrl(downloadURL);  // Sets the image URL for further use
+                    setImageUrl(downloadURL);
                     console.log('File available at', downloadURL);
                 });
             }
@@ -46,7 +47,7 @@ const AddClient = ({ onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        if (!imageUrl) {  // Fix: Ensure both the file and URL are present
+        if (!imageUrl) {
             setError(true);
             return false;
         }
@@ -56,7 +57,7 @@ const AddClient = ({ onClose }) => {
         };
 
         try {
-            const response = await axios.post("http://localhost:5000/api/teams/add-partner", teamData, {
+            const response = await axios.post(`${API_URL}/api/teams/add-partner`, teamData, {
                 headers: { 'Authorization': localStorage.getItem('token') }
             });
 

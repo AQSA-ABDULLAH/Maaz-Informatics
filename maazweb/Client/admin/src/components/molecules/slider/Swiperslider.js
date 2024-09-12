@@ -59,9 +59,6 @@ const SwiperSlider = ({ data }) => {
                 alt={slide.caption}
                 className="background-image"
               />
-              <h1 className="header">{slide.title}</h1>
-              <p className="caption">{slide.caption}</p>
-              <Button btnText={slide.buttonText} primary />
             </div>
           </SwiperSlide>
         ))}

@@ -7,6 +7,7 @@ import { app } from "../../../../firebase";
 import Button from "../../../../components/atoms/buttons/Button";
 import { useNavigate } from 'react-router-dom';
 import styles from "./blogtab.module.css";
+import { API_URL } from "../../../../constants/WebsiteConstants";
 
 const BlogTab = () => {
     const inputRef = useRef(null);
@@ -77,7 +78,7 @@ const BlogTab = () => {
         
     
         try {
-            const response = await axios.post("http://localhost:5000/api/blogs/create-blog", blogData, {
+            const response = await axios.post(`${API_URL}/api/blogs/create-blog`, blogData, {
                 headers: { 
                     'Authorization': localStorage.getItem('token'), 
                     'Content-Type': 'application/json'
