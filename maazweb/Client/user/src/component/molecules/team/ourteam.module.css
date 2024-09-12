@@ -1,5 +1,3 @@
-/* team.module.css */
-
 .teamContainer {
     padding: 50px;
     text-align: center;
@@ -8,7 +6,7 @@
     margin: auto;
 }
 
-.teamContainer h2{
+.teamContainer h2 {
     font-size: 2.5rem;
     font-weight: 600;
     margin-bottom: 1rem;
@@ -25,7 +23,7 @@
 .teamGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 0px;
+    gap: 20px; /* Added gap to separate items */
 }
 
 .teamMember {
@@ -35,9 +33,15 @@
 }
 
 .teamMember img {
-    width: 250px;
-    height: auto;
+    width: 250px;    
+    height: 250px;
+    object-fit: cover;
     margin-bottom: 10px;
+}
+
+.teamMember h3 {
+    font-size: 1.5rem;
+    margin: 10px 0;
 }
 
 .teamMember p {
@@ -53,3 +57,4 @@
 .teamMember:hover {
     transform: scale(1.05);
 }
+
