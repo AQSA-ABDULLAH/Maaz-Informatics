@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './career.module.css';
-import Job from '../../../component/sections/about-us/job-section/Job';
-import { WEBSITE_NAME } from '../../../component/constant/Website_Name';
+import Job from '../../../component/molecules/career/Job';
+import { WEBSITE_NAME } from '../../../component/constant/WebsiteConstants';
 
 export default function Career() {
   return (
