@@ -1,0 +1,103 @@
+/* Main container */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ab6dba; /* light purple background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Form heading */
+  .heading {
+    color: #9f29bd; /* Darkest purple for heading */
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+  }
+  
+  /* Form container */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* Form row - two fields in one row */
+  .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  
+  /* Form group - wraps individual input and label */
+  .formGroup {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  
+  /* Form label */
+  .label {
+    font-weight: bold;
+    color: #9f29bd;
+    margin-bottom: 6px;
+  }
+  
+  /* Form input */
+  .input {
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #9f29bd; /* Border in purple */
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    outline: none;
+  }
+  
+  /* On focus */
+  .input:focus,
+  .textarea:focus {
+    border-color: #0066cc; /* Blue highlight on focus */
+  }
+  
+  /* Message textarea */
+  .textarea {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #9f29bd;
+    border-radius: 5px;
+    background-color: white;
+    color: #333;
+    resize: none; /* Prevent resizing */
+  }
+  
+  /* Submit button */
+  .submitButton {
+    background-color: #61ac8a; /* Green for submit button */
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  /* Hover effect for button */
+  .submitButton:hover {
+    background-color: #0066cc; /* Blue on hover */
+  }
+  
+  /* Status message */
+.statusMessage {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #61ac8a; /* Green shade for success */
+  }
+  
+  .statusMessage.error {
+    color: red; /* Red for error messages */
+  }
+  
