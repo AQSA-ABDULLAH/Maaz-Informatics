@@ -1,13 +1,16 @@
+// Importing React, hooks, and dependencies
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import style from './blogs.module.css';
 import { Link } from 'react-router-dom';
+import { API_URL } from '../../../constant/WebsiteConstants'; 
 
 export default function Blogsection1molecule() {
     const [product, setProduct] = useState([]);
 
+    // Fetching the blogs data on component mount
     useEffect(() => {
-        axios.get("http://localhost:5000/api/blogs/get-blog")
+        axios.get(`${API_URL}/api/blogs/get-blog`)
             .then(res => {
                 console.log(res.data);
                 setProduct(res.data.data);
@@ -17,13 +20,14 @@ export default function Blogsection1molecule() {
             });
     }, []);
 
+    // Helper function to format the date
     const formatDate = (dateString) => {
         const options = { month: 'long', day: 'numeric', year: 'numeric' };
         const date = new Date(dateString);
         return `Posted ${date.toLocaleDateString('en-US', options)}`;
     };
-    
 
+    // Helper function to truncate content if it exceeds a certain length
     const truncateContent = (content, maxLength) => {
         if (content.length > maxLength) {
             return content.substring(0, maxLength) + '...'; // Append ellipsis for truncated content
@@ -47,11 +51,10 @@ export default function Blogsection1molecule() {
                             <h2>{item.heading}</h2>
                             <p>{truncateContent(item.content, 200)}</p>
                             <div className={style.blogBottom}>
-                            <p>{formatDate(item.createdAt)}</p>
-                            {item.content.length > 200 && (
-                                // <button onClick={() => alert(item.content)}>Read more </button>
-                                <button> <Link to={`/blog&news/${item._id}`}>Read more</Link></button>
-                            )}
+                                <p>{formatDate(item.createdAt)}</p>
+                                {item.content.length > 200 && (
+                                    <button> <Link to={`/blog&news/${item._id}`}>Read more</Link></button>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -62,3 +65,5 @@ export default function Blogsection1molecule() {
         </>
     );
 }
+
+

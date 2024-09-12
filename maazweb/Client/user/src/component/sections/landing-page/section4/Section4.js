@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './section4.module.css';
-import { WEBSITE_NAME } from '../../../constant/Website_Name';
+import { WEBSITE_NAME } from '../../../constant/WebsiteConstants';
 
 export default function Section4() {
   return (

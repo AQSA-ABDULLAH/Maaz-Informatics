@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./clinicalsection1.module.css";
-import { WEBSITE_NAME } from '../../../constant/Website_Name';
+import { WEBSITE_NAME } from '../../../constant/WebsiteConstants';
 
 function ClinicalSection1() {
     return (
