@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const SliderModal = require("../../models/Slider");
 
 class SliderController {
-    // Create a new team partner and save the image URL
-    static createTeam = async (req, res) => {
+    // Create a new slider and save the image URL
+    static createSlider = async (req, res) => {
         const { image } = req.body;  // Expecting image URL in the request body
         console.log(image);
 
@@ -12,7 +12,7 @@ class SliderController {
         }
 
         try {
-            const newSlider = new TeamModal({ image });
+            const newSlider = new SliderModal({ image });
             await newSlider.save();
             res.status(201).send({ status: "success", message: "Image saved successfully" });
         } catch (error) {
@@ -21,18 +21,18 @@ class SliderController {
         }
     };
 
-    // Get all slider members (all images)
+    // Get all slider images
     static getSliderAll = async (req, res) => {
         try {
-            const teamData = await TeamModal.find();
-            res.status(200).send({ status: "success", data: teamData });
+            const sliderData = await SliderModal.find();
+            res.status(200).send({ status: "success", data: sliderData });
         } catch (error) {
             console.log(error);
             res.status(500).send({ status: "failed", message: "Failed to retrieve data" });
         }
     };
 
-    // Get a specific team member (image) by ID
+    // Get a specific slider image by ID
     static getSlider = async (req, res) => {
         const { id } = req.params;
 
@@ -44,10 +44,10 @@ class SliderController {
         try {
             const sliderData = await SliderModal.findById(id);
             if (!sliderData) {
-                return res.status(404).send({ status: "failed", message: "Team not found" });
+                return res.status(404).send({ status: "failed", message: "Slider image not found" });
             }
 
-            res.status(200).send({ status: "success", data: teamData });
+            res.status(200).send({ status: "success", data: sliderData });
         } catch (error) {
             console.log(error);
             res.status(500).send({ status: "failed", message: "Failed to retrieve data" });
@@ -55,4 +55,4 @@ class SliderController {
     };
 }
 
-module.exports = TeamController;
+module.exports = SliderController;
