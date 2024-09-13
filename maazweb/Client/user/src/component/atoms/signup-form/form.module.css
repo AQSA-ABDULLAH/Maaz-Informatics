@@ -1,37 +1,19 @@
-.form {
-  background: linear-gradient(#f3effc, #c5dbf1);
-  padding: 0.7rem 1.7rem 1.3rem 1.7rem; /* top right bottom left */
-  border-bottom-right-radius: 10px;
-}
-
 .formRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: .3rem;
+  gap: 0px 20px;
 }
 
-.formRow input,
-textarea {
+.formRow input {
+  width: 100%;
   margin-top: 1.3rem;
-}
-
-.formRow input,
-textarea {
   padding: .65rem;
   border: 1px solid lightgray;
   outline: none;
   border-radius: 3px;
   font-family: 'Sintony', sans-serif;
-}
-
-.formRow input {
-  width: 46.5%;
-}
-
-.formRow textarea {
-  width: 100%;
-  height: 5rem;
 }
 
 /* Styling for active (focused) input */
@@ -41,16 +23,30 @@ textarea {
 }
 
 .btns {
-  margin-top: 2.4rem;
+  width: 100%;
+  background-color: #9f29bd;
+  margin-top: 2rem;
   display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  justify-content: center;
 }
 
+.formRow label {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
 
+.check{
+  font-size: 0.8rem;
+  margin-top: 30px;
+}
+
+.formRow label {
+  font-size: 0.875rem;
+  color: #555;
+}
 
 /* Responsive CSS for small screens */
-
 @media screen and (max-width: 768px) {
   .formRow {
     display: flex;

@@ -5,12 +5,14 @@ import { signUpWithEmail } from "../../../redux/containers/auth/actions";
 import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginModal.css";
+import Signup from "./signup/Signup"; // Import Signup component
 
 function LoginModal({ onClose }) {
   const navigate = useNavigate();
   const reduxState = useSelector((state) => state.signIn);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false); // Manage Signup Modal State
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
@@ -44,12 +46,23 @@ function LoginModal({ onClose }) {
     };
   }, []);
 
+  // Handle opening and closing of signup modal
+  const handleSignupClick = () => {
+    setIsSignupModalOpen(true);
+    console.log("Opening Signup Modal:", isSignupModalOpen);
+  };
+
+  const handleCloseSignupModal = () => {
+    setIsSignupModalOpen(false); // Close the signup modal
+    console.log("Closing Signup Modal");
+  };
+
   return (
     <>
       {/* Overlay */}
       <div className="modal-overlay" onClick={onClose}></div>
 
-      {/* Modal */}
+      {/* Login Modal */}
       <div className="modal-content1">
         <div className="logo-container">
           <img
@@ -61,7 +74,9 @@ function LoginModal({ onClose }) {
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleSubmit}>
             <div>WELCOME BACK !</div>
-            <p className="subtitle">Stay up -to-date with the latest Wysa news, case studies, by sign in for our newsletter.</p>
+            <p className="subtitle">
+              Stay up-to-date with the latest Wysa news, case studies, by signing in for our newsletter.
+            </p>
             <input
               onChange={handleChange}
               name="email"
@@ -104,11 +119,19 @@ function LoginModal({ onClose }) {
                 ? "You are logged in."
                 : "Please log in to continue."}
               <br />
-              Don't have an account? <Link to="/signup">Register.</Link>
+              Don't have an account? <Button
+                btnText={"Signup"}
+                textColor={"#9f29bd"}
+                size={"14px"}
+                btnClick={handleSignupClick}
+              />
             </small>
           </form>
         </div>
       </div>
+
+      {/* Signup Modal rendered separately */}
+      {isSignupModalOpen && <Signup onClose={handleCloseSignupModal} />}
     </>
   );
 }
