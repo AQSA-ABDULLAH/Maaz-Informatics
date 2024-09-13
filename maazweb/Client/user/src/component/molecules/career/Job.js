@@ -3,17 +3,36 @@ import axios from 'axios';
 import styles from './job.module.css';
 import { API_URL } from "../../constant/WebsiteConstants";
 
+// Modal component
+const JobModal = ({ job, onClose }) => {
+    if (!job) return null;
+
+    return (
+        <div className={styles.modalOverlay} onClick={onClose}>
+            <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
+                <button className={styles.closeButton} onClick={onClose}>✖</button>
+                <h2>{job.title}</h2>
+                <p><strong>Location:</strong> {job.location}</p>
+                <p><strong>Category:</strong> {job.category}</p>
+                <p><strong>Status:</strong> {job.status}</p>
+                <p><strong>Description:</strong> {job.description}</p>
+            </div>
+        </div>
+    );
+};
+
 export default function Job() {
     const [jobs, setJobs] = useState([]);
     const [categories, setCategories] = useState([]);
+    const [selectedJob, setSelectedJob] = useState(null);
 
     useEffect(() => {
         // Fetch jobs from the API
         axios.get(`${API_URL}/api/career/get-jobs`)
             .then(response => {
-                const data = response.data.data;  // Access the jobs array from the API response
+                const data = response.data.data;
                 setJobs(data);
-                
+
                 // Extract categories from jobs
                 const uniqueCategories = [...new Set(data.map(job => job.category))];
                 setCategories(uniqueCategories);
@@ -28,6 +47,14 @@ export default function Job() {
         acc[category] = jobs.filter(job => job.category === category);
         return acc;
     }, {});
+
+    const handleJobClick = (job) => {
+        setSelectedJob(job);
+    };
+
+    const handleCloseModal = () => {
+        setSelectedJob(null);
+    };
 
     return (
         <div className={styles.jobSection}>
@@ -45,7 +72,7 @@ export default function Job() {
                         <ul>
                             {groupedJobs[category] && groupedJobs[category].length > 0 ? (
                                 groupedJobs[category].map((job) => (
-                                    <li key={job.id}>
+                                    <li key={job._id} onClick={() => handleJobClick(job)} className={styles.jobItem}>
                                         <div className={styles.jobTitle}>{job.title}</div>
                                         <div className={styles.jobLocation}>{job.location}</div>
                                         <div className={styles.jobPosted}>Posted {job.postedDays} days ago</div>
@@ -58,6 +85,8 @@ export default function Job() {
                     </div>
                 ))}
             </div>
+            {selectedJob && <JobModal job={selectedJob} onClose={handleCloseModal} />}
         </div>
     );
 }
+

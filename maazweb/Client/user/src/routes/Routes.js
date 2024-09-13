@@ -8,7 +8,7 @@ import styles from './routes.module.css';
 
 // Pages
 import Login from "../pages/Login";
-import Signup from "../pages/Signup"
+import Signup from ""
 import Home from "../pages/landing-page/Home";
 import ChronicCare from "../pages/chronic-care/ChronicCare";
 import ClinicalEvidence from "../pages/clinical-evidence/ClinicalEvidence";
