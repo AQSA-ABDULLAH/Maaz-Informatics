@@ -1,22 +1,22 @@
 import { useEffect, useState } from "react";
 import Button from "../../atoms/button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUpWithEmail } from "../../../redux/containers/auth/actions";
-import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginModal.css";
-import Signup from "./signup/Signup"; // Import Signup component
+import Signup from "./signup/Signup";
 
 function LoginModal({ onClose }) {
   const navigate = useNavigate();
   const reduxState = useSelector((state) => state.signIn);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false); // Manage Signup Modal State
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
   });
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,7 +25,19 @@ function LoginModal({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(signUpWithEmail(loginData));
+    try {
+      await dispatch(signUpWithEmail(loginData));
+      if (reduxState.isSignedIn) {
+        setAlertMessage("Login successful!");
+        setTimeout(() => {
+          setAlertMessage(""); // Clear alert message
+          onClose(); // Close the login modal
+          navigate("/"); // Redirect to home after closing modal
+        }, 2000); // Show the alert message for 2 seconds
+      }
+    } catch (error) {
+      setAlertMessage("Login failed. Please check your credentials.");
+    }
   };
 
   useEffect(() => {
@@ -46,14 +58,13 @@ function LoginModal({ onClose }) {
     };
   }, []);
 
-  // Handle opening and closing of signup modal
   const handleSignupClick = () => {
     setIsSignupModalOpen(true);
     console.log("Opening Signup Modal:", isSignupModalOpen);
   };
 
   const handleCloseSignupModal = () => {
-    setIsSignupModalOpen(false); // Close the signup modal
+    setIsSignupModalOpen(false);
     console.log("Closing Signup Modal");
   };
 
@@ -69,7 +80,7 @@ function LoginModal({ onClose }) {
             height={"60px"}
             alt="Logo"
             src={process.env.PUBLIC_URL + "/assest/logo/logo.jpg"}
-          ></img>
+          />
         </div>
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleSubmit}>
@@ -96,9 +107,7 @@ function LoginModal({ onClose }) {
                 alt="Toggle visibility"
                 onPointerDown={togglePasswordVisibility}
                 id="toggleIcon"
-                src={
-                  process.env.PUBLIC_URL + "/assest/images/login-model/View_icon.png"
-                }
+                src={process.env.PUBLIC_URL + "/assest/images/login-model/View_icon.png"}
               />
             </div>
             <label>
@@ -132,6 +141,13 @@ function LoginModal({ onClose }) {
 
       {/* Signup Modal rendered separately */}
       {isSignupModalOpen && <Signup onClose={handleCloseSignupModal} />}
+
+      {/* Alert Message */}
+      {alertMessage && (
+        <div className="alert-message">
+          {alertMessage}
+        </div>
+      )}
     </>
   );
 }
