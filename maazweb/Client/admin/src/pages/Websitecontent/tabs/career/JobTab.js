@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Button from '../../../../components/atoms/buttons/Button';
 import AddJob from "../../../../components/sections/career/AddJob";
 import style from './jobs.module.css';
+import ViewJob from '../../../../components/sections/career/ViewJobs';
 
 const JobTab = () => {
     const [isAddClientVisible, setAddClientVisible] = useState(false);
@@ -28,9 +29,9 @@ const JobTab = () => {
                 </div>
                 <div className={style.message}>
 
-                    {/* <div className={style.row}>
-                        <ViewClient />
-                    </div> */}
+                    <div className={style.row}>
+                        <ViewJob />
+                    </div>
 
 
                 </div>

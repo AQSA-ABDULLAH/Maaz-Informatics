@@ -1,0 +1,127 @@
+.jobSection {
+    padding: 5rem;
+    background-color: #f9f9f9;
+    margin-top: 6rem;
+  }
+
+  .jobContainer{
+    max-width: 70rem;
+    align-items: center;
+    margin: auto;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .header h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  .locationFilter button {
+    background-color: #e0effe;
+    color: #007aff;
+    border: none;
+    padding: 8px 16px;
+    font-size: 15px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .dropdownArrow {
+    margin-left: 5px;
+    font-size: 10px;
+  }
+  
+  .jobCategory {
+    margin-top: 50px;
+  }
+  
+  .jobCategory h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #0066CC ;
+    border-bottom: 2px solid #0066CC ;
+    display: inline-block;
+    padding-bottom: 5px;
+  }
+  
+  .jobCategory ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .jobCategory li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 22px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .jobCategory li:hover {
+    box-shadow: 1px 1px 1px 0px #0066CC;
+
+  }
+  
+  .jobTitle {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .jobLocation {
+    font-size: 14px;
+    color: #999;
+  }
+  
+  .jobPosted {
+    font-size: 12px;
+    color: #999;
+  }
+
+
+  /* MODEL CSS */
+  /* job.module.css */
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Modal Content */
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+}
+
+/* Close Button */
+.closeButton {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
