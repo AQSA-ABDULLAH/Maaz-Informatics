@@ -25,22 +25,5 @@
     padding-right: 5px;
     border-bottom: 2px solid #8713BD;
   }
+
   
-  .message {
-    margin-top: 20px; 
-  }
-  
-  .cardRow {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-  
-  
-  /* Remove it */
-  
-  .row{
-    display: flex;
-    flex-direction: row;
-    gap: 40px;
-  }
