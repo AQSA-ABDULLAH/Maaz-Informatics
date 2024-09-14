@@ -31,7 +31,7 @@ const SwiperSlider = ({ data }) => {
         disableOnInteraction: false,
       }}
       modules={[
-        Navigation,
+        Navigation, 
         Pagination,
         Scrollbar,
         A11y,
@@ -65,11 +65,6 @@ const SwiperSlider = ({ data }) => {
               alt={slide.caption}
               className="background-image"
             />
-            {/* <Button
-              btnText={slide.buttonText}
-              primary
-              btnClick={reduxState.isSignedIn ? userAction : toggleIsOpen}
-            /> */}
           </div>
         </SwiperSlide>
       ))}
