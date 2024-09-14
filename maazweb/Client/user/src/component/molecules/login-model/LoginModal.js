@@ -31,8 +31,7 @@ function LoginModal({ onClose }) {
         setAlertMessage("Login successful!");
         setTimeout(() => {
           setAlertMessage(""); // Clear alert message
-          onClose(); // Close the login modal
-          navigate("/"); // Redirect to home after closing modal
+          // onClose();
         }, 2000); // Show the alert message for 2 seconds
       }
     } catch (error) {
