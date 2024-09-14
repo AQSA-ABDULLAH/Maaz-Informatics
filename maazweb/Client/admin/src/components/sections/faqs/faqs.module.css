@@ -1,0 +1,163 @@
+/* Popup Form Style */
+.popupForm {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 30px 45px;
+  border-radius: 10px;  /* Changed radius for a softer look */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);  /* Improved shadow for a more prominent look */
+  width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.popupForm h3 {
+  font-size: 26px;  /* Slightly increased font size */
+  font-weight: 700;  /* Bolder text */
+  color: #333;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 0.5px;  /* Slight spacing for better readability */
+}
+
+.first_row {
+  width: 100%;
+}
+
+.label {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  color: #444;
+}
+
+input[type="text"], 
+textarea {
+  width: 100%;
+  padding: 12px 15px;  /* Increased padding for better user experience */
+  margin-top: 5px;
+  margin-bottom: 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;  /* Subtle background color */
+  transition: border-color 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+input[type="text"]:focus, 
+textarea:focus {
+  border-color: #007BFF;  /* Highlight input border on focus */
+  outline: none;
+  background-color: #fff;  /* Change background to white on focus */
+}
+
+textarea {
+  resize: none;  /* Prevent resizing */
+}
+
+.text_danger {
+  color: red;
+  font-size: 12px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Buttons */
+.row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+button {
+  width: 48%;  /* Buttons take up half the row width */
+  padding: 10px 15px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.secondary {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+button.secondary:hover {
+  background-color: #d1d1d1;  /* Subtle hover effect for secondary button */
+}
+
+button.primary {
+  background-color: #007BFF;
+  color: #fff;
+}
+
+button.primary:hover {
+  background-color: #0056b3;  /* Darker hover for primary button */
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 480px) {
+  .popupForm {
+      width: 90%;
+      padding: 20px;
+  }
+
+  .row {
+      flex-direction: column;
+      gap: 10px;  /* Vertical stacking of buttons with spacing */
+  }
+
+  button {
+      width: 100%;  /* Buttons take up full width on small screens */
+  }
+}
+
+/* Keyframe animation for popup */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translate(-50%, -55%);
+  }
+  to {
+      opacity: 1;
+      transform: translate(-50%, -50%);
+  }
+}
+
+
+/* VIEW FAQS */
+.FAQ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.FAQ h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.FAQ p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0rem 18rem;
+}

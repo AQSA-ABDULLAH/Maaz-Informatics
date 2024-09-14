@@ -1,0 +1,20 @@
+.FAQ {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    margin: 4rem 5rem;
+    text-align: center;
+}
+
+.FAQ h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.FAQ p {
+    font-size: 0.9rem;
+    color: #666;
+    margin: 0rem 18rem;
+}

@@ -19,5 +19,9 @@ export const Tab = [
   {
     text: "Career",
     onClick: "/career"
+  },
+  {
+    text: "FAQs",
+    onClick: "/faqs"
   }
 ];

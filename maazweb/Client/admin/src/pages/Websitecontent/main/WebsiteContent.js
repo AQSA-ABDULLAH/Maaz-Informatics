@@ -8,6 +8,7 @@ import SliderTab from '../tabs/slider/SliderTab';
 import TeamTab from '../tabs/client-partner/TeamTab';
 import BlogTab from "../tabs/blog&news/BlogTab";
 import JobTab from "../tabs/career/JobTab";
+import FAQTab from "../tabs/faqs/FAQs";
 
 const WebsiteContent = () => {
   const navigate = useNavigate();
@@ -57,6 +58,8 @@ const WebsiteContent = () => {
         return <BlogTab/>
       case 4:
         return <JobTab />
+      case 5:
+        return <FAQTab />
       default:
         return null;
     }
