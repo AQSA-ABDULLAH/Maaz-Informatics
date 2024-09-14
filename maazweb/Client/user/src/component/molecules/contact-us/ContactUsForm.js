@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";  // Import axios
 import styles from "./contactusform.module.css";
+import { API_URL } from "../../constant/WebsiteConstants";
 
 function ContactUsForm() {
   const [formData, setFormData] = useState({
@@ -25,7 +26,7 @@ function ContactUsForm() {
     try {
       // Post form data to the backend
       const response = await axios.post(
-        "http://localhost:5000/api/contactus/send-message",
+        `${API_URL}/api/contactus/send-message`,
         formData
       );
 

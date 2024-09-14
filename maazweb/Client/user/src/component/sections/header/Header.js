@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./header.module.css";
 import Button from "../../atoms/button/Button";
+import LoginModal from "../../molecules/login-model/LoginModal"
 
 const Navbar = () => {
-    // State to manage which dropdown is visible
     const [dropdownVisible, setDropdownVisible] = useState("");
+    const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // Manage login modal visibility
 
     const handleMouseEnter = (menu) => {
         setDropdownVisible(menu);
@@ -13,6 +14,14 @@ const Navbar = () => {
 
     const handleMouseLeave = () => {
         setDropdownVisible("");
+    };
+
+    const handleLoginClick = () => {
+        setIsLoginModalOpen(true);
+    };
+
+    const handleCloseLoginModal = () => {
+        setIsLoginModalOpen(false);
     };
 
     return (
@@ -81,17 +90,19 @@ const Navbar = () => {
                     <div className={styles.button_div}>
                         <Button
                             bgColor={"#61AC8A"}
-                            btnText={"Book Demo"}
+                            btnText={"Login"}
                             textColor={"white"}
                             radius={"20px"}
                             size={"14px"}
+                            btnClick={handleLoginClick} // Open modal on login click
                         />
                     </div>
                 </nav>
             </div>
+
+            {isLoginModalOpen && <LoginModal onClose={handleCloseLoginModal} />}
         </>
     );
 };
 
 export default Navbar;
-

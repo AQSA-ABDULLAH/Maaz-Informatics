@@ -17,7 +17,7 @@ export const Tab = [
     onClick: '/blogs'
   },
   {
-    text: "Zone",
-    onClick: "/zone"
+    text: "Career",
+    onClick: "/career"
   }
 ];

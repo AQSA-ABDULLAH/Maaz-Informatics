@@ -17,7 +17,7 @@ const Button = (props) => {
     } = props;
 
     const buttonStyle = {
-        backgroundColor: bgColor || (primary ? "#75AAF0" : secondary ? "#7BC1FA" : "transparent"),
+        backgroundColor: bgColor || (primary ? "#9f29bd" : secondary ? "#61AC8A" : "transparent"),
         color: textColor || "#ffffff",
         borderRadius: radius || "40px",
         fontSize: size || "16px",
