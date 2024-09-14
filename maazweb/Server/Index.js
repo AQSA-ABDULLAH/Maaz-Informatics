@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require("cors");  
-require("dotenv").config();  // Load environment variables before using them
+const cors = require("cors");
+require("dotenv").config(); // Load environment variables before using them
 
 const port = process.env.PORT;
 const app = express();
@@ -25,37 +25,36 @@ require('./db/connection.js');
 
 // Define a simple route
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+    res.send("Hello, World!");
 });
 
 // Start the server
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server is running at http://localhost:${port}`);
 });
 
 // Load Routes
 app.use('/api/user', userRoutes);
-app.use("/api/blogs",blogsRoutes);
-app.use("/api/teams",teamRoutes);
-app.use("/api/faqs",faqsRoutes);
-app.use("/api/contactus",contactusRoutes);
-app.use("/api/career",jobRoutes);
-app.use("/api/slider",sliderRoutes);
+app.use("/api/blogs", blogsRoutes);
+app.use("/api/teams", teamRoutes);
+app.use("/api/faqs", faqsRoutes);
+app.use("/api/contactus", contactusRoutes);
+app.use("/api/career", jobRoutes);
+app.use("/api/slider", sliderRoutes);
 
 // MongoDB connection
 const mongoose = require('mongoose');
 const DB = process.env.DATABASE;
 if (!DB) {
-  console.error('MongoDB URI is not defined. Set the DATABASE environment variable.');
-  process.exit(1);
+    console.error('MongoDB URI is not defined. Set the DATABASE environment variable.');
+    process.exit(1);
 }
 
 mongoose.connect(DB)
-  .then(() => {
-    console.log('Connection successful...');
-  })
-  .catch((error) => {
-    console.error('Error connecting to MongoDB', error);
-    process.exit(1);
-  });
-
+    .then(() => {
+        console.log('Connection successful...');
+    })
+    .catch((error) => {
+        console.error('Error connecting to MongoDB', error);
+        process.exit(1);
+    });
