@@ -1,29 +1,37 @@
-import React from "react";
-import styles from "./signup.module.css";
+import "./signup.module.css";
 import Form from "../../../atoms/signup-form/Form";
-const Signup = () => {
+
+function Signup({ onClose }) {
   return (
     <>
-      <section className={styles.signupContainer}>
-        <div className={styles.signup}>
-          <div className={styles.imgContainer}>
-            {/* <img src="./assets/logo/logo.png" alt="logo" /> */}
-          </div>
-          <div className={styles.formContainer}>
-            <div className={styles.formTop}>
-              {/* <img src="./assets/logo/logodark.png" alt="logo" /> */}
-              <h3>join</h3>
-              {/* <div className={styles.btnContainer}>
-                <div>user info</div>
-                <div>billing information</div>
-              </div> */}
-            </div>
-            <Form />
-          </div>
+      {/* Overlay */}
+      <div className="modal-overlay" onClick={onClose}></div>
+
+      {/* Modal */}
+      <div className="modal-content1">
+        <div className="logo-container">
+          <img
+            height={"60px"}
+            alt="Logo"
+            src={process.env.PUBLIC_URL + "/assest/logo/logo.jpg"}
+          ></img>
         </div>
-      </section>
+
+        {/* Signup Form */}
+        <div className="login-form-container">
+          <form className="login-form">
+            <div>Be the first to hear!</div>
+            <p className="subtitle">
+              Stay up-to-date with the latest Wysa news, case studies, research,
+              reports, and more by signing up for our newsletter.
+            </p>
+            <Form />
+          </form>
+        </div>
+      </div>
     </>
   );
-};
+}
 
 export default Signup;
+

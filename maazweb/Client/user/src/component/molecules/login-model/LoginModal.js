@@ -1,21 +1,22 @@
 import { useEffect, useState } from "react";
 import Button from "../../atoms/button/Button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { signUpWithEmail } from "../../../redux/containers/auth/actions";
-import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-
 import "./LoginModal.css";
+import Signup from "./signup/Signup";
 
 function LoginModal({ onClose }) {
   const navigate = useNavigate();
   const reduxState = useSelector((state) => state.signIn);
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",
-  }); 
+  });
+  const [alertMessage, setAlertMessage] = useState("");
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,95 +25,100 @@ function LoginModal({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await dispatch(signUpWithEmail(loginData));
+    try {
+      await dispatch(signUpWithEmail(loginData));
+      if (reduxState.isSignedIn) {
+        setAlertMessage("Login successful!");
+        setTimeout(() => {
+          setAlertMessage(""); // Clear alert message
+          // onClose();
+        }, 2000); // Show the alert message for 2 seconds
+      }
+    } catch (error) {
+      setAlertMessage("Login failed. Please check your credentials.");
+    }
   };
 
   useEffect(() => {
     if (reduxState.isSignedIn) {
-      navigate('/');
+      navigate("/");
     }
   }, [reduxState.isSignedIn, navigate]);
-
-
 
   const togglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   useEffect(() => {
-    // Get the DOM body element
     const bodyElement = document.body;
-
-    // Add the "overflow: hidden" style
     bodyElement.style.overflow = "hidden";
-
-    // Cleanup function: Remove the "overflow: hidden" style on component unmount
     return () => {
       bodyElement.style.overflow = "auto";
     };
   }, []);
 
+  const handleSignupClick = () => {
+    setIsSignupModalOpen(true);
+    console.log("Opening Signup Modal:", isSignupModalOpen);
+  };
+
+  const handleCloseSignupModal = () => {
+    setIsSignupModalOpen(false);
+    console.log("Closing Signup Modal");
+  };
+
   return (
     <>
-      {onClose ? (
-        <div onClick={() => onClose()} className="modal-conatainer1"></div>
-      ) : (
-        ""
-      )}
+      {/* Overlay */}
+      <div className="modal-overlay" onClick={onClose}></div>
 
-      <div
-        style={{
-          backgroundImage: `url("/assets/images/Intro/deal1.png")`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-        className="modal-content1"
-      >
+      {/* Login Modal */}
+      <div className="modal-content1">
         <div className="logo-container">
           <img
             height={"60px"}
-            alt=""
-            src={process.env.PUBLIC_URL + "/assets/logo/LogoLight.png"}
-          ></img>
+            alt="Logo"
+            src={process.env.PUBLIC_URL + "/assest/logo/logo.jpg"}
+          />
         </div>
-
         <div className="login-form-container">
-          <form className="login-form">
-            <div>Login</div>
-
+          <form className="login-form" onSubmit={handleSubmit}>
+            <div>WELCOME BACK !</div>
+            <p className="subtitle">
+              Stay up-to-date with the latest Wysa news, case studies, by signing in for our newsletter.
+            </p>
             <input
               onChange={handleChange}
               name="email"
               type="text"
               placeholder="Email"
               required
-            ></input>
+            />
             <div id="passwordInput">
               <input
                 onChange={handleChange}
                 name="password"
                 type={showPassword ? "text" : "password"}
                 placeholder="Password"
-              ></input>
+                required
+              />
               <img
-                alt=""
+                alt="Toggle visibility"
                 onPointerDown={togglePasswordVisibility}
                 id="toggleIcon"
-                src={
-                  process.env.PUBLIC_URL + "/assets/image/login/View_icon.png"
-                }
-              ></img>
+                src={process.env.PUBLIC_URL + "/assest/images/login-model/View_icon.png"}
+              />
             </div>
             <label>
               <input type="checkbox" name="keepLoggedIn" id="keepLoggedIn" />
               Keep me logged in
               <span>
-                <Link>Forgot Password?</Link>
+                <Link to="/forgot-password">Forgot Password?</Link>
               </span>
             </label>
             <Button
               btnClick={handleSubmit}
-              bgColor={"rgb(247, 131, 18)"}
+              primary
               radius={"0px"}
               btnText={"LOGIN"}
             />
@@ -121,12 +127,26 @@ function LoginModal({ onClose }) {
                 ? "You are logged in."
                 : "Please log in to continue."}
               <br />
-              Don't have an account? <Link to="/signup">Register.</Link>
+              Don't have an account? <Button
+                btnText={"Signup"}
+                textColor={"#9f29bd"}
+                size={"14px"}
+                btnClick={handleSignupClick}
+              />
             </small>
-
           </form>
         </div>
       </div>
+
+      {/* Signup Modal rendered separately */}
+      {isSignupModalOpen && <Signup onClose={handleCloseSignupModal} />}
+
+      {/* Alert Message */}
+      {alertMessage && (
+        <div className="alert-message">
+          {alertMessage}
+        </div>
+      )}
     </>
   );
 }

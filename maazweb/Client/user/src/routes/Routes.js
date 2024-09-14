@@ -8,7 +8,7 @@ import styles from './routes.module.css';
 
 // Pages
 import Login from "../pages/Login";
-import Signup from "../pages/Signup"
+import Signup from "../component/molecules/login-model/signup/Signup"
 import Home from "../pages/landing-page/Home";
 import ChronicCare from "../pages/chronic-care/ChronicCare";
 import ClinicalEvidence from "../pages/clinical-evidence/ClinicalEvidence";
@@ -56,8 +56,8 @@ function AppRoutes() {
         <>
             {/* Add header only if path is not in noHeaderPaths */}
             <div className={`${styles.header_container} ${isScrolled ? 'scrolled' : ''}`}>
-    {!noHeaderPaths.includes(location.pathname) && <Header />}
-</div>
+                {!noHeaderPaths.includes(location.pathname) && <Header />}
+            </div>
 
 
             {/* Define all routes */}
@@ -78,9 +78,13 @@ function AppRoutes() {
                     element={isAuthenticated ? <Navigate to="/" replace /> : <Login />}
                 />
                 <Route
-          path="/signup"
-          element={isAuthenticated ? <Navigate to="/" replace /> : <Signup />}
-        />
+                    path="/signup"
+                    element={isAuthenticated ? <Navigate to="/" replace /> : <Signup />}
+                />
+                {/* <Route
+                    path="/user-profile"
+                    element={isAuthenticated ? <Navigate to="/" replace /> : <Profile />}
+                /> */}
             </Routes>
 
             {/* Add footer only if path is not in noHeaderPaths */}

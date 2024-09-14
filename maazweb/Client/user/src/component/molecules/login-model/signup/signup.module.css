@@ -1,78 +1,120 @@
-.background{
-    background: linear-gradient(rgba(50, 116, 163, 0.6), rgb(22, 66, 97)),
-                url('../../../../../public/assest/images/signup/250253-379060_525244.png');
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); /* Add a darker overlay */
+  backdrop-filter: blur(4px);
+  z-index: 1000;
 }
 
-.signupContainer{
-    height: 100vh;
-    width: 100%;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.signup{
-    background-color: #fff;
-    height: 92vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 65%;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-}
-.imgContainer{
-    display: block;
-    height: 100%;
-    width: 38%;
-    /* width: 20.9rem;  */
-    background-image: url('../../../../../public/assest/images/signup/250253-379060_525244.png');
-    background-size: cover;
-    background-position: bottom center;
-    text-align: center;
-    padding-top: 1rem;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    filter: brightness(100%) contrast(70%) saturate(190%);
-}
-.imgContainer img{
-    height: 90px;
-    width: 200px;
-}
-.formContainer{
-    height: 100%;
-    width: 65%;
-}
-.formTop{
-    background-color: #9d66cc;
-    padding: 3rem 0rem 2rem 1.75rem; /* top right bottom left */
-    border-top-right-radius: 10px;
-}
-.formTop h3{
-    text-transform: uppercase;
+/* Modal Content */
+.modal-content1 {
+  z-index: 1100;
+  position: fixed;
+  top: 50%; /* Align the modal to the center */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 35px;
+  width: 90%;
+  max-width: 450px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+/* Login Form Container */
+.login-form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
-/* Responsive code add here */
- @media only screen and (max-width: 1084px) {
-    .imgContainer{
-        display: none;
-    }
-    .formContainer{
-        height: 100%;
-        width: 100%;
-        padding-bottom: 3rem;
-    }
+/* Form */
+.login-form-container > form {
+  width: 100%;
+  max-width: 350px;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20px;
+}
 
-    .membership{
-        width: 70%;
-    }
- }
-@media screen and (max-width: 767px) {
+/* Title */
+.login-form > div {
+  margin-bottom: 12px;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+}
 
-    .membership{
-        width: 80%;
-    }
+/* Subtitle */
+.subtitle {
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+/* Input Fields */
+.login-form > input {
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  color: #363636;
+  width: 100%;
+}
+
+.login-form > input:focus {
+  outline: none;
+  border: 1px solid #1171d1;
+  box-shadow: 0 0 5px rgba(0, 102, 204, 0.2);
+}
+
+/* Buttons */
+.login-form > button {
+  margin: 20px 0;
+  padding: 12px;
+  background-color: #1171d1; /* Use a primary color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-form > button:hover {
+  background-color: #0d5a9e;
+}
+
+.login-form > small {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+}
+
+.login-form > small > a {
+  color: #1171d1;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .modal-content1 {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .login-form-container > form {
+    padding: 10px;
+  }
 }
