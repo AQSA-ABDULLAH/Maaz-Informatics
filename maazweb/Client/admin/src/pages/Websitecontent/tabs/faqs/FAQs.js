@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Button from '../../../../components/atoms/buttons/Button';
 import AddFaqs from "../../../../components/sections/faqs/AddFaqs";
 import style from '../career/jobs.module.css';
-import ViewJob from '../../../../components/sections/career/ViewJobs';
+import ViewFAQs from '../../../../components/sections/faqs/ViewFaqs';
 
 const FAQTab = () => {
     const [isAddClientVisible, setAddClientVisible] = useState(false);
@@ -29,9 +29,9 @@ const FAQTab = () => {
                 </div>
                 <div className={style.message}>
 
-                    {/* <div className={style.row}>
-                        <ViewJob />
-                    </div> */}
+                    <div className={style.row}>
+                        <ViewFAQs />
+                    </div>
 
 
                 </div>

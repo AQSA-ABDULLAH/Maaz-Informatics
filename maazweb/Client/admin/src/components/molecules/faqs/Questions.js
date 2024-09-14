@@ -42,5 +42,3 @@ Questions.propTypes = {
 };
 
 export default Questions;
-
-

@@ -1,0 +1,43 @@
+.questions {
+    margin-top: 2rem;
+    width: 100%;
+  }
+  
+  .question {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin: 1.5rem 6.5rem;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: black;
+  }
+  
+  .questionTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    background-color: #fff;
+  }
+  
+  .questionTitle h2 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  
+  .icon {
+    font-size: 0.7rem;
+  }
+  
+  .questionAnswer {
+    background-color: #f9f9f9;
+    padding: 1rem 1rem;
+    text-align: left;
+  }
+  
+  .questionAnswer span {
+    color: #666;
+    font-size: 0.9rem;
+  }
