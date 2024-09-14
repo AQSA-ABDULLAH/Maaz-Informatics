@@ -1,33 +1,31 @@
 import React, { useState } from "react";
-import style from './jobs.module.css';
+import style from './faqs.module.css';
 import Button from "../../atoms/buttons/Button";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL } from "../../../constants/WebsiteConstants";
 
-const AddJob = ({ onClose }) => {
-    const [title, setTitle] = useState("");
-    const [category, setCategory] = useState("");
-    const [location, setLocation] = useState("");
-    const [description, setDescription] = useState("");
+const AddFaqs = ({ onClose }) => {
+    const [question, setQuestion] = useState("");
+    const [answer, setAnswer] = useState("");
     const [error, setError] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         // Basic validation
-        if (!title || !category || !location || !description) {
+        if (!question || !answer) {
             setError(true);
             return;
         }
 
         // Form data is valid
-        console.log("Submitting form with data:", { title, category, location, description });
+        console.log("Submitting form with data:", { question, answer });
 
-        const jobData = { title, category, location, description };
+        const jobData = { question, answer };
 
         try {
-            const response = await axios.post(`${API_URL}/api/career/create-job`, jobData, {
+            const response = await axios.post(`${API_URL}/api/faqs/post-faqs`, jobData, {
                 headers: {
                     'Authorization': localStorage.getItem('token'),
                     'Content-Type': 'application/json'
@@ -72,53 +70,27 @@ const AddJob = ({ onClose }) => {
             <div className={style.popupForm}>
                 <h3>Add New Job</h3>
                 <div className={style.first_row}>
-                    <label htmlFor="title">Title <span>(word limit: 200)</span></label>
+                    <label htmlFor="question">Question <span>(word limit: 200)</span></label>
                     <input type="text"
-                        name="title"
-                        id="title"
+                        name="question"
+                        id="question"
                         className={style.sliderTextArea}
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)}
+                        value={question}
+                        onChange={(e) => setQuestion(e.target.value)}
                     />
-                    {error && !title && <span className={style.text_danger}>Title is required</span>}
-
-                    <div className={style.colItem}>
-                        <div>
-                            <label htmlFor="category">Category</label>
-                            <input type="text"
-                                name="category"
-                                id="category"
-                                className={style.sliderTextArea}
-                                value={category}
-                                onChange={(e) => setCategory(e.target.value)}
-                            />
-                            {error && !category && <span className={style.text_danger}>Category is required</span>}
-                        </div>
-
-                        <div>
-                            <label htmlFor="location">Location</label>
-                            <input type="text"
-                                name="location"
-                                id="location"
-                                className={style.sliderTextArea}
-                                value={location}
-                                onChange={(e) => setLocation(e.target.value)}
-                            />
-                            {error && !location && <span className={style.text_danger}>Location is required</span>}
-                        </div>
-                    </div>
+                    {error && !question && <span className={style.text_danger}>Question is required</span>}
 
                     <div className={style.minorSpace}>
-                        <label htmlFor="description">Description <span>(word limit: 5000)</span></label>
+                        <label htmlFor="answer">Answer <span>(word limit: 5000)</span></label>
                         <textarea
-                            name="description"
-                            id="description"
+                            name="answer"
+                            id="answer"
                             rows={8}
                             className={style.sliderTextArea}
-                            value={description}
-                            onChange={(e) => setDescription(e.target.value)}
+                            value={answer}
+                            onChange={(e) => setAnswer(e.target.value)}
                         ></textarea>
-                        {error && !description && <span className={style.text_danger}>Description is required</span>}
+                        {error && !answer && <span className={style.text_danger}>Answer is required</span>}
                     </div>
 
                     <div className={style.row}>
@@ -143,4 +115,4 @@ const AddJob = ({ onClose }) => {
     );
 };
 
-export default AddJob;
+export default AddFaqs;
