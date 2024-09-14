@@ -6,11 +6,11 @@ class JobController {
     static postJob = async (req, res) => {
         const { title, location, category, status, description } = req.body;
         
+        console.log(title, location, category, description)
         // Validation checks
         if (!title) return res.status(400).send({ status: "failed", message: "Title is required" });
         if (!location) return res.status(400).send({ status: "failed", message: "Location is required" });
         if (!category) return res.status(400).send({ status: "failed", message: "Category is required" });
-        if (!status) return res.status(400).send({ status: "failed", message: "Status is required" });
         if (!description) return res.status(400).send({ status: "failed", message: "Description is required" });
 
         try {

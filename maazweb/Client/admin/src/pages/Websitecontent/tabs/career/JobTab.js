@@ -1,7 +1,7 @@
 // Import useEffect from React
 import React, { useState } from 'react';
 import Button from '../../../../components/atoms/buttons/Button';
-import AddJob from "./AddJob";
+import AddJob from "../../../../components/sections/career/AddJob";
 import style from './jobs.module.css';
 
 const JobTab = () => {

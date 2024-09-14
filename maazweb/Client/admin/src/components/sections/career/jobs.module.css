@@ -1,0 +1,159 @@
+
+/* ADD JOB STYLE */
+.popupForm {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    padding: 30px 45px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+  
+  .popupForm h3 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .popupForm label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  .popupForm input[type="text"],
+  .popupForm textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  
+  .popupForm input[type="text"]:focus,
+  .popupForm textarea:focus {
+    border-color: #007bff;
+  }
+  
+  .popupForm textarea {
+    resize: none;
+    height: 100px;
+  }
+  
+  .text_danger {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+  }
+  
+  .row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  .colItem {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .colItem div {
+    flex: 1;
+  }
+  
+  .buttonRow {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+  
+  .minorSpace {
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  
+  /* Add hover and active states for buttons */
+  button {
+    padding: 10px 20px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button.primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+  button.primary:hover {
+    background-color: #0056b3;
+  }
+  
+  button.secondary {
+    background-color: #6c757d;
+    color: #fff;
+  }
+  
+  button.secondary:hover {
+    background-color: #5a6268;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  /* Overlay animation */
+  @keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 480px) {
+    .popupForm {
+        width: 90%;
+        padding: 20px;
+    }
+  
+    .row {
+        flex-direction: column;
+        gap: 10px;
+    }
+  
+    .colItem {
+        flex-direction: column;
+        gap: 10px;
+    }
+  }
+  

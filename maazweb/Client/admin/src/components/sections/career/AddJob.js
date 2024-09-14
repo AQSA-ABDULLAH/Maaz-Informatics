@@ -1,30 +1,58 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import style from './jobs.module.css';
-import Button from "../../../../components/atoms/buttons/Button";
+import Button from "../../atoms/buttons/Button";
+import axios from "axios";
+import Swal from "sweetalert2";
+import { API_URL } from "../../../constants/WebsiteConstants";
 
 const AddJob = ({ onClose }) => {
-    // State for form fields
-    const [jobtitle, setJobTitle] = useState("");
+    const [title, setTitle] = useState("");
     const [category, setCategory] = useState("");
     const [location, setLocation] = useState("");
     const [description, setDescription] = useState("");
-    const [error, setError] = useState(false); // State to track errors
+    const [error, setError] = useState(false);
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
 
         // Basic validation
-        if (!jobtitle || !category || !location || !description) {
+        if (!title || !category || !location || !description) {
             setError(true);
             return;
         }
 
         // Form data is valid
-        console.log("Submitting form with data:", { jobtitle, category, location, description });
+        console.log("Submitting form with data:", { title, category, location, description });
 
-        // Add your form submission logic here (e.g., API call)
+        const jobData = { title, category, location, description };
 
-        setError(false); // Reset error if the form is successfully submitted
+        try {
+            const response = await axios.post(`${API_URL}/api/career/create-job`, jobData, {
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.data.status === "success") {
+                Swal.fire(
+                    'Job Added!',
+                    'You have successfully added a new job.',
+                    'success'
+                );
+                onClose();
+            } else {
+                alert("Failed to submit data. Please try again.");
+            }
+
+            if (response.data.code === 403 && response.data.message === "Token Expired") {
+                localStorage.setItem('token', null);
+            }
+
+        } catch (error) {
+            console.error("An error occurred while submitting the data:", error);
+            alert("An error occurred while submitting the data. Please try again.");
+        }
     };
 
     const overlayStyle = {
@@ -42,17 +70,17 @@ const AddJob = ({ onClose }) => {
         <>
             <div style={overlayStyle} onClick={onClose}></div>
             <div className={style.popupForm}>
-                <h3>Add New Partner</h3>
+                <h3>Add New Job</h3>
                 <div className={style.first_row}>
-                    <label htmlFor="jobtitle">Title <span>(word limit: 200)</span></label>
+                    <label htmlFor="title">Title <span>(word limit: 200)</span></label>
                     <input type="text"
-                        name="jobtitle"
-                        id="jobtitle"
+                        name="title"
+                        id="title"
                         className={style.sliderTextArea}
-                        value={jobtitle}
-                        onChange={(e) => setJobTitle(e.target.value)}
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
-                    {error && !jobtitle && <span className={style.text_danger}>Title is required</span>}
+                    {error && !title && <span className={style.text_danger}>Title is required</span>}
 
                     <div className={style.colItem}>
                         <div>
@@ -116,3 +144,5 @@ const AddJob = ({ onClose }) => {
 };
 
 export default AddJob;
+
+
