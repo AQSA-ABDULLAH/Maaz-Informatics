@@ -1,17 +1,24 @@
-const handlebars = require('handlebars');
+// helpers/compile-email-template.js
+
 const mjml2html = require('mjml');
-const fs = require('fs').promises;
+const fs = require('fs');
 const path = require('path');
 
 async function compileEmailTemplate({ fileName, data }) {
-    try {
-        const mjMail = await fs.readFile(path.join('email-templates', fileName), 'utf8');
-        const { html } = mjml2html(mjMail);
-        return handlebars.compile(html)(data).toString();
-    } catch (error) {
-        console.error('Error compiling email template:', error);
-        throw error;
+    const filePath = path.join(__dirname, '..', 'email-templates', fileName);
+    const template = fs.readFileSync(filePath, 'utf8');
+
+    // Replace the placeholders with actual data
+    let renderedTemplate = template;
+    for (const key in data) {
+        if (data.hasOwnProperty(key)) {
+            const regex = new RegExp(`{{${key}}}`, 'g');
+            renderedTemplate = renderedTemplate.replace(regex, data[key]);
+        }
     }
+
+    const htmlOutput = mjml2html(renderedTemplate).html;
+    return htmlOutput;
 }
 
 module.exports = compileEmailTemplate;
