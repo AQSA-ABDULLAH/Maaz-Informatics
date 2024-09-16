@@ -14,4 +14,9 @@ router.get("/get-user-profile/:id", ProfileController.getUserProfile);
 router.get("/get-users", ProfileController.getAllUsers);
 router.patch("/update-profile/:id", ProfileController.updateUserProfile);
 
+// FORGET PASSWORD ROUTES
+
+// VERIFICATION ROUTES
+// router.post("/mail_verification/:id",UserController.mailVerification )
+
 module.exports = router;

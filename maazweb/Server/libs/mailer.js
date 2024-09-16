@@ -26,8 +26,8 @@ const sendMail = async (to, subject, content) => {
 };
 
 module.exports = {
-    sendMail, // Export the sendMail function
-    send: sendMail // Also export it as 'send' for compatibility with existing code
+    sendMail,
+    send: sendMail
 };
 
 
