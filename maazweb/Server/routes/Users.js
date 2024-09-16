@@ -16,7 +16,7 @@ router.patch("/update-profile/:id", ProfileController.updateUserProfile);
 
 // FORGET PASSWORD ROUTES
 
-// VERIFICATION ROUTES
-// router.post("/mail_verification/:id",UserController.mailVerification )
+// OTP ROUTES
+router.post("/send-otp", UserController.verifyOTP )
 
 module.exports = router;
