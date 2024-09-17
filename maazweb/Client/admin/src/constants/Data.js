@@ -21,8 +21,8 @@ export const Main = [
   },
   {
     icon: <BiSolidContact size={20}/>,
-    text: "Home",
-    route:'/ParcelList'
+    text: "Contact Us",
+    route:'/contact-us'
   },
   {
     icon: <BiSolidContact size={20}/>,
