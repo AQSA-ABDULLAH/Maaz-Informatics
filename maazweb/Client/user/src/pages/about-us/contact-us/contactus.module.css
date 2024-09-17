@@ -11,17 +11,17 @@
   }
   
   .header h1 {
-    font-size: 2.5rem; /* Adjust this size to match the heading in the design */
+    font-size: 2.5rem; 
     font-weight: bold;
-    color: #000; /* Use a solid black or dark color for the heading */
-    margin-bottom: 0.5rem; /* Space between the title and subtitle */
+    color: #000; 
+    margin-bottom: 0.5rem; 
   }
   
   .header p {
-    font-size: 1rem; /* Slightly smaller than the h1 */
-    color: #666; /* Light grey to make it more subtle */
-    margin-bottom: 1rem; /* Add some space below the paragraph */
-    line-height: 1.5; /* Improve readability */
+    font-size: 1rem; 
+    color: #666; 
+    margin-bottom: 1rem; 
+    line-height: 1.5; 
   }
   
 
@@ -41,22 +41,22 @@
     padding: 2rem;
     background: white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; /* Add some rounding to corners */
-    position: relative; /* Positioning for decorative circles */
-    overflow: hidden; /* Ensures decorative circles stay inside */
+    border-radius: 8px; 
+    position: relative; 
+    overflow: hidden; 
 }
 
 .contactInfo h2 {
     margin-bottom: 1rem;
-    font-size: 1.5rem; /* Adjust the heading size */
-    font-weight: bold; /* Make the heading bold */
-    color: #000; /* Dark color for heading */
+    font-size: 1.5rem; 
+    font-weight: bold; 
+    color: #000; 
 }
 
 .contactInfo p {
     margin-bottom: 2rem;
     font-size: 1rem;
-    color: #666; /* Lighter color for the paragraph text */
+    color: #666; 
 }
 
 .contactInfo ul {
@@ -69,12 +69,12 @@
     margin: 1rem 0;
     display: flex;
     align-items: center;
-    font-size: 1.1rem; /* Make the text slightly larger */
+    font-size: 1.1rem; 
 }
 
 .contactInfo li span {
     margin-right: 0.75rem;
-    font-size: 1.3rem; /* Increase the icon size */
+    font-size: 1.3rem; 
 }
 
 .socialIcons {

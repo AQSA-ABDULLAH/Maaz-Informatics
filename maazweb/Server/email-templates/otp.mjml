@@ -1,0 +1,73 @@
+<mjml>
+    <mj-head>
+    <mj-attributes>
+      <mj-class name="mjclass" color="green" font-size="30px" />
+    </mj-attributes>
+    <mj-style>
+      .link{
+        font-style: normal;
+font-weight: 600;
+font-size: 14px;
+color: #FFFFFF;
+        text-decoration: none !important;
+      }
+    </mj-style>
+  </mj-head>
+  <mj-body  width="640px" >
+
+    <mj-raw>
+      <!-- Company Header -->
+    </mj-raw>
+    <mj-section>
+      <mj-column>
+         
+        <mj-text  font-family="Poppins, sans-serif"font-style="normal" font-size="24px" color="#121A26" font-weight="600">
+            Maaz Informatics
+        </mj-text>
+                
+
+      </mj-column>
+       <mj-column>
+        <mj-social font-size="15px" icon-size="25px" mode="horizontal">
+          <mj-social-element name="facebook" href="https://www.facebook.com/">
+          </mj-social-element>
+          <mj-social-element name="instagram" href="https://www.instagram.com/">
+          </mj-social-element>
+          <mj-social-element name="twitter" href="https://twitter.com/">   
+          </mj-social-element>
+        </mj-social>
+      </mj-column>
+    </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-divider border-color="#CBD5E1" border-width="1px"></mj-divider>
+      </mj-column>
+    
+    </mj-section>
+    <mj-section>
+      <mj-column>
+       
+        <mj-text font-family="Poppins, sans-serif" font-style="normal" font-weight="700" font-size="24px" line-height="140%" color="#121A26">
+            Forget Password
+        </mj-text>
+          
+        <mj-text font-family="Poppins, sans-serif" font-size="16px" font-style="normal" line-height="150%" font-weight="400" letter-spacing="0.2px">
+          Hi 👋<br><br>
+          Please use the following OTP to Reset your password.
+        </mj-text>
+
+        <mj-button font-family="Poppins, sans-serif" height="57px" padding="20px 32px" css-class="gradient-button" align="left" border-radius="0px" background-color="#2C5364" color="#FFFFFF">
+          {{OTP}}
+        </mj-button>
+       <mj-text font-family="Poppins, sans-serif" font-size="16px" font-style="normal" line-height="150%" font-weight="400" letter-spacing="0.2px">Thanks, <br>MaazInformatics</mj-text>
+      
+      </mj-column>
+      </mj-section>
+    <mj-section>
+      <mj-column>
+        <mj-text font-family="Poppins, sans-serif" font-style="normal" font-size="16px" font-weight="400" line-height="150%" letter-spacing="0.2px">We are pleased about your inquiry and will be happy to serve you.<br></br><br></br>Kind regards, <br> </br>MaazInformatics <br></br><br></br><br></br> © 2024 MaazInformatics</mj-text>
+      </mj-column>
+    </mj-section>
+  </mj-body>
+   
+</mjml>
