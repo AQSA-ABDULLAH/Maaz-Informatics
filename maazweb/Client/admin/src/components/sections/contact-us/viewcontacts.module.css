@@ -1,0 +1,104 @@
+.table {
+  width: 100%;
+  /* border-collapse: collapse; */
+}
+
+.table th {
+  border-bottom: 1px solid #ddd;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.table img {
+  height: 40px;
+  width: 80px;
+}
+
+.table_header {
+  background-color: #9f29bd;
+  color: white;
+}
+
+.table th,
+.table td {
+  padding: 10px 9px 10px 9px;
+  text-align: left;
+}
+
+.table td {
+  font-size: 14px;
+}
+
+.table span {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.carTitle {
+  width: 40%;
+}
+
+.editButton,
+.deleteButton {
+  color: white;
+  font-size: 20px;
+  padding: 4px 3px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.editButton {
+  background-color: #3498db;
+}
+
+.deleteButton {
+  background-color: #e74c3c;
+  margin-left: 4px;
+}
+
+
+/* CONTACT US STLYE */
+.contactus_container {
+  padding: 40px 70px;
+}
+
+.heading {
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: normal;
+  padding-bottom: 0px;
+  padding-right: 5px;
+  border-bottom: 2px solid #9f29bd;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.contactus_container p{
+  font-size: 14px;
+  margin-bottom: 2.5rem;
+}
+
+.contactID {
+  width: 15%;
+  word-break: break-all;
+}
+
+.cancel_button {
+  border-radius: 3px;
+  border: 1px solid;
+  padding: 2px 4px;
+  font-size: 13px;
+  font-weight: 500;
+  background-color: white;
+  color: black;
+}
+
+.shipment_container button:hover {
+  background-color: #dad8d8;
+  cursor: pointer;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import axios from "axios";  // Import axios
-import styles from "./contactusform.module.css";
+import axios from "axios";
+import styles from "./contactus-form.module.css";
 import { API_URL } from "../../constant/WebsiteConstants";
 
 function ContactUsForm() {
@@ -49,10 +49,9 @@ function ContactUsForm() {
   };
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.heading}>Contact Us</h2>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <div className={styles.row}>
+    <>
+      <form className={styles.contactForm} onSubmit={handleSubmit}>
+        <div className={styles.inputGroup}>
           <div className={styles.formGroup}>
             <label htmlFor="name" className={styles.label}>Name</label>
             <input
@@ -61,7 +60,6 @@ function ContactUsForm() {
               name="name"
               value={formData.name}
               onChange={handleChange}
-              className={styles.input}
               placeholder="Enter your name"
               required
             />
@@ -80,8 +78,7 @@ function ContactUsForm() {
             />
           </div>
         </div>
-
-        <div className={styles.row}>
+        <div className={styles.inputGroup}>
           <div className={styles.formGroup}>
             <label htmlFor="email" className={styles.label}>Email</label>
             <input
@@ -110,26 +107,26 @@ function ContactUsForm() {
           </div>
         </div>
 
-        <div className={styles.formGroup}>
+        <div className={styles.textarea}>
           <label htmlFor="message" className={styles.label}>Message</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            className={styles.textarea}
             placeholder="Type your message here..."
             rows="6"
             required
           ></textarea>
         </div>
 
-        <button type="submit" className={styles.submitButton}>Send Message</button>
+        <button type="submit" className={styles.submitButton}>
+          Send Message
+        </button>
         {statusMessage && <p className={styles.statusMessage}>{statusMessage}</p>}
       </form>
-    </div>
+    </>
   );
 }
 
 export default ContactUsForm;
-
