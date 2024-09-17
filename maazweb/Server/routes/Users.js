@@ -2,6 +2,7 @@ const express = require('express');
 const { UserController } = require('../controllers/users/userRegistration'); 
 const { userLogin } = require('../controllers/users/userLogin');
 const {ProfileController} = require("../controllers/users/userProfile")
+const {ForgetPassword} = require("../controllers/users/forgetPassword")
 const router = express.Router();
 require("../db/connection");
 
@@ -15,6 +16,7 @@ router.get("/get-users", ProfileController.getAllUsers);
 router.patch("/update-profile/:id", ProfileController.updateUserProfile);
 
 // FORGET PASSWORD ROUTES
+router.post("/forget-password", ForgetPassword.forgetPassword )
 
 // OTP ROUTES
 router.post("/send-otp", UserController.verifyOTP )

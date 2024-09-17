@@ -1,119 +1,53 @@
 const User = require("../../models/Users");
-const { hashPassword } = require("../../helpers/hashPassword");
 const { createToken } = require("../../helpers/jwt");
 const compileEmailTemplate = require("../../helpers/compile-email-template.js");
 const mailer = require("../../libs/mailer.js");
 
 class ForgetPassword {
-
     // OTP GENERATION
     static async generateOTP() {
-        return Math.floor(1000 + Math.random() * 9000);
+        return Math.floor(1000 + Math.random() * 9000); // 4-digit OTP
     }
 
     // FORGET PASSWORD
-    static userRegistration = async (req, res) => {
+    static forgetPassword = async (req, res) => {
         try {
-            const {
-                userName,
-                firstName,
-                lastName,
-                middleName,
-                email,
-                phoneNumber,
-                password,
-                confirmPassword,
-                country,
-                status,
-                profilePicture,
-            } = req.body;
+            const { email } = req.body;
 
-            if (!email || !password || !confirmPassword || !country) {
-                return res.status(400).json({ error: "Please fill in all fields properly" });
-            }
-
-            const userExist = await User.findOne({ email: email });
-            if (userExist) {
-                return res.status(400).json({ error: "User already exists" });
-            }
-
-            if (password !== confirmPassword) {
-                return res.status(400).json({ error: "Password and Confirm Password don't match" });
+            // Check if the user exists with the provided email
+            const userExist = await User.findOne({ email });
+            if (!userExist) {
+                return res.status(400).json({ status: "error", message: "User not found with the provided email." });
             }
 
             // Generate OTP
-            const OTP = await UserController.generateOTP();
+            const OTP = await ForgetPassword.generateOTP();
 
-            // Hashing Password
-            const hashedPassword = await hashPassword(password);
+            // Update user with the OTP
+            userExist.otp = OTP;
+            await userExist.save();
 
-            const user = new User({
-                userName,
-                firstName,
-                lastName,
-                middleName,
-                email,
-                phoneNumber,
-                password: hashedPassword,
-                country,
-                status,
-                profilePicture,
-                otp: OTP
-            });
-
-            const savedUser = await user.save();
-
-            // Send Registration mail to user with OTP
+            // Send OTP email to the user
             const template = await compileEmailTemplate({
-                fileName: "register.mjml",
+                fileName: "otp.mjml", // make sure to have a template for OTP
                 data: { email, OTP },
             });
 
             try {
-                await mailer.sendMail(email, "Mail Verification", template);
-                return res.status(201).json({
+                await mailer.sendMail(email, "OTP for Password Reset", template);
+                return res.status(200).json({
                     status: "success",
-                    message: "User created successfully",
-                    token: createToken(savedUser, false, "1d"),
+                    message: "OTP sent successfully to your email.",
                 });
             } catch (error) {
-                console.error("Failed to send Create User email:", error);
-                return res.status(500).json({ error: "Failed to send Create User email." });
+                console.error("Failed to send OTP email:", error);
+                return res.status(500).json({ error: "Failed to send OTP email." });
             }
         } catch (error) {
-            console.error("Error in user registration:", error.message);
-            return res.status(500).json({ error: "Failed to register user." });
+            console.error("Error in forget password flow:", error.message);
+            return res.status(500).json({ error: "An error occurred while processing your request." });
         }
     };
-
-    // VERIFY OTP
-    // static async verifyOTP(req, res) {
-    //     try {
-    //         const { email, otp } = req.body;
-    //         const user = await User.findOne({ email });
-
-    //         if (!user) {
-    //             return res.status(400).json({ status: "error", message: "User not found with the provided email." });
-    //         }
-
-    //         if (user.is_verified) {
-    //             return res.status(400).json({ status: "error", message: "User account is already verified." });
-    //         }
-
-    //         if (user.otp !== otp) {
-    //             return res.status(400).json({ status: "error", message: "Incorrect OTP." });
-    //         }
-
-    //         // Update user's is_verified status
-    //         user.is_verified = true;
-    //         await user.save();
-
-    //         return res.status(200).json({ status: "success", message: "Account Verified Successfully!" });
-    //     } catch (error) {
-    //         console.error("Error verifying OTP:", error.message);
-    //         return res.status(500).json({ status: "error", message: "Failed to verify OTP.", error: error.message });
-    //     }
-    // }
 }
 
 module.exports = { ForgetPassword };
