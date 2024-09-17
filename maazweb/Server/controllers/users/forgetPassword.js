@@ -4,14 +4,14 @@ const { createToken } = require("../../helpers/jwt");
 const compileEmailTemplate = require("../../helpers/compile-email-template.js");
 const mailer = require("../../libs/mailer.js");
 
-class UserController {
+class ForgetPassword {
 
     // OTP GENERATION
     static async generateOTP() {
-        return Math.floor(1000 + Math.random() * 9000); // 6-digit OTP
+        return Math.floor(1000 + Math.random() * 9000);
     }
 
-    // USER REGISTRATION
+    // FORGET PASSWORD
     static userRegistration = async (req, res) => {
         try {
             const {
@@ -87,33 +87,33 @@ class UserController {
     };
 
     // VERIFY OTP
-    static async verifyOTP(req, res) {
-        try {
-            const { email, otp } = req.body;
-            const user = await User.findOne({ email });
+    // static async verifyOTP(req, res) {
+    //     try {
+    //         const { email, otp } = req.body;
+    //         const user = await User.findOne({ email });
 
-            if (!user) {
-                return res.status(400).json({ status: "error", message: "User not found with the provided email." });
-            }
+    //         if (!user) {
+    //             return res.status(400).json({ status: "error", message: "User not found with the provided email." });
+    //         }
 
-            if (user.is_verified) {
-                return res.status(400).json({ status: "error", message: "User account is already verified." });
-            }
+    //         if (user.is_verified) {
+    //             return res.status(400).json({ status: "error", message: "User account is already verified." });
+    //         }
 
-            if (user.otp !== otp) {
-                return res.status(400).json({ status: "error", message: "Incorrect OTP." });
-            }
+    //         if (user.otp !== otp) {
+    //             return res.status(400).json({ status: "error", message: "Incorrect OTP." });
+    //         }
 
-            // Update user's is_verified status
-            user.is_verified = true;
-            await user.save();
+    //         // Update user's is_verified status
+    //         user.is_verified = true;
+    //         await user.save();
 
-            return res.status(200).json({ status: "success", message: "Account Verified Successfully!" });
-        } catch (error) {
-            console.error("Error verifying OTP:", error.message);
-            return res.status(500).json({ status: "error", message: "Failed to verify OTP.", error: error.message });
-        }
-    }
+    //         return res.status(200).json({ status: "success", message: "Account Verified Successfully!" });
+    //     } catch (error) {
+    //         console.error("Error verifying OTP:", error.message);
+    //         return res.status(500).json({ status: "error", message: "Failed to verify OTP.", error: error.message });
+    //     }
+    // }
 }
 
-module.exports = { UserController };
+module.exports = { ForgetPassword };
