@@ -1,0 +1,18 @@
+.password_toggle_icon {
+    width: 20px; 
+    height: 20px;
+    cursor: pointer;
+    opacity: 0.7; 
+    transition: opacity 0.3s ease;
+    position: absolute; 
+    right: 10px; 
+    top: 35%; 
+}
+
+.password_toggle_icon:hover {
+    opacity: 1; 
+}
+
+.password_toggle_icon:active {
+    transform: scale(0.95); 
+}

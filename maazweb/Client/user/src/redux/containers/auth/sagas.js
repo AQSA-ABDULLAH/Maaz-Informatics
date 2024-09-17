@@ -3,22 +3,6 @@ import * as type from "./constants";
 import * as actions from "./actions";
 import { axiosInstance } from "../../util/AxiosHeader";
 
-
-
-//Without token Authentication Data calls
-
-// axiosInstance
-//   .get("/public-endpoint", { headers: { withoutAuth: true } })
-//   .then((response) => console.log(response))
-//   .catch((error) => console.error(error));
-
-// //with token Authentication Data calls
-
-// axiosInstance
-//   .get("/private-endpoint", { headers: { withoutAuth: false } })
-//   .then((response) => console.log(response))
-//   .catch((error) => console.error(error));
-
 function* signIn(action) {
   try {
     const { payload: userData } = action;
