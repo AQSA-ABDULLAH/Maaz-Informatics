@@ -8,8 +8,7 @@ function Signup() {
         <form className="login-form">
           <div>Be the first to hear!</div>
           <p className="subtitle">
-            Stay up-to-date with the latest Wysa news, case studies, research,
-            reports, and more by signing up for our newsletter.
+            Stay up-to-date with the latest news by signing in to our newsletter.
           </p>
           <Form />
         </form>

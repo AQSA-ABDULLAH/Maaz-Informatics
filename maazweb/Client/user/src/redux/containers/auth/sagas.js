@@ -14,6 +14,7 @@ function* signIn(action) {
       userData
     );
     localStorage.setItem("access_token", token);
+    console.log("login")
 
     yield put({
       type: type.SIGN_IN_SUCCESS,
