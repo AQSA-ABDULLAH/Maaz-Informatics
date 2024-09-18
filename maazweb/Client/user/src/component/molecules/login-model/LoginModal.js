@@ -173,7 +173,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { signUpWithEmail } from "../../../redux/containers/auth/actions";
 import { Link, useNavigate } from "react-router-dom";
 import "./LoginModal.css";
-import Form from "../../atoms/signup-form/Form";
 import Signup from "./signup/Signup"
 import Login from "./login/Login";  // Ensure this import is correct
 

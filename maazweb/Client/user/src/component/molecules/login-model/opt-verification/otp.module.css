@@ -1,0 +1,23 @@
+.otpContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .otpInput {
+    padding: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+    width: 200px;
+  }
+  
+  .submitOtpBtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
