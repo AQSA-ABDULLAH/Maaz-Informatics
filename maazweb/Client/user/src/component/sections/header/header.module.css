@@ -33,7 +33,7 @@ li {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    padding: 8px 45px;
+    padding: 0.5rem 6rem;
     background-color: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -115,5 +115,9 @@ li {
     text-decoration: none;
 }
 
-
-
+.user_icon{
+    font-size: 39px;
+    color: #9f29bd;
+    border: 3px solid;
+    border-radius: 50%;
+}
