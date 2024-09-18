@@ -7,8 +7,7 @@ import { API_URL } from "../../../constant/WebsiteConstants";
 import OTP from "../opt-verification/OTP";
 import Button from "../../../atoms/button/Button";
 
-function Signup() {
-
+function Signup({ onClose }) {
   const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     userName: "",
@@ -18,7 +17,8 @@ function Signup() {
     confirmPassword: "",
   });
   const [isChecked, setIsChecked] = useState(false);
-  const [showOtpForm, setShowOtpForm] = useState(false); // New state for OTP form
+  const [showOtpForm, setShowOtpForm] = useState(false); // State for OTP form
+  const [email, setEmail] = useState(""); // State to store the email for OTP
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -29,7 +29,7 @@ function Signup() {
         case "userName":
         case "country":
           if (!validate.name(value)) {
-            setError(name + " cannot have special characters or digits");
+            setError(`${name} cannot have special characters or digits`);
           } else {
             setError("");
           }
@@ -44,7 +44,7 @@ function Signup() {
         case "password":
         case "confirmPassword":
           if (!validate.password(value)) {
-            setError(name + " must fulfill requirements");
+            setError(`${name} must fulfill requirements`);
           } else {
             setError("");
           }
@@ -76,109 +76,104 @@ function Signup() {
       const response = await axios.post(`${API_URL}/api/user/user_signUp`, formData);
       console.log("API response:", response.data);
 
-      Swal.fire(
-        'Sign Up Successful!',
-        'You have successfully signed up.',
-        'success'
-      );
-
-      // Show OTP form after successful signup
+      // Set the email and show OTP form after successful signup
+      setEmail(formData.email);
       setShowOtpForm(true);
-
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error.message);
-      
-      // Show error message with Swal
-      Swal.fire(
-        'Sign Up Failed!',
-        'Please check your information and try again.',
-        'error'
-      );
 
-      // Set error state to display in the form
+      // Show error message with Swal
+      Swal.fire("Sign Up Failed!", "Please check your information and try again.", "error");
+
       setError("An error occurred. Please try again.");
     }
   };
 
-  // Render either the signup form or OTP form based on state
-  if (showOtpForm) {
-    return <OTP />;
-  }
+  const closeOtpForm = () => {
+    setShowOtpForm(false);
+    onClose();
+  };
+
+
   return (
     <>
-      <div className={styles.login_form_container}>
-        <div className={styles.login_form}>
-          <div>Be the first to hear!</div>
-          <p className={styles.subtitle}>
-            Stay up-to-date with the latest news by signing in to our newsletter.
-          </p>
+      {showOtpForm ? (
+        <OTP email={email} closeModal={closeOtpForm} />
+      ) : (
+        <div className={styles.login_form_container}>
+          <div className={styles.login_form}>
+            <div>Be the first to hear!</div>
+            <p className={styles.subtitle}>
+              Stay up-to-date with the latest news by signing in to our newsletter.
+            </p>
 
-
-          <form onSubmit={handleSubmit} className={styles.form}>
-            <div className={styles.formRow}>
-              <input
-                onChange={handleChange}
-                type="text"
-                name="userName"
-                value={formData.userName}
-                placeholder="UserName"
-              />
-              <input
-                onChange={handleChange}
-                type="text"
-                name="country"
-                value={formData.country}
-                placeholder="Country"
-              />
-            </div>
-
-            <div className={styles.formRow}>
-              <input
-                onChange={handleChange}
-                type="email"
-                name="email"
-                value={formData.email}
-                placeholder="Email Address"
-              />
-            </div>
-
-            <div className={styles.formRow}>
-              <input
-                onChange={handleChange}
-                type="password"
-                name="password"
-                value={formData.password}
-                placeholder="Password"
-              />
-              <input
-                onChange={handleChange}
-                type="password"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                placeholder="Confirm Password"
-              />
-            </div>
-
-            <div className={styles.check}>
-              <label>
+            <form onSubmit={handleSubmit} className={styles.form}>
+              <div className={styles.formRow}>
                 <input
-                  type="checkbox"
-                  name="consent"
-                  checked={isChecked}
                   onChange={handleChange}
+                  type="text"
+                  name="userName"
+                  value={formData.userName}
+                  placeholder="UserName"
                 />
-                By clicking submit, I consent to my personal information being processed by Touchkin to address my request
-              </label>
-            </div>
+                <input
+                  onChange={handleChange}
+                  type="text"
+                  name="country"
+                  value={formData.country}
+                  placeholder="Country"
+                />
+              </div>
 
-            {error && <div className={styles.error}>{error}</div>}
+              <div className={styles.formRow}>
+                <input
+                  onChange={handleChange}
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  placeholder="Email Address"
+                />
+              </div>
 
-            <div className={styles.btns}>
-              <Button btnClick={handleSubmit} size="16px" radius="5px" btnText="Sign Up" />
-            </div>
-          </form>
+              <div className={styles.formRow}>
+                <input
+                  onChange={handleChange}
+                  type="password"
+                  name="password"
+                  value={formData.password}
+                  placeholder="Password"
+                />
+                <input
+                  onChange={handleChange}
+                  type="password"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  placeholder="Confirm Password"
+                />
+              </div>
+
+              <div className={styles.check}>
+                <label>
+                  <input
+                    type="checkbox"
+                    name="consent"
+                    checked={isChecked}
+                    onChange={handleChange}
+                  />
+                  By clicking submit, I consent to my personal information being
+                  processed by Touchkin to address my request
+                </label>
+              </div>
+
+              {error && <div className={styles.error}>{error}</div>}
+
+              <div className={styles.btns}>
+                <Button btnClick={handleSubmit} size="16px" radius="5px" btnText="Sign Up" />
+              </div>
+            </form>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
