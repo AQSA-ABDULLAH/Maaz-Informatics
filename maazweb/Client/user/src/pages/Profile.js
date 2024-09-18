@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
 
-function Profile() {
+import styles from "../component/molecules/userProfile/UserProfile.module.css";
+
+import UserProfile from "../component/molecules/userProfile/UserProfile";
+const Profile = () => {
   return (
-    <div>Profile</div>
-  )
-}
+    <>
+      <section className={styles.profile_container}>
+        <UserProfile />
+      </section>
+    </>
+  );
+};
 
-export default Profile
+export default Profile;
