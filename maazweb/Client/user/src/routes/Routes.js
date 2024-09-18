@@ -8,6 +8,7 @@ import styles from './routes.module.css';
 
 // Pages
 import Login from "../pages/Login";
+import Profile from "../pages/Profile.js";
 import Signup from "../component/molecules/login-model/signup/Signup"
 import Home from "../pages/landing-page/Home";
 import ChronicCare from "../pages/chronic-care/ChronicCare";
@@ -81,10 +82,10 @@ function AppRoutes() {
                     path="/signup"
                     element={isAuthenticated ? <Navigate to="/" replace /> : <Signup />}
                 />
-                {/* <Route
+                <Route
                     path="/user-profile"
                     element={isAuthenticated ? <Navigate to="/" replace /> : <Profile />}
-                /> */}
+                />
             </Routes>
 
             {/* Add footer only if path is not in noHeaderPaths */}

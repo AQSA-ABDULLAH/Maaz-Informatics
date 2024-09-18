@@ -1,0 +1,17 @@
+.profile_container{
+    padding: 7.5rem 0rem 0rem;
+}
+.userProfile{
+    background-color: rgb(228, 228, 228);
+    padding: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    border-radius: 2px;
+}
+.mainBlock{
+    width: 70%;
+}
+.sideBlock{
+    width: 28%;
+}
