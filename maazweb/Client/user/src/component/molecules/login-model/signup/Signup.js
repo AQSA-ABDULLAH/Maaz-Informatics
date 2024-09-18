@@ -17,8 +17,8 @@ function Signup({ onClose }) {
     confirmPassword: "",
   });
   const [isChecked, setIsChecked] = useState(false);
-  const [showOtpForm, setShowOtpForm] = useState(false); // State for OTP form
-  const [email, setEmail] = useState(""); // State to store the email for OTP
+  const [showOtpForm, setShowOtpForm] = useState(false);
+  const [email, setEmail] = useState("");
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -58,36 +58,36 @@ function Signup({ onClose }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Check for password match
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match");
       return;
     }
 
-    // Check if consent checkbox is checked
     if (!isChecked) {
       setError("You must consent to the processing of your personal information");
       return;
     }
-
+  
     try {
       setError("");
       const response = await axios.post(`${API_URL}/api/user/user_signUp`, formData);
       console.log("API response:", response.data);
-
-      // Set the email and show OTP form after successful signup
+  
+      // Assuming the token is in response.data.token
+      const token = response.data.token;
+  
+      // Store the token in local storage
+      localStorage.setItem("access_token", token);
+  
       setEmail(formData.email);
       setShowOtpForm(true);
     } catch (error) {
       console.error("Error:", error.response ? error.response.data : error.message);
-
-      // Show error message with Swal
       Swal.fire("Sign Up Failed!", "Please check your information and try again.", "error");
-
       setError("An error occurred. Please try again.");
     }
   };
+  
 
   const closeOtpForm = () => {
     setShowOtpForm(false);
