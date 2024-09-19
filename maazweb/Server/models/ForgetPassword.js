@@ -1,19 +1,20 @@
 const mongoose = require("mongoose");
 
-const forget_password = new mongoose.Schema({
-    user: {
-        type: mongoose.Types.ObjectId,
-        ref: "users",
-    },
+const forgetPasswordSchema = new mongoose.Schema({
     email: {
-        type: String, trim: true
+        type: String,
+        required: true,
+        unique: true,
     },
-    opt: {
+    otp: {
         type: Number,
-        required: true
-    }
-},
-    { timestamps: true }
-);
+        required: true,
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now,
+        expires: 300,
+    },
+});
 
-module.exports = mongoose.model("ForgetPassword", forget_password);
+module.exports = mongoose.model("ForgetPassword", forgetPasswordSchema);
