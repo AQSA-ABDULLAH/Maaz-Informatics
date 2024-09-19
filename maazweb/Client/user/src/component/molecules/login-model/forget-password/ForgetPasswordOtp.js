@@ -4,7 +4,7 @@ import styles from "../opt-verification/otp.module.css";
 import { API_URL } from "../../../constant/WebsiteConstants";
 import Swal from "sweetalert2";
 
-function ForgetPasswordOtp({ email, onClose }) {
+function ForgetPasswordOtp({ email, onClose, onOtpSuccess }) {
   const [otp, setOtp] = useState(["", "", "", ""]);
   const [error, setError] = useState("");
 
@@ -41,8 +41,7 @@ function ForgetPasswordOtp({ email, onClose }) {
       console.log("API response:", response);
 
       if (response.data.success || response.data.status === "success") {
-        Swal.fire("OTP Verified!", "Your account has been verified.", "success");
-        onClose(); // Close the modal after OTP verification
+        onOtpSuccess(); // Close the modal after OTP verification
       } else if (response.data.message) {
         Swal.fire("OTP Verification Failed", response.data.message, "error");
       } else {
@@ -88,5 +87,3 @@ function ForgetPasswordOtp({ email, onClose }) {
 }
 
 export default ForgetPasswordOtp;
-
-
