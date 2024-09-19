@@ -2,6 +2,8 @@ const User = require("../../models/Users");
 const ForgetPassword = require("../../models/ForgetPassword.js");
 const compileEmailTemplate = require("../../helpers/compile-email-template.js");
 const mailer = require("../../libs/mailer.js");
+const { hashPassword } = require("../../helpers/hashPassword");
+const mongoose = require("mongoose");
 
 class ForgetPasswordController {
     // OTP GENERATION
@@ -82,6 +84,39 @@ class ForgetPasswordController {
             return res.status(500).json({ status: "error", message: "Failed to verify OTP.", error: error.message });
         }
     }
+
+    // UPDATE PASSWORD
+    static async updatePassword(req, res) {
+        const { email } = req.body; // We'll use email from body, not params
+        const { password, confirmPassword } = req.body;
+    
+        // Check if passwords match
+        if (password !== confirmPassword) {
+            return res.status(422).json({ error: "Password and Confirm Password don't match" });
+        }
+    
+        try {
+            // Hash the new password
+            const hashedPassword = await hashPassword(password);
+    
+            // Find user by email and update their password
+            const updatedUser = await User.findOneAndUpdate(
+                { email }, 
+                { password: hashedPassword }, 
+                { new: true }
+            );
+    
+            if (!updatedUser) {
+                return res.status(404).send({ status: "failed", message: `No user found with email: ${email}` });
+            }
+    
+            res.status(200).send({ status: "success", message: "Password updated successfully", data: updatedUser });
+        } catch (error) {
+            console.error("Error updating password:", error);
+            res.status(500).send({ status: "failed", message: "Failed to update password" });
+        }
+    }
+    
 }
 
 module.exports = { ForgetPasswordController };
