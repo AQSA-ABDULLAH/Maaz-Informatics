@@ -65,14 +65,14 @@ class ForgetPasswordController {
             const { email, otp } = req.body;
 
             // Check if the email exists in the ForgetPassword model
-            const forgetPasswordRecord = await ForgetPassword.findOne({ email });
+            const forgetPassword = await ForgetPassword.findOne({ email });
 
-            if (!forgetPasswordRecord) {
+            if (!forgetPassword) {
                 return res.status(400).json({ status: "error", message: "User not found with the provided email." });
             }
 
             // Check if the provided OTP matches the one in the ForgetPassword record
-            if (forgetPasswordRecord.otp !== otp) {
+            if (forgetPassword.otp !== otp) {
                 return res.status(400).json({ status: "error", message: "Incorrect OTP." });
             }
 

@@ -17,7 +17,7 @@ router.patch("/update-profile/:id", ProfileController.updateUserProfile);
 
 // FORGET PASSWORD ROUTES
 router.post("/forget-password", ForgetPasswordController.forgetPassword )
-// router.post("/reset-pasword", ForgetPasswordController.resetPassword )
+router.post("/reset-pasword", ForgetPasswordController.resetPassword )
 
 // OTP ROUTES
 router.post("/send-otp", UserController.verifyOTP )
