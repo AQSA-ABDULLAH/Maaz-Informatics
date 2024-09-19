@@ -120,5 +120,3 @@ class ForgetPasswordController {
 }
 
 module.exports = { ForgetPasswordController };
-
-
