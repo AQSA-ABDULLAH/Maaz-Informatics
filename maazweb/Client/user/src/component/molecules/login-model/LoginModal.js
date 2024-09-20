@@ -7,7 +7,7 @@ import Signup from "./signup/Signup";
 import Login from "./login/Login";
 import ForgetPassword from "./forget-password/ForgetPassword";
 import ForgetPasswordOtp from "./forget-password/ForgetPasswordOtp";
-import UpdatePassword from "./forget-password/UpdatePassword";  // Import UpdatePassword component
+import UpdatePassword from "./forget-password/UpdatePassword"; // Import UpdatePassword component
 
 function LoginModal({ onClose }) {
   const navigate = useNavigate();
@@ -16,8 +16,8 @@ function LoginModal({ onClose }) {
   const [isSignupMode, setIsSignupMode] = useState(false);
   const [isForgotPasswordMode, setIsForgotPasswordMode] = useState(false);
   const [isOtpMode, setIsOtpMode] = useState(false);
-  const [isUpdatePasswordMode, setIsUpdatePasswordMode] = useState(false);  // State for UpdatePassword mode
-  const [emailForOtp, setEmailForOtp] = useState("");  // Store email for OTP verification
+  const [isUpdatePasswordMode, setIsUpdatePasswordMode] = useState(false); // State for UpdatePassword mode
+  const [emailForOtp, setEmailForOtp] = useState(""); // Store email for OTP verification
 
   const handleSignupClick = () => {
     setIsSignupMode(true);
@@ -41,13 +41,13 @@ function LoginModal({ onClose }) {
   };
 
   const handleOtpSent = (email) => {
-    setIsOtpMode(true);  // Switch to OTP mode when the reset link is sent
+    setIsOtpMode(true); // Switch to OTP mode when the reset link is sent
     setIsForgotPasswordMode(false);
-    setEmailForOtp(email);  // Save the email to pass it to ForgetPasswordOtp
+    setEmailForOtp(email); // Save the email to pass it to ForgetPasswordOtp
   };
 
   const handleOtpSuccess = () => {
-    setIsUpdatePasswordMode(true);  // Switch to UpdatePassword mode on OTP success
+    setIsUpdatePasswordMode(true); // Switch to UpdatePassword mode on OTP success
     setIsOtpMode(false);
   };
 
@@ -56,15 +56,23 @@ function LoginModal({ onClose }) {
       <div className="modal-overlay" onClick={onClose}></div>
       <div className="modal-content1">
         <div className="logo-container">
-          <img height="60px" alt="Logo" src={process.env.PUBLIC_URL + "/assest/logo/logo.jpg"} />
+          <img
+            height="60px"
+            alt="Logo"
+            src={process.env.PUBLIC_URL + "/assest/logo/logo.jpg"}
+          />
         </div>
         <div className="login-form-container">
           {isSignupMode ? (
             <Signup onClose={onClose} />
           ) : isUpdatePasswordMode ? (
-            <UpdatePassword />  // Show the UpdatePassword form after OTP verification
+            <UpdatePassword email={emailForOtp} onClose={handleLoginClick} />
           ) : isOtpMode ? (
-            <ForgetPasswordOtp email={emailForOtp} onClose={handleLoginClick} onOtpSuccess={handleOtpSuccess} />  // Pass email to OTP component and handle OTP success
+            <ForgetPasswordOtp
+              email={emailForOtp}
+              onClose={handleLoginClick}
+              onOtpSuccess={handleOtpSuccess}
+            />
           ) : isForgotPasswordMode ? (
             <ForgetPassword onClose={handleLoginClick} onOtpSent={handleOtpSent} />
           ) : (
@@ -81,3 +89,4 @@ function LoginModal({ onClose }) {
 }
 
 export default LoginModal;
+

@@ -9,7 +9,7 @@ class ForgetPasswordController {
     // OTP GENERATION
     static async generateOTP() {
         return Math.floor(1000 + Math.random() * 9000); // 4-digit OTP
-    }
+    } 
 
     // FORGET PASSWORD
     static forgetPassword = async (req, res) => {
@@ -87,8 +87,9 @@ class ForgetPasswordController {
 
     // UPDATE PASSWORD
     static async updatePassword(req, res) {
-        const { email } = req.body; // We'll use email from body, not params
-        const { password, confirmPassword } = req.body;
+        const { email, password, confirmPassword  } = req.body;
+
+        console.log(email, password, confirmPassword);
     
         // Check if passwords match
         if (password !== confirmPassword) {

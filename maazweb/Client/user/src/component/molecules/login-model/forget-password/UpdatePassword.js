@@ -3,8 +3,9 @@ import axios from "axios";
 import styles from "./forgetpassword.module.css";
 import { API_URL } from "../../../constant/WebsiteConstants";
 import Swal from "sweetalert2";
+import "../../../../App.css";
 
-function UpdatePassword({ email }) {
+function UpdatePassword({ email, onClose }) {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
@@ -15,14 +16,23 @@ function UpdatePassword({ email }) {
     }
 
     try {
-      const response = await axios.post(`${API_URL}/api/user/update-password`, {
+      const response = await axios.patch(`${API_URL}/api/user/update-password`, {
         email,
         password,
+        confirmPassword,
       });
 
-      if (response.data.success) {
-        Swal.fire("Success", "Password updated successfully!", "success");
-        // Optionally, redirect user to the login page here
+      if (response.data.status === "success") {
+        Swal.fire({
+          icon: "success",
+          title: "Success",
+          text: "Password updated successfully!",
+          customClass: {
+            popup: "my-custom-swal",  // Apply your custom class here
+          },
+        });
+
+        onClose();  // This will close the modal and return to the login page
       } else {
         Swal.fire("Error", "Failed to update the password. Please try again.", "error");
       }
@@ -66,5 +76,3 @@ function UpdatePassword({ email }) {
 }
 
 export default UpdatePassword;
-
-

@@ -10,7 +10,8 @@ function ForgetPasswordOtp({ email, onClose, onOtpSuccess }) {
 
   const handleChange = (e, index) => {
     const value = e.target.value;
-    if (value.length <= 1) {
+    if (value.length <= 1 && /^[0-9]*$/.test(value)) {
+      // Ensure the input is a number
       const newOtp = [...otp];
       newOtp[index] = value;
       setOtp(newOtp);
@@ -24,7 +25,7 @@ function ForgetPasswordOtp({ email, onClose, onOtpSuccess }) {
 
   const handleSubmit = async () => {
     const enteredOtp = parseInt(otp.join(""), 10); // Ensure OTP is sent as a number
-    
+
     if (isNaN(enteredOtp) || otp.join("").length !== 4) {
       Swal.fire("Invalid OTP", "Please enter a valid 4-digit OTP", "error");
       return;
@@ -33,7 +34,7 @@ function ForgetPasswordOtp({ email, onClose, onOtpSuccess }) {
     try {
       console.log(email, enteredOtp);  // For debugging
 
-      const response = await axios.post(`${API_URL}/api/user/reset-pasword`, {
+      const response = await axios.post("http://localhost:5000/api/user/reset-pasword", {
         email,
         otp: enteredOtp,
       });
@@ -41,7 +42,7 @@ function ForgetPasswordOtp({ email, onClose, onOtpSuccess }) {
       console.log("API response:", response);
 
       if (response.data.success || response.data.status === "success") {
-        onOtpSuccess(); // Close the modal after OTP verification
+        onOtpSuccess();
       } else if (response.data.message) {
         Swal.fire("OTP Verification Failed", response.data.message, "error");
       } else {
