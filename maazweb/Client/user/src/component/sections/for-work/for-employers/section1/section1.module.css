@@ -1,0 +1,35 @@
+.section {
+    text-align: center;
+    padding: 50px;
+    background-color: #f9f9f9;
+  }
+  
+  .heading {
+    font-size: 2.5rem;
+    color: #1c3c79;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .description {
+    font-size: 1.3rem;
+    padding: 0px 50px;
+    color: #4b4b4b;
+    margin: 0 auto;
+  }
+  
+  .button {
+    background-color: #61AC8A;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 3rem;
+  }
+  
+  .button:hover {
+    background-color: #509173;
+  }
+  
