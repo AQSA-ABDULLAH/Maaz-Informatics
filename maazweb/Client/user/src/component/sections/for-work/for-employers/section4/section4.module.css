@@ -1,0 +1,68 @@
+.container_heading h2 {
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #fff;
+    padding: 0px 80px;
+    border-radius: 8px;
+    margin: 20px;
+}
+
+.card {
+    flex: 1;
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #f4e1f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.card:not(:last-child) {
+    margin-right: 20px;
+}
+
+.title {
+    font-size: 23px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.description {
+    font-size: 16px;
+    color: #666;
+    text-align: center;
+}
+
+.icon {
+    height: 100px;
+    width: auto;
+    margin-bottom: 20px;
+}
+
+.learnMore {
+    background-color: #9f29bd;
+    width: 400px;
+    padding: 10px;
+    border-radius: 7px;
+    text-align: center;
+    margin: auto;
+    font-size: 18px;
+    font-weight: 500;
+    color: white;
+    cursor: pointer;
+}
+
+.learnMore:hover {
+    text-decoration: underline;
+}

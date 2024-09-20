@@ -7,14 +7,13 @@ import { FaBars, FaUser, FaAngleDown } from "react-icons/fa";
 
 const Navbar = () => {
   const [dropdownVisible, setDropdownVisible] = useState("");
-  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // Manage login modal visibility
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
-
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false); 
   useEffect(() => {
-    // Check if token is present in local storage when component mounts
+
     const token = localStorage.getItem("access_token");
     if (token) {
-      setIsLoggedIn(true); // User is logged in if token is found
+      setIsLoggedIn(true);
     }
   }, []);
 
@@ -63,8 +62,8 @@ const Navbar = () => {
               <Link to="/for-work">For Work <span className={styles.dropdown_arrow}>▾</span></Link>
               {dropdownVisible === "forWork" && (
                 <ul className={styles.dropdown}>
-                  <li><Link to="/for-work/service1">Service 1</Link></li>
-                  <li><Link to="/for-work/service2">Service 2</Link></li>
+                  <li><Link to="/for-work/for-employers">For Employers</Link></li>
+                  <li><Link to="/for-work/for-team">For Teams</Link></li>
                 </ul>
               )}
             </li>
