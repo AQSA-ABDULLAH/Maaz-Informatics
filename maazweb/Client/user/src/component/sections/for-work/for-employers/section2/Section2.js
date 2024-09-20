@@ -38,11 +38,11 @@ function Section2() {
             </p>
           </div>
 
-          <img src="/assest/images/chronic-care/16551177-144257_272497.png" alt="Step 1 image" className={styles.image} />
+          <img src="/assest/images/for-work/for-employers/16551177-616856_969601.png" alt="Step 1 image" className={styles.image} />
         </div>
 
         <div className={`${styles.stepContainer} ${styles.stepReverse}`}>
-          <img src="/assest/images/chronic-care/16551177-853714_212521.png" alt="Step 2 image" className={styles.image} />
+          <img src="/assest/images/for-work/for-employers/16551177-969382_400382.png" alt="Step 2 image" className={styles.image} />
           <div className={styles.textContainer}>
             <h3>High engagement and utilization </h3>
             <p>
@@ -58,11 +58,11 @@ function Section2() {
             Wysa significantly improves mood, reduces depression, and relieves anxiety, with symptom improvements of 31% to 40% from AI alone. We support people at all levels of need—mild, moderate, and severe. The UK’s NHS uses Wysa to help patients reduce symptoms before they even start therapy!
             </p>
           </div>
-          <img src="/assest/images/chronic-care/16551177-211250_640546.png" alt="Step 3 image" className={styles.image} />
+          <img src="/assest/images/for-work/for-employers/16551177-49479_414190.png" alt="Step 3 image" className={styles.image} />
         </div>
 
         <div className={`${styles.stepContainer} ${styles.stepReverse}`}>
-          <img src="/assest/images/chronic-care/16551177-589894_408774.png" alt="Step 4 image" className={styles.image} />
+          <img src="/assest/images/for-work/for-employers/16551177-903742_832666.png" alt="Step 4 image" className={styles.image} />
           <div className={styles.textContainer}>
             <h3>Data-driven insights for ROI </h3>
             <p>
