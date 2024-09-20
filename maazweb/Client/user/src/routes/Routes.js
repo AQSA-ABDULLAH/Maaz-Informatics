@@ -19,6 +19,8 @@ import Team from "../pages/about-us/team/Team";
 import FAQ from "../pages/about-us/faq/FAQ";
 import ContactUs from "../pages/about-us/contact-us/ContactUs";
 import Career from "../pages/about-us/careers/Career";
+import ForEmployers from "../pages/for-work/for-employers/ForEmployers.js";
+import ForTeam from "../pages/for-work/for-teams/ForTeam.js";
 
 function AppRoutes() {
     const dispatch = useDispatch();
@@ -72,6 +74,8 @@ function AppRoutes() {
                 <Route path="/about-us/faq" element={<FAQ />} />
                 <Route path="/about-us/contact-us" element={<ContactUs />} />
                 <Route path="/about-us/careers" element={<Career />} />
+                <Route path="/for-work/for-employers" element={<ForEmployers />} />
+                <Route path="/for-work/for-team" element={<ForTeam />} />
 
                 {/* Authenticated routes */}
                 <Route
