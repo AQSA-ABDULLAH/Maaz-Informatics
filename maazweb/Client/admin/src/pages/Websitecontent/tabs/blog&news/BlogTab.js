@@ -118,10 +118,14 @@ const BlogTab = () => {
             if (response.data.code === 403 && response.data.message === "Token Expired") {
                 localStorage.setItem('token', null);
             }
-
+ 
         } catch (error) {
             console.error("An error occurred while submitting the data:", error);
-            alert("An error occurred while submitting the data. Please try again.");
+            Swal.fire(
+                'FAILED!',
+                'You have failed to upload a new blog. </br> Plz Check your internet connection and try again',
+                'error'
+            );
         }
     };
 

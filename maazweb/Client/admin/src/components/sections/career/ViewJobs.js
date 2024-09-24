@@ -59,13 +59,6 @@ export default function ViewJob() {
     return (
         <div className={styles.jobSection}>
             <div className={styles.jobContainer}>
-                {/* <div className={styles.header}>
-                    <h2>Available Jobs</h2>
-                    <div className={styles.locationFilter}>
-                        <button>All Locations <span className={styles.dropdownArrow}>▾</span></button>
-                    </div>
-                </div> */}
-
                 {categories.map((category) => (
                     <div key={category} className={styles.jobCategory}>
                         <h3>{category}</h3>

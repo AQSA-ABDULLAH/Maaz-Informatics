@@ -15,7 +15,7 @@ const AddClient = ({ onClose }) => {
     const [imageUrl, setImageUrl] = useState("");
     const [error, setError] = useState(false);
     const [uploadProgress, setUploadProgress] = useState(0);
-    const navigate = useNavigate(); // Initialize the navigate function
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (Image) {
@@ -73,7 +73,10 @@ const AddClient = ({ onClose }) => {
             }
         } catch (error) {
             console.error("Error submitting data: ", error);
-            Swal.fire('Error', 'An error occurred while submitting the data. Please try again.', 'error');
+            Swal.fire('FAILED!',
+                'An error occurred while submitting the data. </br> Plz Check your internet connection and try again.',
+                'error'
+            );
         }
     };
 
@@ -131,15 +134,15 @@ const AddClient = ({ onClose }) => {
                         <Button
                             btnClick={onClose}
                             btnText="CANCEL"
-                            size="14px"         
+                            size="14px"
                             secondary
-                            radius="5px"       
+                            radius="5px"
                         />
 
                         <Button
                             btnClick={handleSubmit}
                             btnText="SUBMIT"
-                            size="14px"  
+                            size="14px"
                             primary
                             radius="5px"
                         />

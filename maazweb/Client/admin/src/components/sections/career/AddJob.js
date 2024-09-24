@@ -4,6 +4,7 @@ import Button from "../../atoms/buttons/Button";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { API_URL } from "../../../constants/WebsiteConstants";
+import { category as validateCategory, title as validateTitle } from "../../../utils/validations/Validations";
 
 const AddJob = ({ onClose }) => {
     const [title, setTitle] = useState("");
@@ -18,6 +19,20 @@ const AddJob = ({ onClose }) => {
         // Basic validation
         if (!title || !category || !location || !description) {
             setError(true);
+            return;
+        }
+
+        // Validation checks
+        if (!validateTitle(title)) {
+            Swal.fire('Validation Error', 'Please provide a valid title (letters and spaces only).', 'error');
+            return;
+        }
+        if (!validateCategory(category)) { 
+            Swal.fire('Validation Error', 'Please provide a valid category (Letters Only).', 'error');
+            return;
+        }
+        if (!validateTitle(location)) {
+            Swal.fire('Validation Error', 'Please provide a valid Location letters and spaces only)', 'error');
             return;
         }
 
@@ -41,8 +56,6 @@ const AddJob = ({ onClose }) => {
                     'success'
                 );
                 onClose();
-            } else {
-                alert("Failed to submit data. Please try again.");
             }
 
             if (response.data.code === 403 && response.data.message === "Token Expired") {
@@ -51,7 +64,11 @@ const AddJob = ({ onClose }) => {
 
         } catch (error) {
             console.error("An error occurred while submitting the data:", error);
-            alert("An error occurred while submitting the data. Please try again.");
+            Swal.fire(
+                'FAILED!',
+                'You have failed to upload a new Job. </br> Plz Check your internet connection and try again',
+                'error'
+            );
         }
     };
 

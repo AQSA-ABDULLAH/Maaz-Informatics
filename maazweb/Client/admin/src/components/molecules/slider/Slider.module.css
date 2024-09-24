@@ -7,3 +7,112 @@
 .space{
     margin-top: 4rem;
 }
+
+
+/* SLIDER FORM */
+/* Hidden file input */
+.form_image {
+    opacity: 0;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+/* Image container */
+.image_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 85px 20px;
+}
+
+/* Container for the image or upload icon */
+.image_view {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px dashed #9f29bd;  /* Purple border */
+    border-radius: 8px;           /* Rounded corners */
+    height: 80%;                  /* Container height to adapt to parent */
+    width: 95%;                   /* Full width of the parent container */
+    padding: 1rem;
+    max-width: 100%;              /* Ensure responsive width */
+    transition: border-color 0.3s ease;
+    margin: 2rem auto;            /* Auto margins for horizontal centering */
+}
+
+/* Hover effect on image upload container */
+.image_view:hover {
+    border-color: #6c15a3;        /* Change border color on hover */
+}
+
+/* Uploaded image styling */
+.image_view img {
+    max-width: 100%;              /* Ensure image does not overflow horizontally */
+    height: 75vh;                 /* 75% of the viewport height */
+    object-fit: cover;            /* Cover the container, cropping image if needed */
+    border-radius: 6px;           /* Rounded corners on the image */
+}
+
+/* Upload icon styling */
+.icon {
+    font-size: 5rem;
+    color: #9f29bd;               /* Same color as the dashed border */
+    transition: color 0.3s ease;
+}
+
+/* Hover effect on upload icon */
+.image_view:hover .icon {
+    color: #6c15a3;               /* Change icon color on hover */
+}
+
+/* Error message styling */
+.text_danger {
+    color: red;
+    font-size: 12px;
+    padding-top: 0.5rem;
+}
+
+/* Button row styling */
+.row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+}
+
+/* Progress bar container */
+.progressBarContainer {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 10px;
+}
+
+/* Progress bar */
+.progressBar {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+    transition: width 0.2s ease-in;
+}
+
+/* Form container */
+.container {
+    padding: 32px;
+    height: 20vh;                 /* 75% of the viewport height */
+    overflow-y: scroll;
+    width: 100%;
+    box-sizing: border-box;        /* Padding included in height/width */
+    border: 1px solid #ddd;        /* Outer border */
+    border-radius: 10px;           /* Rounded corners */
+}
+
+/* Additional spacing */
+.space {
+    margin-top: 4rem;
+}
+

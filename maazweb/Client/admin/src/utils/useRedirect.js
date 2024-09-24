@@ -7,7 +7,7 @@ export const useRedirectIfAuthenticated = (isAuth) => {
 
   useEffect(() => {
     if (isAuth) {
-      navigate('/');  // Redirect to home page if user is already authenticated
+      navigate('/');
     }
   }, [isAuth, navigate]);
 }

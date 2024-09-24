@@ -9,7 +9,7 @@ const Slider = () => {
 
   const addSliderHandler = () => {
     setShowSliderForm(true);
-    window.location.href = "#addslider"; // This will scroll to the slider form
+    window.location.href = "#addslider";
   };
 
   return (
