@@ -1,10 +1,6 @@
 
 export const Tab = [
   {
-    text: "About",
-    onClick: '/aboutus'
-  },
-  {
     text: "Team",
     onClick: '/team'
   },

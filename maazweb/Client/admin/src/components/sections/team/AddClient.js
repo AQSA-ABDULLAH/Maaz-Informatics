@@ -8,20 +8,21 @@ import { getDownloadURL } from "firebase/storage";
 import { app } from "../../../firebase";
 import Button from "../../atoms/buttons/Button";
 import { API_URL } from "../../../constants/WebsiteConstants";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const AddClient = ({ onClose }) => {
     const [Image, setImage] = useState(null);
     const [imageUrl, setImageUrl] = useState("");
     const [error, setError] = useState(false);
+    const [uploadProgress, setUploadProgress] = useState(0);
+    const navigate = useNavigate(); // Initialize the navigate function
 
-    // Firebase file upload handler
     useEffect(() => {
         if (Image) {
             uploadFile(Image);
         }
     }, [Image]);
 
-    // Function to upload image to Firebase
     const uploadFile = (file) => {
         const storage = getStorage(app);
         const storageRef = ref(storage, 'Team/' + file.name);
@@ -30,6 +31,7 @@ const AddClient = ({ onClose }) => {
         uploadTask.on('state_changed',
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setUploadProgress(progress);
                 console.log('Upload is ' + progress + '% done');
             },
             (error) => {
@@ -39,6 +41,7 @@ const AddClient = ({ onClose }) => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     setImageUrl(downloadURL);
                     console.log('File available at', downloadURL);
+                    setUploadProgress(0);
                 });
             }
         );
@@ -63,6 +66,7 @@ const AddClient = ({ onClose }) => {
 
             if (response.data.status === "success") {
                 Swal.fire('Add New Partner!', 'You have successfully added a new Partner.', 'success');
+                navigate('/'); // Navigate to the "/" URL
                 onClose();
             } else {
                 Swal.fire('Error', 'Failed to submit data. Please try again.', 'error');
@@ -115,6 +119,14 @@ const AddClient = ({ onClose }) => {
                         </div>
                         {error && !Image && <span className={style.text_danger}>Please select an image.</span>}
                     </div>
+
+                    {/* Progress Bar */}
+                    {uploadProgress > 0 && (
+                        <div className={style.progressBarContainer}>
+                            <div className={style.progressBar} style={{ width: `${uploadProgress}%` }}></div>
+                        </div>
+                    )}
+
                     <div className={style.row}>
                         <Button
                             btnClick={onClose}
@@ -132,8 +144,6 @@ const AddClient = ({ onClose }) => {
                             radius="5px"
                         />
                     </div>
-
-
                 </div>
             </div>
         </>

@@ -3,7 +3,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import styles from "./websitecontent.module.css";
 import Button from "../../../components/atoms/buttons/Button";
 import { Tab } from "../../../constants/WebsiteContentTab";
-import AboutTab from '../tabs/about/AboutTab';
 import SliderTab from '../tabs/slider/SliderTab';
 import TeamTab from '../tabs/client-partner/TeamTab';
 import BlogTab from "../tabs/blog&news/BlogTab";
@@ -49,16 +48,14 @@ const WebsiteContent = () => {
   const renderTabContent = () => {
     switch (isActive) {
       case 0:
-        return <AboutTab />
-      case 1:
         return <TeamTab />
-      case 2:
+      case 1:
         return <SliderTab />
-      case 3:
+      case 2:
         return <BlogTab/>
-      case 4:
+      case 3:
         return <JobTab />
-      case 5:
+      case 4:
         return <FAQTab />
       default:
         return null;
