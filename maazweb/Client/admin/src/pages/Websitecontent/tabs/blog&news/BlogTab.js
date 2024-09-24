@@ -9,12 +9,13 @@ import Button from "../../../../components/atoms/buttons/Button";
 import { useNavigate } from 'react-router-dom';
 import styles from "./blogtab.module.css";
 import { API_URL } from "../../../../constants/WebsiteConstants";
+import { category as validateCategory, title as validateTitle } from "../../../../utils/validations/Validations";
 
 const BlogTab = () => {
     const inputRef = useRef(null);
     const [image, setImage] = useState("");
     const [heading, setHeading] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("");  
     const [writtenby, setWrittenby] = useState("");
     const [content, setContent] = useState("");
     const [imageUrl, setImageUrl] = useState("");
@@ -71,6 +72,20 @@ const BlogTab = () => {
             return;
         }
         setError(false);
+
+        // Validation checks
+        if (!validateTitle(heading)) {
+            Swal.fire('Validation Error', 'Please provide a valid title (letters and spaces only).', 'error');
+            return;
+        }
+        if (!validateCategory(category)) { 
+            Swal.fire('Validation Error', 'Please provide a valid category (Letters Only).', 'error');
+            return;
+        }
+        if (!validateTitle(writtenby)) {
+            Swal.fire('Validation Error', 'Please provide a valid name for the author.', 'error');
+            return;
+        }
 
         const blogData = {
             image: imageUrl,
@@ -143,15 +158,15 @@ const BlogTab = () => {
                                     />
 
                                 </div>
-                                  {/* Progress Bar */}
-                            {uploadProgress > 0 && (
-                                <div className={styles.progressBarContainer}>
-                                    <div className={styles.progressBar} style={{ width: `${uploadProgress}%` }}></div>
-                                </div>
-                            )}
+
+                                {/* Progress Bar */}
+                                {uploadProgress > 0 && (
+                                    <div className={styles.progressBarContainer}>
+                                        <div className={styles.progressBar} style={{ width: `${uploadProgress}%` }}></div>
+                                    </div>
+                                )}
                                 {error && !image && <span className={styles.text_danger}>Plz Select Any Image</span>}
                             </div>
-
 
                             <div className={`${styles.formField} ${styles.formInput}`}>
                                 <div className={styles.colItem}>

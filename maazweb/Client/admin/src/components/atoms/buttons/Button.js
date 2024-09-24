@@ -40,7 +40,7 @@ const Button = (props) => {
       className="btn" 
       style={{
         ...buttonStyle,
-        backgroundColor: hovered ? hoverColor || "#0066CC" : buttonStyle.backgroundColor, // Default hoverColor applied
+        backgroundColor:  buttonStyle.backgroundColor, 
         cursor: "pointer",
       }} 
       onClick={btnClick}
