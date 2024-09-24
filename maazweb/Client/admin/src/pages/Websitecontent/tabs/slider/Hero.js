@@ -13,7 +13,7 @@ const Hero = () => {
       try {
         const response = await axios.get(`${API_URL}/api/slider/get-slider`);
         if (response.data && response.data.status === "success") {
-          setSliderData(response.data.data);  // Assuming the slider images array is in response.data.data
+          setSliderData(response.data.data); 
         } else {
           console.error("Failed to fetch slider images");
         }

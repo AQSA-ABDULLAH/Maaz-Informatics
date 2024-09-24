@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Swal from 'sweetalert2';
+import { MdCloudUpload } from "react-icons/md";
 import { getStorage, ref, uploadBytesResumable } from "firebase/storage";
 import { getDownloadURL } from "firebase/storage";
 import { app } from "../../../../firebase";
@@ -8,15 +9,17 @@ import Button from "../../../../components/atoms/buttons/Button";
 import { useNavigate } from 'react-router-dom';
 import styles from "./blogtab.module.css";
 import { API_URL } from "../../../../constants/WebsiteConstants";
+import { category as validateCategory, title as validateTitle } from "../../../../utils/validations/Validations";
 
 const BlogTab = () => {
     const inputRef = useRef(null);
     const [image, setImage] = useState("");
     const [heading, setHeading] = useState("");
-    const [category, setCategory] = useState("");
+    const [category, setCategory] = useState("");  
     const [writtenby, setWrittenby] = useState("");
     const [content, setContent] = useState("");
     const [imageUrl, setImageUrl] = useState("");
+    const [uploadProgress, setUploadProgress] = useState(0);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
@@ -38,6 +41,7 @@ const BlogTab = () => {
         uploadTask.on('state_changed',
             (snapshot) => {
                 const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                setUploadProgress(progress);
                 console.log('Upload is ' + progress + '% done');
 
             },
@@ -48,6 +52,7 @@ const BlogTab = () => {
                 getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                     setImageUrl(downloadURL); // Update imageUrl directly
                     console.log('File available at', downloadURL);
+                    setUploadProgress(0);
                 });
 
 
@@ -59,15 +64,29 @@ const BlogTab = () => {
     // API SETUP
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
-    
+
+
         // Check if required fields are filled
         if (!imageUrl || !heading || !category || !writtenby || !content) {
             setError(true);
             return;
         }
         setError(false);
-    
+
+        // Validation checks
+        if (!validateTitle(heading)) {
+            Swal.fire('Validation Error', 'Please provide a valid title (letters and spaces only).', 'error');
+            return;
+        }
+        if (!validateCategory(category)) { 
+            Swal.fire('Validation Error', 'Please provide a valid category (Letters Only).', 'error');
+            return;
+        }
+        if (!validateTitle(writtenby)) {
+            Swal.fire('Validation Error', 'Please provide a valid name for the author.', 'error');
+            return;
+        }
+
         const blogData = {
             image: imageUrl,
             heading,
@@ -75,16 +94,16 @@ const BlogTab = () => {
             writtenby,
             content
         };
-        
-    
+
+
         try {
             const response = await axios.post(`${API_URL}/api/blogs/create-blog`, blogData, {
-                headers: { 
-                    'Authorization': localStorage.getItem('token'), 
+                headers: {
+                    'Authorization': localStorage.getItem('token'),
                     'Content-Type': 'application/json'
                 }
             });
-    
+
             if (response.data.status === "success") {
                 Swal.fire(
                     'Add New Blog!',
@@ -95,18 +114,22 @@ const BlogTab = () => {
             } else {
                 alert("Failed to submit data. Please try again.");
             }
-    
+
             if (response.data.code === 403 && response.data.message === "Token Expired") {
                 localStorage.setItem('token', null);
             }
-    
+ 
         } catch (error) {
             console.error("An error occurred while submitting the data:", error);
-            alert("An error occurred while submitting the data. Please try again.");
+            Swal.fire(
+                'FAILED!',
+                'You have failed to upload a new blog. </br> Plz Check your internet connection and try again',
+                'error'
+            );
         }
     };
-    
-    
+
+
 
 
 
@@ -128,10 +151,7 @@ const BlogTab = () => {
                                         />
                                     ) : (
                                         <label htmlFor="sliderImg">
-                                            <img
-                                                src="./assets/images/photograph.svg"
-                                                alt="icon"
-                                            />
+                                            <MdCloudUpload className={styles.icon} />
                                         </label>
                                     )}
 
@@ -142,6 +162,13 @@ const BlogTab = () => {
                                     />
 
                                 </div>
+
+                                {/* Progress Bar */}
+                                {uploadProgress > 0 && (
+                                    <div className={styles.progressBarContainer}>
+                                        <div className={styles.progressBar} style={{ width: `${uploadProgress}%` }}></div>
+                                    </div>
+                                )}
                                 {error && !image && <span className={styles.text_danger}>Plz Select Any Image</span>}
                             </div>
 

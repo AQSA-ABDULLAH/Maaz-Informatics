@@ -12,12 +12,12 @@ export function email(email) {
 
   return emailRegex.test(email);
 }
-export function name(name) {
-  if (name === "") return true;
+export function category(category) {
+  if (category === "") return true;
 
-  const nameRegex = /^[A-Za-z'\s]+$/;
+  const categoryRegex = /^[A-Za-z]+$/;
 
-  return nameRegex.test(name);
+  return categoryRegex.test(category);
 }
 
 export function title(title){

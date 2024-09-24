@@ -1,10 +1,9 @@
-/* trainersForm styles */
 .addFormContainer{
-    /* margin-top: 4rem; */
     width: 100%;
     border-radius: 0.625rem;
     border: 1px solid lightgray;
 }
+
 .formTop{
 font-size: 1rem;
 font-style: normal;
@@ -13,10 +12,71 @@ line-height: 1.75rem;
 text-transform: capitalize;
 padding: 1.5rem 1.5rem 1.5rem 2.5rem;
 }
+
 .addForm{
     padding: 1.5rem 2.5rem;
     background-color: #fafafa;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
-    /* background-color: red; */
+}
+
+.progressBarContainer {
+    width: 100%;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    height: 10px;
+    margin-top: 10px;
+}
+
+.progressBar {
+    height: 100%;
+    background-color: #4caf50;
+    border-radius: 5px;
+    transition: width 0.2s ease-in;
+}
+
+/* IMAGE STYLE */
+.form_image {
+    opacity: 0;
+    position: absolute;
+    height: 14.5rem;
+    cursor: pointer;
+}
+
+.image_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.image_view {
+    border: 2px dashed #333;
+    border-radius: 6px;
+    height: 14.5rem;
+    width: 15rem;
+}
+
+.image_view img {
+    width: 14.9rem;
+    height: 14.3rem;
+}
+
+
+.icon {
+    font-size: 5rem;
+    color: #9f29bd;
+}
+
+.text_danger {
+    color: red;
+    font-size: 11px;
+    padding: 0;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 50px;
 }
