@@ -28,7 +28,7 @@
 .formRow {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-top: .3rem;
   gap: 0px 20px;
 }
@@ -43,7 +43,6 @@
   font-family: 'Sintony', sans-serif;
 }
 
-/* Styling for active (focused) input */
 .formRow input:focus,
 .formRow textarea:focus {
   border-color: #a871d8;
@@ -52,25 +51,41 @@
 .btns {
   width: 100%;
   background-color: #9f29bd;
-  margin-top: 2rem;
+  margin-top: 2.2rem;
   display: flex;
   justify-content: center;
 }
 
-.formRow label {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-}
-
 .check{
   font-size: 0.8rem;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
-.formRow label {
-  font-size: 0.875rem;
-  color: #555;
+.colItem, .colMail {
+  width: 100%;
+}
+
+.colItem input, .colMail input {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 3px;
+  font-family: 'Sintony', sans-serif;
+  margin-bottom: 5px;
+}
+
+.text_danger {
+  color: red;
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+.formRow .colItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0; /* Remove the negative margin */
 }
 
 /* Responsive CSS for small screens */
