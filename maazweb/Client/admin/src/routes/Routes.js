@@ -6,6 +6,7 @@ import AdminDashboard from "../pages/Dashboard/AdminDashboard";
 import WebsiteContent from "../pages/Websitecontent/main/WebsiteContent";
 import ErrorPage from "../pages/404/ErrorPage";
 import ManageContactUs from "../pages/ContactUs/ManageContactUs";
+import ManageUsers from "../pages/Users/ManageUsers";
 
 const RoutesStack = ({ openSidebar, setOpenSidebar }) => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const RoutesStack = ({ openSidebar, setOpenSidebar }) => {
           <Route path="/" element={<AdminDashboard />} />
           <Route path="/website-content" element={<WebsiteContent />} />
           <Route path="/contact-us" element={<ManageContactUs />} />
+          <Route path="/manageUsers" element={<ManageUsers />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

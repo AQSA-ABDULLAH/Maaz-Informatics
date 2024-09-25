@@ -25,14 +25,9 @@ export const Main = [
     route:'/contact-us'
   },
   {
-    icon: <BiSolidContact size={20}/>,
-    text: "home",
-    route:'/transport-managment'
-  },
-  {
     icon: <FaUsers size={20}/>,
-    text: "home",
-    route:'/manageEmployees'
+    text: "Manage Users",
+    route:'/manageUsers'
   },
 ];
 
