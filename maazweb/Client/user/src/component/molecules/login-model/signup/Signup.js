@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./signup.module.css";
 import axios from "axios";
-import Swal from "sweetalert2";
 import { API_URL, WEBSITE_NAME } from "../../../constant/WebsiteConstants";
 import OTP from "../opt-verification/OTP";
 import Button from "../../../atoms/button/Button";
@@ -18,6 +17,8 @@ function Signup({ onClose }) {
   const [isChecked, setIsChecked] = useState(false);
   const [showOtpForm, setShowOtpForm] = useState(false);
   const [email, setEmail] = useState("");
+  const [apiError, setApiError] = useState("");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -50,10 +51,14 @@ function Signup({ onClose }) {
       setEmail(formData.email);
       setShowOtpForm(true);
     } catch (error) {
-      Swal.fire("Sign Up Failed!", "Please check your information and try again.", "error");
-      setError("An error occurred. Please try again.");
+      setApiError("API ERROR, Please check your information and try again.");
     }
   };
+
+    // Close the modal
+    const closeModal = () => {
+      setApiError(""); // Clear the error message when closing
+    };
 
   const closeOtpForm = () => {
     setShowOtpForm(false);
@@ -170,7 +175,15 @@ function Signup({ onClose }) {
               </div>
           </div>
 
-          {error && <div className={styles.error}>{error}</div>}
+          {/* Modal for API error */}
+      {apiError && (
+        <div className={styles.backdrop}>
+          <div className={styles.alertModal}>
+            <div>{apiError}</div>
+            <button className={styles.closeButton} onClick={closeModal}>Close</button>
+          </div>
+        </div>
+      )}
 
           <div className={styles.btns}>
             <Button

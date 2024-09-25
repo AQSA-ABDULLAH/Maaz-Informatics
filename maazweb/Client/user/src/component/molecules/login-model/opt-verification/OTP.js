@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import styles from "./otp.module.css";
 import { API_URL } from "../../../constant/WebsiteConstants";
 import Swal from "sweetalert2";
 
-function OTP({ email, closeModal }) {  // Accept closeModal as a prop
+function OTP({ email, closeModal }) { 
   const [otp, setOtp] = useState(["", "", "", ""]);
+  const navigate = useNavigate();
 
   const handleChange = (e, index) => {
     const value = e.target.value;
@@ -35,6 +37,7 @@ function OTP({ email, closeModal }) {  // Accept closeModal as a prop
       if (response.data.success || response.data.status === "success") {
         Swal.fire("OTP Verified!", "Your account has been verified.", "success");
         closeModal();
+        navigate("/");
       } else if (response.data.message) {
         Swal.fire("OTP Verification Failed", response.data.message, "error");
       } else {
@@ -45,8 +48,6 @@ function OTP({ email, closeModal }) {  // Accept closeModal as a prop
       Swal.fire("Error", "Failed to verify OTP. Please try again.", "error");
     }
   };
-  
-  
   
   return (
     <div className={styles.otpContainer}>
@@ -73,5 +74,3 @@ function OTP({ email, closeModal }) {  // Accept closeModal as a prop
 }
 
 export default OTP;
-
-
