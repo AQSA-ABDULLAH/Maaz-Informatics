@@ -16,3 +16,9 @@
 .password_toggle_icon:active {
     transform: scale(0.95); 
 }
+
+.text_danger {
+    color: red;
+    font-size: 12px;
+    margin-top: -5px;
+  }

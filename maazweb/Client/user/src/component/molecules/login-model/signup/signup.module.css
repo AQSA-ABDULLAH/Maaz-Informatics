@@ -28,7 +28,7 @@
 .formRow {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-top: .3rem;
   gap: 0px 20px;
 }
@@ -43,7 +43,6 @@
   font-family: 'Sintony', sans-serif;
 }
 
-/* Styling for active (focused) input */
 .formRow input:focus,
 .formRow textarea:focus {
   border-color: #a871d8;
@@ -52,26 +51,82 @@
 .btns {
   width: 100%;
   background-color: #9f29bd;
-  margin-top: 2rem;
+  margin-top: 2.2rem;
   display: flex;
   justify-content: center;
 }
 
-.formRow label {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-}
-
 .check{
   font-size: 0.8rem;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
-.formRow label {
-  font-size: 0.875rem;
-  color: #555;
+.colItem, .colMail {
+  width: 100%;
 }
+
+.colItem input, .colMail input {
+  width: 100%;
+  padding: 0.65rem;
+  border: 1px solid lightgray;
+  outline: none;
+  border-radius: 3px;
+  font-family: 'Sintony', sans-serif;
+  margin-bottom: 5px;
+}
+
+.text_danger {
+  color: red;
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+.formRow .colItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 0; /* Remove the negative margin */
+}
+
+/* ALERT BOX STYLE */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; 
+}
+
+.alertModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  background-color: #fff; 
+  border: 1px solid #f5c6cb; 
+  border-radius: 4px;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000; 
+  animation: fadeIn 0.5s; 
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.closeButton {
+  background-color: #721c24;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 10px;
+  cursor: pointer;
+}
+
 
 /* Responsive CSS for small screens */
 @media screen and (max-width: 768px) {
