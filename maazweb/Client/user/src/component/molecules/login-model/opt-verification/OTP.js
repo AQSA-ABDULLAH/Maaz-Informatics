@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import styles from "./otp.module.css";
 import { API_URL } from "../../../constant/WebsiteConstants";
 import Swal from "sweetalert2";
 
-function OTP({ email, closeModal }) { 
+function OTP({ email, closeModal }) {
   const [otp, setOtp] = useState(["", "", "", ""]);
-  const navigate = useNavigate();
 
   const handleChange = (e, index) => {
     const value = e.target.value;
@@ -24,20 +22,20 @@ function OTP({ email, closeModal }) {
 
   const handleSubmit = async () => {
     const enteredOtp = parseInt(otp.join(""), 10);
-  
+
     try {
       console.log(email, enteredOtp);
       const response = await axios.post(`${API_URL}/api/user/send-otp`, {
         email,
         otp: enteredOtp,
       });
-  
+
       console.log("API response:", response);
-  
+
       if (response.data.success || response.data.status === "success") {
         Swal.fire("OTP Verified!", "Your account has been verified.", "success");
-        closeModal();
-        navigate("/");
+        closeModal(); // Close the modal and reload the page
+        window.location.reload(); // Reload the page
       } else if (response.data.message) {
         Swal.fire("OTP Verification Failed", response.data.message, "error");
       } else {
@@ -48,7 +46,7 @@ function OTP({ email, closeModal }) {
       Swal.fire("Error", "Failed to verify OTP. Please try again.", "error");
     }
   };
-  
+
   return (
     <div className={styles.otpContainer}>
       <h2>Check your Email</h2>
@@ -74,3 +72,4 @@ function OTP({ email, closeModal }) {
 }
 
 export default OTP;
+

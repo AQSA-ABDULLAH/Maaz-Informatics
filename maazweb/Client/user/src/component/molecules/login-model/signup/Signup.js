@@ -4,9 +4,9 @@ import axios from "axios";
 import { API_URL, WEBSITE_NAME } from "../../../constant/WebsiteConstants";
 import OTP from "../opt-verification/OTP";
 import Button from "../../../atoms/button/Button";
+import * as validate from "../../../../utils/validations/Validations";
 
 function Signup({ onClose }) {
-  const [error, setError] = useState("");
   const [formData, setFormData] = useState({
     userName: "",
     country: "",
@@ -14,38 +14,91 @@ function Signup({ onClose }) {
     password: "",
     confirmPassword: "",
   });
+  const [error, setError] = useState({
+    userName: "",
+    country: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    consent: "",
+  });
   const [isChecked, setIsChecked] = useState(false);
   const [showOtpForm, setShowOtpForm] = useState(false);
   const [email, setEmail] = useState("");
   const [apiError, setApiError] = useState("");
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    let errorMessage = "";
+
+    switch (name) {
+      case "userName":
+        if (!validate.name(value)) {
+          errorMessage = "Provide a valid User Name.";
+        }
+        break;
+      case "country":
+        if (!validate.name(value)) {
+          errorMessage = "Provide a valid Country.";
+        }
+        break;
+      case "email":
+        if (!validate.email(value)) {
+          errorMessage = "Provide a valid Email.";
+        }
+        break;
+      case "password":
+      case "confirmPassword":
+        if (!validate.password(value)) {
+          errorMessage = "Pasword must have (A-Z), (a-z), (0-9) or sepecial charcter.";
+        }
+        break;
+      default:
+        break;
+    }
+
+    setError((prevError) => ({
+      ...prevError,
+      [name]: errorMessage,
+    }));
+
+    setFormData((prevFormData) => ({ ...prevFormData, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Check if required fields are filled
     const { userName, country, email, password, confirmPassword } = formData;
 
+    // Validation checks
     if (!userName || !country || !email || !password || !confirmPassword || !isChecked) {
-      setError(true);
+      setError((prevError) => ({
+        ...prevError,
+        userName: !userName ? "User Name is required." : "",
+        country: !country ? "Country is required." : "",
+        email: !email ? "Email is required." : "",
+        password: !password ? "Password is required." : "",
+        confirmPassword: !confirmPassword ? "Confirm Password is required." : "",
+        consent: !isChecked ? "You must consent to the processing of your personal information." : "",
+      }));
       return;
     }
-    setError(false);
 
+    // Check if passwords match
     if (password !== confirmPassword) {
-      setError("Passwords do not match");
+      setError((prevError) => ({
+        ...prevError,
+        password: "Passwords do not match",
+      }));
       return;
     }
 
     try {
-      setError("");
+      setApiError(""); // Clear any previous API error
       const response = await axios.post(`${API_URL}/api/user/user_signUp`, formData);
       console.log("API response:", response.data);
 
-      // Assuming the token is in response.data.token
-      const token = response.data.token;
-
-      // Store the token in local storage
+      const token = response.data.token; // Assuming the token is in response.data.token
       localStorage.setItem("access_token", token);
 
       setEmail(formData.email);
@@ -55,23 +108,13 @@ function Signup({ onClose }) {
     }
   };
 
-    // Close the modal
-    const closeModal = () => {
-      setApiError(""); // Clear the error message when closing
-    };
+  const closeModal = () => {
+    setApiError(""); // Clear the error message when closing
+  };
 
   const closeOtpForm = () => {
     setShowOtpForm(false);
     onClose();
-  };
-
-  // Handle form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevFormData) => ({
-      ...prevFormData,
-      [name]: value,
-    }));
   };
 
   return (
@@ -96,9 +139,7 @@ function Signup({ onClose }) {
                     onChange={handleChange}
                     placeholder="UserName"
                   />
-                  {error && !formData.userName && (
-                    <span className={styles.text_danger}>User Name is required</span>
-                  )}
+                  {error.userName && <span className={styles.text_danger}>{error.userName}</span>}
                 </div>
 
                 <div className={styles.colItem}>
@@ -109,9 +150,7 @@ function Signup({ onClose }) {
                     onChange={handleChange}
                     placeholder="Country"
                   />
-                  {error && !formData.country && (
-                    <span className={styles.text_danger}>Country is required</span>
-                  )}
+                  {error.country && <span className={styles.text_danger}>{error.country}</span>}
                 </div>
               </div>
 
@@ -124,9 +163,7 @@ function Signup({ onClose }) {
                     onChange={handleChange}
                     placeholder="Email Address"
                   />
-                  {error && !formData.email && (
-                    <span className={styles.text_danger}>Email is required</span>
-                  )}
+                  {error.email && <span className={styles.text_danger}>{error.email}</span>}
                 </div>
               </div>
 
@@ -139,9 +176,7 @@ function Signup({ onClose }) {
                     onChange={handleChange}
                     placeholder="Password"
                   />
-                  {error && !formData.password && (
-                    <span className={styles.text_danger}>Password is required</span>
-                  )}
+                  {error.password && <span className={styles.text_danger}>{error.password}</span>}
                 </div>
                 <div className={styles.colItem}>
                   <input
@@ -151,9 +186,7 @@ function Signup({ onClose }) {
                     onChange={handleChange}
                     placeholder="Confirm Password"
                   />
-                  {error && !formData.confirmPassword && (
-                    <span className={styles.text_danger}>Confirm Password is required</span>
-                  )}
+                  {error.confirmPassword && <span className={styles.text_danger}>{error.confirmPassword}</span>}
                 </div>
               </div>
 
@@ -168,37 +201,32 @@ function Signup({ onClose }) {
                     />
                     &nbsp; By clicking submit, I consent to my personal information being
                     processed by {WEBSITE_NAME} to address my request. &nbsp;
-                </label>
-                {error && !formData.isChecked && (
-                  <span className={styles.text_danger}>You must consent to the processing of your personal information</span>
-                )}
+                  </label>
+                  {error.consent && <span className={styles.text_danger}>{error.consent}</span>}
+                </div>
               </div>
-          </div>
 
-          {/* Modal for API error */}
-      {apiError && (
-        <div className={styles.backdrop}>
-          <div className={styles.alertModal}>
-            <div>{apiError}</div>
-            <button className={styles.closeButton} onClick={closeModal}>Close</button>
+              {apiError && (
+                <div className={styles.backdrop}>
+                  <div className={styles.alertModal}>
+                    <div>{apiError}</div>
+                    <button className={styles.closeButton} onClick={closeModal}>Close</button>
+                  </div>
+                </div>
+              )}
+
+              <div className={styles.btns}>
+                <Button
+                  btnClick={handleSubmit}
+                  size="16px"
+                  radius="5px"
+                  btnText="Sign Up"
+                />
+              </div>
+            </form>
           </div>
         </div>
       )}
-
-          <div className={styles.btns}>
-            <Button
-              btnClick={handleSubmit}
-              size="16px"
-              radius="5px"
-              btnText="Sign Up"
-            />
-          </div>
-        </form>
-
-          </div >
-        </div >
-      )
-}
     </>
   );
 }
