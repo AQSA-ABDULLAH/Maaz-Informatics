@@ -9,7 +9,7 @@ import styles from './routes.module.css';
 // Pages
 import Login from "../pages/Login";
 import Profile from "../pages/Profile.js";
-import Signup from "../component/molecules/login-model/signup/Signup"
+import Signup from "../component/molecules/login-model/signup/Signup";
 import Home from "../pages/landing-page/Home";
 import ChronicCare from "../pages/chronic-care/ChronicCare";
 import ClinicalEvidence from "../pages/clinical-evidence/ClinicalEvidence";
@@ -21,6 +21,7 @@ import ContactUs from "../pages/about-us/contact-us/ContactUs";
 import Career from "../pages/about-us/careers/Career";
 import ForEmployers from "../pages/for-work/for-employers/ForEmployers.js";
 import ForTeam from "../pages/for-work/for-teams/ForTeam.js";
+import ChatBot from "../pages/chat-bot/ChatBot.js";
 
 function AppRoutes() {
     const dispatch = useDispatch();
@@ -51,9 +52,12 @@ function AppRoutes() {
 
     // Check for access token in localStorage
     const accessToken = localStorage.getItem("access_token");
-    if (accessToken && !reduxState.isSignedIn) {
-        dispatch(setSignedIn(accessToken));
-    }
+    useEffect(() => {
+        if (accessToken && !reduxState.isSignedIn) {
+            dispatch(setSignedIn(accessToken));
+        }
+        setIsAuthenticated(!!accessToken); // Set authentication state based on token presence
+    }, [accessToken, reduxState.isSignedIn, dispatch]);
 
     return (
         <>
@@ -61,7 +65,6 @@ function AppRoutes() {
             <div className={`${styles.header_container} ${isScrolled ? 'scrolled' : ''}`}>
                 {!noHeaderPaths.includes(location.pathname) && <Header />}
             </div>
-
 
             {/* Define all routes */}
             <Routes>
@@ -88,9 +91,12 @@ function AppRoutes() {
                 />
                 <Route
                     path="/user-profile"
-                    element={isAuthenticated ? <Navigate to="/" replace /> : <Profile />}
+                    element={isAuthenticated ? <Profile /> : <Navigate to="/login" replace />}
                 />
             </Routes>
+
+            {/* Conditionally render ChatBot if authenticated */}
+            {isAuthenticated && <ChatBot />}
 
             {/* Add footer only if path is not in noHeaderPaths */}
             {!noHeaderPaths.includes(location.pathname) && <Footer />}
@@ -99,3 +105,4 @@ function AppRoutes() {
 }
 
 export default AppRoutes;
+
