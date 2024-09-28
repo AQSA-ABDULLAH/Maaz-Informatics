@@ -1,2 +1,0 @@
-# This file configures the analyzer, which statically analyzes Dart code to
-{ include: package:flutter_lints/flutter.yaml, linter: { rules: } }
