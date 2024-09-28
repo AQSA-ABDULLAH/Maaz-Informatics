@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "207021978529",
+    "project_id": "maazinformatics",
+    "storage_bucket": "maazinformatics.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:207021978529:android:198f4fad6ce40d5e6851e0",
+        "android_client_info": {
+          "package_name": "com.example.maazinfo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBx9Y15LG6xsgHi0D8rRjUhUG4wD2mc3vI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

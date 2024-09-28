@@ -1,47 +1,66 @@
 import 'package:flutter/material.dart';
 
-class NavScreen extends StatelessWidget {
+class CustomBottomNavBar extends StatelessWidget {
+  final int selectedIndex;
+  final Function(int) onItemTapped;
+
+  const CustomBottomNavBar({
+    Key? key,
+    required this.selectedIndex,
+    required this.onItemTapped,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0), // Adjust this for better positioning
-      child: Align(
-        alignment: Alignment.bottomCenter,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(30.0), // Rounded corners
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.8, // Adjust width for center alignment
+    return BottomNavigationBar(
+      type: BottomNavigationBarType.fixed,
+      items: <BottomNavigationBarItem>[
+        BottomNavigationBarItem(
+          icon: Container(
             decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.purpleAccent, Colors.deepPurple],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
+              shape: BoxShape.circle,
             ),
-            padding: EdgeInsets.symmetric(vertical: 8), // Padding for height adjustment
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                _buildNavBarItem(Icons.home, context),
-                _buildNavBarItem(Icons.shield, context),
-                _buildNavBarItem(Icons.message, context),
-                _buildNavBarItem(Icons.person, context),
-              ],
-            ),
+            padding: EdgeInsets.all(8),
+            child: Icon(Icons.home, size: 40),
           ),
+          label: '',
         ),
-      ),
-    );
-  }
-
-  Widget _buildNavBarItem(IconData icon, BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: Colors.white,
-      ),
-      padding: EdgeInsets.all(10),
-      child: Icon(icon, color: Colors.deepPurple),
+        BottomNavigationBarItem(
+          icon: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            padding: EdgeInsets.all(8),
+            child: Icon(Icons.security, size: 40),
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            padding: EdgeInsets.all(8),
+            child: Icon(Icons.message, size: 40),
+          ),
+          label: '',
+        ),
+        BottomNavigationBarItem(
+          icon: Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+            ),
+            padding: EdgeInsets.all(8),
+            child: Icon(Icons.person, size: 40),
+          ),
+          label: '',
+        ),
+      ],
+      currentIndex: selectedIndex,
+      selectedItemColor: Colors.purple,
+      unselectedItemColor: Colors.grey, // unselected item color
+      backgroundColor: Colors.white,
+      onTap: onItemTapped,
     );
   }
 }

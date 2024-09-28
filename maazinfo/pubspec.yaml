@@ -1,7 +1,7 @@
 name: maazinfo
 description: A new Flutter project.
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none' # Remove this line if you w ish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
@@ -13,16 +13,28 @@ dependencies:
 
   cupertino_icons: ^1.0.2
 
+  #for api request
+  http:
+
+  flutter_inappwebview: ^6.1.0+1
+  jwt_decoder: ^2.0.1
+  #emailcheck
+  email_validator: ^2.0.1
+  image_picker: ^1.1.2
+  shared_preferences: ^2.1.0
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.1
+  firebase_storage: ^12.3.2
+
+
+
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  flutter_launcher_icons: ^0.11.0
 
-
-flutter_launcher_icons:
-  android: "launcher_icon"
+flutter_icons:
+  android: true
   ios: true
-  image_path: "assets/maaz-logo.jpg"
-
+  image_path: "assets/logo.png"
 flutter:
   uses-material-design: true
 
@@ -32,6 +44,11 @@ flutter:
     - assets/play.png
     - assets/login.png
     - assets/heart.png
+    - assets/splash.png
+    - assets/success.png
+    - assets/verified.png
+    - assets/logo.png
+    - assets/
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
   # "family" key with the font family name, and a "fonts" key with a
@@ -43,7 +60,11 @@ flutter:
       fonts:
         - asset: fonts/Itim-Regular.ttf
 
-            #fonts/Schyler-Italic.ttf
+    - family: Poppins-SemiBold
+      fonts:
+        - asset: fonts/Poppins-SemiBold.ttf
+
+          #fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:

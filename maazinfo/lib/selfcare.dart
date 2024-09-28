@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:maazinfo/HomeScreen.dart';
-import 'package:maazinfo/journey.dart';
-import 'package:maazinfo/nav.dart';
+import 'package:maazinfo/chatbot.dart';
+import 'package:maazinfo/dashboard.dart';
+import 'package:maazinfo/nav.dart'; // Import the custom nav bar
+import 'package:maazinfo/profile.dart';
+import 'package:maazinfo/stack.dart';
 import 'package:maazinfo/therapist.dart';
-// Import
 
 class SelfCareScreen extends StatefulWidget {
   @override
@@ -18,43 +19,33 @@ class _SelfCareScreenState extends State<SelfCareScreen> {
       _selectedIndex = index;
     });
 
-    if (index == 0) {
-      // Navigate to DashboardScreen when Home icon is tapped
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => DashboardScreen(nickname: '',)),
-      );
-    } else {
-      // Handle other navigation items
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Navigation for this item is not yet implemented')),
-      );
-    }
-
-    if (index == 1) {
-      // Navigate to DashboardScreen when Home icon is tapped
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => JourneyScreen()),
-      );
-    } else {
-      // Handle other navigation items
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Navigation for this item is not yet implemented')),
-      );
-    }
-
-    if (index == 2) {
-      // Navigate to DashboardScreen when Home icon is tapped
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => NavScreen()),
-      );
-    } else {
-      // Handle other navigation items
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Navigation for this item is not yet implemented')),
-      );
+    // Navigation logic
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => DashScreen()),
+        );
+        break;
+      case 1:
+      // No need to navigate to SelfCareScreen as it's the current screen
+        break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => TherapistScreen()),
+        );
+        break;
+      case 3:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => ProfileScreen()),
+        );
+        break;
+      default:
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text('Navigation for this item is not yet implemented')),
+        );
     }
   }
 
@@ -68,48 +59,9 @@ class _SelfCareScreenState extends State<SelfCareScreen> {
       body: SafeArea(
         child: Stack(
           children: [
-            // Background 1st circle with gradient
-            Positioned(
-              top: -10,
-              right: -20,
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(
-                    colors: [
-                      Colors.purple.withOpacity(0.6),
-                      Colors.blue.withOpacity(0.4),
-                    ],
-                    center: Alignment.topCenter, // Purple at the top
-                    radius: 1.2,
-                  ),
-                ),
-              ),
-            ),
-            // Second circle with gradient
-            Positioned(
-              top: 60,
-              right: -30,
-              child: Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(
-                    colors: [
-                      Colors.purple.withOpacity(0.6),
-                      Colors.blue.withOpacity(0.4),
-                    ],
-                    center: Alignment.topCenter, // Purple at the top
-                    radius: 1.2,
-                  ),
-                ),
-              ),
-            ),
+            CustomStackWidget(),
             Padding(
-              padding: EdgeInsets.all(screenWidth * 0.05),
+              padding: EdgeInsets.all(screenWidth * 0.09),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -118,9 +70,9 @@ class _SelfCareScreenState extends State<SelfCareScreen> {
                       Text(
                         'SELF CARE',
                         style: TextStyle(
-                          fontSize: screenWidth * 0.03,
+                          fontSize: screenWidth * 0.05,
                           fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color: Colors.black,
                         ),
                       ),
                       Spacer(),
@@ -130,20 +82,19 @@ class _SelfCareScreenState extends State<SelfCareScreen> {
                   SizedBox(height: screenHeight * 0.12),
                   Expanded(
                     child: GridView.count(
-                      crossAxisCount: screenWidth > 600 ? 3 : 2,
+                      crossAxisCount: 2,
                       crossAxisSpacing: screenWidth * 0.03,
                       mainAxisSpacing: screenHeight * 0.02,
+                      childAspectRatio: 0.75,
                       children: [
-                        _buildSelfCareCard(
-                            'Therapist Recommends', screenWidth, context),
-                        _buildSelfCareCard(
-                            'Calmness Exercise', screenWidth, context),
-                        _buildSelfCareCard(
-                            'Anger Management', screenWidth, context),
-                        _buildSelfCareCard(
-                            'Wellness Package', screenWidth, context),
-                        _buildSelfCareCard('Manage Stress', screenWidth, context),
-                        _buildSelfCareCard('Energizing', screenWidth, context),
+                        _buildSelfCareCard('Therapist Recommends', screenWidth),
+                        _buildSelfCareCard('Calmness Exercise', screenWidth),
+                        _buildSelfCareCard('Anger Management', screenWidth),
+                        _buildSelfCareCard('Wellness Package', screenWidth),
+                        _buildSelfCareCard('Manage Stress', screenWidth),
+                        _buildSelfCareCard('Energizing', screenWidth),
+                        _buildSelfCareCard('Healthy Lifestyle', screenWidth),
+                        _buildSelfCareCard('Mental Relaxation', screenWidth),
                       ],
                     ),
                   ),
@@ -153,50 +104,78 @@ class _SelfCareScreenState extends State<SelfCareScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.security),
-            label: 'Security',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.message),
-            label: 'Chat',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        onTap: _onItemTapped,
+      bottomNavigationBar: CustomBottomNavBar(
+        selectedIndex: _selectedIndex,
+        onItemTapped: _onItemTapped,
       ),
     );
   }
 
-  // Modified _buildSelfCareCard to include navigation
-  Widget _buildSelfCareCard(String title, double screenWidth, BuildContext context) {
+  // Build Self-Care Card with navigation
+  Widget _buildSelfCareCard(String title, double screenWidth) {
     return GestureDetector(
       onTap: () {
         if (title == 'Therapist Recommends') {
-          // Navigate to TherapistScreen using Navigator.push
+          // Navigate to TherapistScreen
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => TherapistScreen()),
           );
-        } else {
+        }
+        else if (title == 'Calmness Exercise') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        }
+        else if (title == 'Anger Management') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        }
+        else if (title == 'Wellness Package') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        }
+        else if (title == 'Manage Stress') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        } else if (title == 'Energizing') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        }
+        else if (title == 'Healthy Lifestyle') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        }
+        else if (title == 'Mental Relaxation') {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => ChatbotScreen()),
+          );
+        }
+          else {
           // Handle navigation for other cards
-          // You can add more conditions or default behavior here
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Navigation for $title is not yet implemented')),
           );
         }
       },
+
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(screenWidth * 0.05),
           gradient: LinearGradient(
-            colors: [Colors.purple, Colors.blue],
+            colors: [Colors.blue.shade800, Colors.purple.shade800],
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
           ),
