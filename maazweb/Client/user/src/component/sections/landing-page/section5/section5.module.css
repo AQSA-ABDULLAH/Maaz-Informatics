@@ -56,33 +56,32 @@
   align-self: center;
 }
 
-/* Ensure even items have the image on the left */
 .stepContainer:nth-child(even) .image {
   order: -1;
   margin-left: 0;
   margin-right: 2rem;
 }
 
-/* Media Query for Tablets (below 1024px) */
+/* Media Query */
 @media (max-width: 1024px) {
   .sectionContainer {
     max-width: 90%;
   }
 
   .sectionTitle {
-    font-size: 2.2rem; /* Scale down title size */
+    font-size: 2.2rem;
   }
 
   .textContainer h3 {
-    font-size: 1.4rem; /* Scale down step headings */
+    font-size: 1.4rem;
   }
 
   .textContainer ul li {
-    font-size: 0.95rem; /* Slightly smaller font for list items */
+    font-size: 0.95rem; 
   }
 
   .image {
-    max-width: 400px; /* Adjust image size for tablets */
+    max-width: 400px;
   }
 }
 
@@ -92,55 +91,54 @@
   }
 }
 
-/* Media Query for Mobile (below 768px) */
 @media (max-width: 768px) {
   .stepContainer {
-    flex-direction: column; /* Stack text and image vertically */
+    flex-direction: column; 
     text-align: center;
     margin-bottom: 3rem;
   }
 
   .stepReverse {
-    flex-direction: column; /* Stack text and image vertically */
+    flex-direction: column; 
   }
 
   .image {
-    max-width: 100%; /* Full width images on smaller screens */
-    margin: 0 auto 2rem; /* Center the image and add bottom margin */
+    max-width: 100%;
+    margin: 0 auto 2rem;
   }
 
   .textContainer {
-    padding: 0; /* Remove extra padding for a tighter layout */
+    padding: 0;
   }
 
   .textContainer h3 {
-    font-size: 1.3rem; /* Further scale down the step heading */
+    font-size: 1.3rem; 
   }
 
   .textContainer ul li {
-    font-size: 0.9rem; /* Reduce list item size for better fit */
+    font-size: 0.9rem; 
   }
 }
 
-/* Media Query for Extra Small Devices (below 480px) */
+
 @media (max-width: 480px) {
   .sectionContainer {
-    padding: 2rem 1rem; /* Reduce padding for very small screens */
+    padding: 2rem 1rem; 
   }
 
   .sectionTitle {
-    font-size: 1.8rem; /* Scale down the title for extra small screens */
+    font-size: 1.8rem; 
   }
 
   .textContainer h3 {
-    font-size: 1.2rem; /* Smaller step heading for small screens */
+    font-size: 1.2rem; 
   }
 
   .textContainer ul li {
-    font-size: 0.85rem; /* Scale down list items for small screens */
+    font-size: 0.85rem; 
   }
 
   .image {
-    max-width: 100%; /* Ensure images fit within the screen */
+    max-width: 100%; 
   }
 }
