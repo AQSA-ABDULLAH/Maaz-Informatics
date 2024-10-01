@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './home.module.css';
-import Section1 from '../../component/sections/landing-page/section1/Section1';
 import Section2 from '../../component/sections/landing-page/section2/Section2';
 import Section3 from '../../component/sections/landing-page/section3/Section3';
 import Section4 from '../../component/sections/landing-page/section4/Section4';
@@ -14,7 +13,6 @@ function Home() {
     return (
         <>
             <div className={styles.homeContainer}>
-                {/* <Section1 /> */}
                 <Hero />
                 <Section2 />
                 <Section3 />
