@@ -1,13 +1,14 @@
 import React from 'react';
-import styles from './faq.module.css';  // Assuming CSS module for styling
-import FAQs from '../../../component/molecules/faqs/FAQs';  // If you have a pre-built FAQs component
+import styles from './faq.module.css';
+import FAQs from '../../../component/molecules/faqs/FAQs';
+import { WEBSITE_NAME } from '../../../component/constant/WebsiteConstants';
 
 function FAQ() {
     return (
         <>
             <div className={styles.faqContainer}>
                 <div className={styles.textContainer}>
-                    <h1 className={styles.title}>Shopify FAQ</h1>
+                    <h1 className={styles.title}>{WEBSITE_NAME} FAQ</h1>
                     <p className={styles.subtitle}>
                         If you're new to Shopify or looking to replatform your business,
                         this guide will help you learn more about the platform and its features.
@@ -17,7 +18,7 @@ function FAQ() {
                     </p>
                 </div>
                 <div className={styles.imageContainer}>
-                    <img src={process.env.PUBLIC_URL + "/assets/shopify-faq-image.png"} alt="FAQ Illustration" />
+                    <img src={process.env.PUBLIC_URL + "/assest/images/faqs/faqs.png"} alt="FAQ Illustration" />
                 </div>
             </div>
             <div>
