@@ -1,7 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:maazinfo/nickname.dart';
+import 'package:maazinfo/reset%20password.dart';
+import 'package:maazinfo/stack.dart';
 
-class VerificationScreen extends StatelessWidget {
+class VerificationScreen extends StatefulWidget {
+  final String email;
+
+  VerificationScreen({required this.email});
+
+  @override
+  _VerificationScreenState createState() => _VerificationScreenState();
+}
+
+class _VerificationScreenState extends State<VerificationScreen> {
+  final _otpControllers = List.generate(4, (_) => TextEditingController());
+
+  @override
+  void dispose() {
+    for (var controller in _otpControllers) {
+      controller.dispose();
+    }
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     var mediaQuery = MediaQuery.of(context);
@@ -12,43 +32,17 @@ class VerificationScreen extends StatelessWidget {
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Background Circles using Stack and RadialGradient
+          CustomStackWidget(),
+
+          // Back arrow on top-left
           Positioned(
-            top: -20,
-            right: -20,
-            child: Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    Colors.purple.withOpacity(0.6),
-                    Colors.blue.withOpacity(0.4),
-                  ],
-                  center: Alignment.topRight,
-                  radius: 1.2,
-                ),
-              ),
-            ),
-          ),
-          Positioned(
-            top: 60,
-            right: -30,
-            child: Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    Colors.purple.withOpacity(0.6),
-                    Colors.blue.withOpacity(0.4),
-                  ],
-                  center: Alignment.topCenter,
-                  radius: 1.2,
-                ),
-              ),
+            top: screenHeight * 0.1,
+            left: screenWidth * 0.05,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
 
@@ -58,47 +52,68 @@ class VerificationScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Text(
+                    "Check your Email",
+                    style: TextStyle(
+                      fontFamily: "Poppins-SemiBold",
+                      fontSize: screenHeight * 0.03,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.03),
+
+                  // Subtitle: "Enter the 4 digit code..."
+                  Text(
+                    "Enter the 4 digit code sent to your email",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontFamily: "Poppins-SemiBold",
+                      fontSize: screenHeight * 0.025,
+                      color: Colors.purple,
+                    ),
+                  ),
+                  SizedBox(height: screenHeight * 0.06),
+
                   // 4-digit OTP input boxes
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      otpBox(),
-                      otpBox(),
-                      otpBox(),
-                      otpBox(),
-                    ],
+                    children: List.generate(4, (index) {
+                      return otpBox(
+                        controller: _otpControllers[index],
+                        screenHeight: screenHeight,
+                        screenWidth: screenWidth,
+                      );
+                    }),
                   ),
-                  SizedBox(height: screenHeight * 0.02),
-
-                  // "Enter 4 Digit verification code" text
-                  Text(
-                    "Enter 4 Digit verification code",
-                    style: TextStyle(
-                      fontFamily: 'Itim-Regular',
-                      fontSize: screenHeight * 0.025,
-                      color: Colors.grey,
-                    ),
-                  ),
-                  SizedBox(height: screenHeight * 0.05),
+                  SizedBox(height: screenHeight * 0.08),
 
                   // Continue Button
                   ElevatedButton(
                     onPressed: () {
+                      // Collect OTP values
+                      String otp = _otpControllers.map((controller) => controller.text).join();
+                      print("Entered OTP: $otp");
+
+                      // Navigate to ResetPasswordScreen, pass both email and otp
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => NicknameScreen(),
+                          builder: (context) => ResetPasswordScreen(
+                            email: widget.email,
+                            otp: otp,
+                          ),
                         ),
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.purple,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
                       padding: EdgeInsets.symmetric(
                         vertical: screenHeight * 0.02,
-                        horizontal: screenWidth * 0.2,
+                        horizontal: screenWidth * 0.1,
                       ),
                     ),
                     child: Text(
@@ -106,7 +121,7 @@ class VerificationScreen extends StatelessWidget {
                       style: TextStyle(
                         fontSize: screenHeight * 0.025,
                         color: Colors.white,
-                        fontFamily: 'Itim-Regular',
+                        fontFamily: 'Poppins-SemiBold',
                       ),
                     ),
                   ),
@@ -119,30 +134,52 @@ class VerificationScreen extends StatelessWidget {
     );
   }
 
-  // Function to create the OTP box widget
-  Widget otpBox() {
+  // Function  create OTP box
+  Widget otpBox({required TextEditingController controller, required double screenHeight, required double screenWidth}) {
     return Container(
-      width: 50,
-      height: 50,
+      width: screenWidth * 0.15,
+      height: screenHeight * 0.08,
       decoration: BoxDecoration(
-        border: Border.all(
-          color: Colors.purple, // Border color
-          width: 4.0, // Border width
-        ),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8.0),
+        border: Border.all(
+          width: 2.0,
+          color: Colors.transparent,
+        ),
+        gradient: LinearGradient(
+          colors: [Colors.blue, Colors.purple],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
       ),
-      child: Center(
-        child: TextField(
-          textAlign: TextAlign.center,
-          keyboardType: TextInputType.number,
-          maxLength: 1,
-          style: TextStyle(
-            fontSize: 24,
-            fontWeight: FontWeight.bold,
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(6.0),
           ),
-          decoration: InputDecoration(
-            counterText: "", // Remove the character counter
-            border: InputBorder.none,
+          child: Center(
+            child: TextField(
+              controller: controller,
+              textAlign: TextAlign.center,
+              keyboardType: TextInputType.number,
+              maxLength: 1,
+              style: TextStyle(
+                fontSize: screenHeight * 0.03,
+                fontWeight: FontWeight.bold,
+              ),
+              decoration: InputDecoration(
+                counterText: "", // Remove the character counter
+                border: InputBorder.none,
+              ),
+              onChanged: (value) {
+                // Move focus to next field if value is entered
+                if (value.length == 1 && controller != _otpControllers.last) {
+                  FocusScope.of(context).nextFocus();
+                }
+              },
+            ),
           ),
         ),
       ),
@@ -158,7 +195,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: VerificationScreen(),
+      home: VerificationScreen(email: "email"),
     );
   }
 }

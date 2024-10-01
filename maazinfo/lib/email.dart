@@ -1,149 +1,184 @@
 import 'package:flutter/material.dart';
-import 'package:maazinfo/login.dart';
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: EmailScreen(),
-    );
-  }
-}
+import 'package:http/http.dart' as http;
+import 'package:maazinfo/dashboard.dart';
+import 'package:maazinfo/stack.dart';
+import 'dart:convert';
+import 'package:maazinfo/url.dart';
 
 class EmailScreen extends StatelessWidget {
+  final String email;
+  final String userId;
+
+  // Create list of 4 OTP boxes
+  final List<TextEditingController> otpControllers = List.generate(4, (_) => TextEditingController());
+
+  // Create a list of FocusNode
+  final List<FocusNode> focusNodes = List.generate(4, (_) => FocusNode());
+
+  EmailScreen({required this.email, required this.userId});  // Updated constructor
+
+  Future<void> verifyOTP(BuildContext context) async {
+    // Combine the OTP digits from all controllers into a single string
+    final String otpString = otpControllers.map((controller) => controller.text.trim()).join();
+    int? otpNumber;
+
+    try {
+      otpNumber = int.parse(otpString);  // Pass combined OTP
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Invalid OTP format')),
+      );
+      return;
+    }
+
+    try {
+      final response = await http.post(
+        Uri.parse('$baseUrl/send-otp'),
+        headers: {'Content-Type': 'application/json'},
+        body: jsonEncode({
+          'email': email,
+          'otp': otpNumber,
+        }),
+      );
+
+      final responseData = jsonDecode(response.body);
+
+      if (response.statusCode == 200) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => DashScreen(),
+          ),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(responseData['message'] ?? 'OTP verification failed')),
+        );
+      }
+    } catch (error) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('An error occurred during OTP verification')),
+      );
+    }
+  }
+
+  // Function to create the OTP box widget
+  Widget otpBox(double screenHeight, double screenWidth, TextEditingController controller, FocusNode focusNode, int index, BuildContext context) {
+    return Container(
+      width: screenWidth * 0.15,
+      height: screenHeight * 0.08,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.0),
+        border: Border.all(
+          width: 2.0,
+          color: Colors.transparent,
+        ),
+        gradient: LinearGradient(
+          colors: [Colors.blue, Colors.purple],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(6.0),
+          ),
+          child: TextField(
+            controller: controller,
+            focusNode: focusNode,
+            keyboardType: TextInputType.number,
+            textAlign: TextAlign.center,
+            maxLength: 1,  //  single digit in box
+            decoration: InputDecoration(
+              counterText: '', // Hides character counter below the TextField
+              border: InputBorder.none,
+            ),
+            style: TextStyle(fontSize: 20, color: Colors.black),
+            onChanged: (value) {
+              // Move focus to the next field if a value is entered
+              if (value.length == 1 && index < otpControllers.length - 1) {
+                FocusScope.of(context).requestFocus(focusNodes[index + 1]);
+              }
+            },
+          ),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Stack(
         children: [
-          // Gradient Circles
+          CustomStackWidget(),
           Positioned(
-            top: -20,
-            right: -20,
-            child: Container(
-              width: 100,
-              height: 100,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    Colors.purple.withOpacity(0.6),
-                    Colors.blue.withOpacity(0.4),
-                  ],
-                  center: Alignment.topRight,
-                  radius: 1.2,
-                ),
-              ),
+            top: 120,
+            left: 20,
+            child: IconButton(
+              icon: Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ),
-          Positioned(
-            top: 60,
-            right: -30,
-            child: Container(
-              width: 70,
-              height: 70,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                gradient: RadialGradient(
-                  colors: [
-                    Colors.purple.withOpacity(0.6),
-                    Colors.blue.withOpacity(0.4),
-                  ],
-                  center: Alignment.topCenter,
-                  radius: 1.2,
-                ),
-              ),
-            ),
-          ),
-
-          SafeArea(
-            child: Center(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    // Placeholder for background image (mail icon)
-                    Stack(
-                      children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: Opacity(
-                            opacity: 0.2,
-                            child: Image.network(
-                              'assets/maaz-logo.jpg', // Replace with your actual background image URL
-                              width: 150,
-                              height: 150,
-                            ),
-                          ),
-                        ),
-                      ],
+          Center(
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Check your Email",
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
                     ),
+                  ),
+                  SizedBox(height: 10),
+                  Text(
+                    "Enter the 4-digit OTP sent to your email",
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.purple,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 40),
 
-                    SizedBox(height: 50),
+                  // Create a Row for OTPbox
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: List.generate(4, (index) {
+                      return otpBox(screenHeight, screenWidth, otpControllers[index], focusNodes[index], index, context);
+                    }),
+                  ),
 
-                    // Email TextField
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Enter Email',
-                        labelStyle: TextStyle(
-                          color: Colors.purple.shade300,
-                          fontSize: 16,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: Colors.purple.shade300,
-                            width: 2,
-                          ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(
-                            color: Colors.purple.shade500,
-                            width: 2,
-                          ),
-                        ),
+                  SizedBox(height: 40),
+
+                  ElevatedButton(
+                    onPressed: () => verifyOTP(context),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.purple,
+                      padding: EdgeInsets.symmetric(horizontal: 80, vertical: 12),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
                       ),
                     ),
-
-                    SizedBox(height: 30),
-
-                    // Continue Button
-                    ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => LoginScreen(),
-                          ),
-                        );
-                        // Handle button press
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue, // Background color
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                            horizontal: 50, vertical: 15),
-                      ),
-                      child: Text(
-                        'Continue',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      ),
+                    child: Text(
+                      "Continue",
+                      style: TextStyle(color: Colors.white, fontSize: 18),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
           ),

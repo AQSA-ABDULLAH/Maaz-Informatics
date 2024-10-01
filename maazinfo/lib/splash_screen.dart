@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:maazinfo/contactus.dart';
+import 'package:maazinfo/dashboard.dart';
+import 'package:maazinfo/editprofile.dart';
+import 'package:maazinfo/email.dart';
 import 'package:maazinfo/login.dart';
-//import 'package:maazinfo/email.dart';
-import 'package:maazinfo/signup.dart';
+import 'package:maazinfo/nickname.dart';
+import 'package:maazinfo/profile.dart';
+import 'package:maazinfo/selfcare.dart';
+import 'package:maazinfo/settings.dart';
+import 'package:maazinfo/stack.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -16,13 +23,13 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   void initState() {
     super.initState();
 
-    // Initialize the AnimationController
+    // Initialize animationcntroller
     _controller = AnimationController(
       duration: Duration(seconds: 3),
       vsync: this,
     );
 
-    // Start the fade-in animation
+    //  fade-in animation
     _controller.forward();
 
     // Set opacity to 1.0 after the animation starts
@@ -32,11 +39,15 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
       });
     });
 
-    // Navigate to SignUp screen after 3 seconds
+    // Navigate to Login screen after 3 seconds
     Future.delayed(Duration(seconds: 3), () {
       Navigator.of(context).pushReplacement(
-        MaterialPageRoute(builder: (context) => LoginScreen()),
-          //MaterialPageRoute(builder: (context) => EmailScreen()),
+         //MaterialPageRoute(builder: (context) => EmailScreen (email: '',)),
+          MaterialPageRoute(builder: (context) =>LoginScreen()),
+         //MaterialPageRoute(builder: (context) =>DashScreen(nickname: '',)),
+       // MaterialPageRoute(builder: (context) =>NicknameScreen()),
+
+        //MaterialPageRoute(builder: (context) => SelfCareScreen()),
       );
     });
   }
@@ -50,51 +61,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white, // Background color of the splash screen
+      backgroundColor: Colors.white,
       body: Center(
         child: Stack(
           children: [
-            // Background 1st circle with gradient
-            Positioned(
-              top: -10,
-              right: -20,
-              child: Container(
-                width: 100,
-                height: 100,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(
-                    colors: [
-                      Colors.purple.withOpacity(0.6),
-                      Colors.blue.withOpacity(0.4),
-                    ],
-                    center: Alignment.topCenter, // Purple at the top
-                    radius: 1.2,
-                  ),
-                ),
-              ),
-            ),
-            // Second circle with gradient
-            Positioned(
-              top: 60,
-              right: -30,
-              child: Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  gradient: RadialGradient(
-                    colors: [
-                      Colors.purple.withOpacity(0.6),
-                      Colors.blue.withOpacity(0.4),
-                    ],
-                    center: Alignment.topCenter, // Purple at the top
-                    radius: 1.2,
-                  ),
-                ),
-              ),
-            ),
-            // Main content
+            CustomStackWidget(),
             Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -103,11 +74,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     opacity: _opacity,
                     duration: Duration(seconds: 2),
                     child: Image.asset(
-                      'assets/maaz-logo.jpg', // Your logo asset path
+                      'assets/splash.png',
                       height: 100,
                     ),
                   ),
-                  SizedBox(height: 20), // Adds spacing between the logo and the text
+                  SizedBox(height:35),
                   Column(
                     children: [
                       Text.rich(
@@ -117,8 +88,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                               text: "Hi I'am ",
                               style: TextStyle(
                                 fontFamily: 'Itim-Regular',
-                                fontSize: 16,
-
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
                                 color: Colors.black,
                               ),
                             ),
@@ -126,7 +97,7 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                               text: "MAAZ INFORMATICS",
                               style: TextStyle(
                                 fontFamily: 'Itim-Regular',
-                                fontSize: 16,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.purple,
                               ),
@@ -138,13 +109,14 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                         "JOURNEY TO A HEALTHIER YOU!",
                         style: TextStyle(
                           fontFamily: 'Itim-Regular',
-                          fontSize: 16,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                           color: Colors.black,
                         ),
                       ),
                     ],
                   ),
-                  SizedBox(height: 120), // Adds spacing at the bottom
+                  SizedBox(height: 100),
                 ],
               ),
             ),

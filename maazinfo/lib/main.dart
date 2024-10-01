@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
-import 'HomeScreen.dart';
 import 'splash_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); // Initializes Firebase
   runApp(MyApp());
 }
+
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Your App Name',
-      debugShowCheckedModeBanner: false, // This line removes the debug banner
+      title: 'maazinfo',
+      debugShowCheckedModeBanner: false, // removes the debug banner
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: 'Itim-Regular',
@@ -20,7 +22,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => SplashScreen(),
-        '/home': (context) => DashboardScreen(nickname: '',), // Replace with your actual home screen widget
+       // '/home': (context) => DashboardScreen(nickname: '',), // Replace with your actual home screen widget
       },
     );
 
