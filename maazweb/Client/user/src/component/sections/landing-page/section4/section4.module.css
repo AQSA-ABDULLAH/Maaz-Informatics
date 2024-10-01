@@ -1,37 +1,102 @@
 .impactSection {
   background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #bb8bc7);
   color: white;
-  padding: 4rem 12rem;
+  padding: 4rem 8rem; /* Reduce padding for better responsiveness */
   text-align: center;
 }
 
 .impactSection h2 {
-  text-align: center;
   font-size: 2.5rem;
   font-weight: 500;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem; /* Reduce margin for better spacing */
   color: white;
 }
 
 .impactGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ensure grid is responsive */
+  gap: 2rem 2.5rem;
 }
 
 .impactItem {
-  /* background-color: rgba(255, 255, 255, 0.1); */
-  border: 1px solid rgba(255, 255, 255);
+  border: 1px solid rgba(255, 255, 255, 0.6); /* Slightly lower opacity for subtle effect */
   padding: 1.5rem;
   border-radius: 8px;
 }
 
 .impactItem h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   margin-bottom: 0.5rem;
 }
 
 .impactItem p {
-  font-size: 0.9rem;
+  font-size: 1rem;
   margin: 0;
-}  
+}
+
+/* Tablet (Below 1024px) */
+@media (max-width: 1024px) {
+  .impactSection {
+    padding: 3rem 6rem; /* Reduce padding for tablets */
+  }
+
+  .impactSection h2 {
+    font-size: 2.2rem; /* Scale down heading size */
+  }
+
+  .impactItem h3 {
+    font-size: 1.4rem;
+  }
+
+  .impactItem p {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile (Below 768px) */
+@media (max-width: 768px) {
+  .impactSection {
+    padding: 2.5rem 3rem; /* Further reduce padding for mobile */
+  }
+
+  .impactSection h2 {
+    font-size: 2rem; /* Scale down heading for smaller screens */
+    margin-bottom: 2.5rem;
+  }
+
+  .impactGrid {
+    gap: 1.5rem 2rem; /* Adjust gap for smaller screens */
+  }
+
+  .impactItem {
+    padding: 1rem;
+  }
+
+  .impactItem h3 {
+    font-size: 1.3rem; /* Adjust font size */
+  }
+
+  .impactItem p {
+    font-size: 0.85rem; /* Adjust font size */
+  }
+}
+
+/* Extra Small Devices (Below 480px) */
+@media (max-width: 480px) {
+  .impactSection {
+    padding: 2rem 1.5rem; /* Further reduce padding for very small screens */
+  }
+
+  .impactSection h2 {
+    font-size: 1.8rem; /* Smaller font for very small screens */
+  }
+
+  .impactItem h3 {
+    font-size: 1.2rem;
+  }
+
+  .impactItem p {
+    font-size: 0.8rem;
+  }
+}
+ 

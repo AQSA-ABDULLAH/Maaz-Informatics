@@ -18,6 +18,7 @@
   display: flex;
   align-items: flex-start;
   margin-bottom: 4rem;
+  gap: 2rem; /* Added gap for better spacing */
 }
 
 .stepReverse {
@@ -55,12 +56,91 @@
   align-self: center;
 }
 
+/* Ensure even items have the image on the left */
 .stepContainer:nth-child(even) .image {
   order: -1;
   margin-left: 0;
   margin-right: 2rem;
 }
 
+/* Media Query for Tablets (below 1024px) */
+@media (max-width: 1024px) {
+  .sectionContainer {
+    max-width: 90%;
+  }
 
-  
-  
+  .sectionTitle {
+    font-size: 2.2rem; /* Scale down title size */
+  }
+
+  .textContainer h3 {
+    font-size: 1.4rem; /* Scale down step headings */
+  }
+
+  .textContainer ul li {
+    font-size: 0.95rem; /* Slightly smaller font for list items */
+  }
+
+  .image {
+    max-width: 400px; /* Adjust image size for tablets */
+  }
+}
+
+@media (max-width: 900px) {
+  .image {
+    max-width: 300px;
+  }
+}
+
+/* Media Query for Mobile (below 768px) */
+@media (max-width: 768px) {
+  .stepContainer {
+    flex-direction: column; /* Stack text and image vertically */
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .stepReverse {
+    flex-direction: column; /* Stack text and image vertically */
+  }
+
+  .image {
+    max-width: 100%; /* Full width images on smaller screens */
+    margin: 0 auto 2rem; /* Center the image and add bottom margin */
+  }
+
+  .textContainer {
+    padding: 0; /* Remove extra padding for a tighter layout */
+  }
+
+  .textContainer h3 {
+    font-size: 1.3rem; /* Further scale down the step heading */
+  }
+
+  .textContainer ul li {
+    font-size: 0.9rem; /* Reduce list item size for better fit */
+  }
+}
+
+/* Media Query for Extra Small Devices (below 480px) */
+@media (max-width: 480px) {
+  .sectionContainer {
+    padding: 2rem 1rem; /* Reduce padding for very small screens */
+  }
+
+  .sectionTitle {
+    font-size: 1.8rem; /* Scale down the title for extra small screens */
+  }
+
+  .textContainer h3 {
+    font-size: 1.2rem; /* Smaller step heading for small screens */
+  }
+
+  .textContainer ul li {
+    font-size: 0.85rem; /* Scale down list items for small screens */
+  }
+
+  .image {
+    max-width: 100%; /* Ensure images fit within the screen */
+  }
+}
