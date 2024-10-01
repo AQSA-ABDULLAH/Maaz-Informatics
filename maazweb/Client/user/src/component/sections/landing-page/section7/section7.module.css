@@ -3,6 +3,8 @@
   padding: 4rem 6rem;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
 }
 
 .content {
@@ -34,10 +36,95 @@
   font-size: 16px;
 }
 
-/* .imageWrapper {
+.imageWrapper {
   max-width: 30%;
-} */
+}
 
 .image {
   width: 100%;
+  height: auto;
+}
+
+/* Media Query for Tablets (below 1024px) */
+@media (max-width: 1024px) {
+  .section {
+    padding: 3rem 4rem;
+  }
+
+  .content {
+    max-width: 60%; 
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+
+  .content p {
+    font-size: 1rem; 
+  }
+
+  .demoButton {
+    padding: 8px 18px; 
+    font-size: 15px; 
+  }
+
+  .imageWrapper {
+    max-width: 35%; 
+  }
+}
+
+/* Media Query for Mobile (below 768px) */
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column; 
+    padding: 2.5rem 2rem; 
+    text-align: center; 
+  }
+
+  .content {
+    max-width: 100%; 
+    margin: 0; 
+  }
+
+  .content h2 {
+    font-size: 1.6rem; 
+  }
+
+  .content p {
+    font-size: 0.95rem; 
+  }
+
+  .demoButton {
+    padding: 8px 16px; 
+    font-size: 14px; 
+  }
+
+  .imageWrapper {
+    max-width: 70%;
+    margin-top: 1.5rem;
+  }
+}
+
+/* Media Query for Extra Small Devices (below 480px) */
+@media (max-width: 480px) {
+  .section {
+    padding: 2rem 1rem; 
+  }
+
+  .content h2 {
+    font-size: 1.4rem; 
+  }
+
+  .content p {
+    font-size: 0.9rem; 
+  }
+
+  .demoButton {
+    padding: 7px 14px; 
+    font-size: 13px; 
+  }
+
+  .imageWrapper {
+    max-width: 100%; 
+  }
 }
