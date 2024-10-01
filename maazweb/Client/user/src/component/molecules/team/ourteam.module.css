@@ -2,7 +2,6 @@
     padding: 50px;
     text-align: center;
     max-width: 80rem;
-    align-items: center;
     margin: auto;
 }
 
@@ -23,7 +22,7 @@
 .teamGrid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px; /* Added gap to separate items */
+    gap: 20px; 
 }
 
 .teamMember {
@@ -58,3 +57,68 @@
     transform: scale(1.05);
 }
 
+/* Media Query for Tablets (below 1024px) */
+@media (max-width: 1024px) {
+    .teamContainer {
+        padding: 40px 30px;
+    }
+
+    .teamContainer h2 {
+        font-size: 2.2rem; 
+    }
+
+    .teamContainer p {
+        font-size: 1.1rem; 
+    }
+
+    .teamGrid {
+        gap: 15px; 
+    }
+
+    .teamMember img {
+        width: 220px;
+        height: 220px; 
+    }
+}
+
+/* Media Query for Mobile (below 768px) */
+@media (max-width: 768px) {
+    .teamContainer {
+        padding: 30px 20px;
+    }
+
+    .teamContainer h2 {
+        font-size: 2rem; 
+    }
+
+    .teamContainer p {
+        font-size: 1rem; 
+        margin-bottom: 2.5rem; 
+    }
+
+    .teamMember h3 {
+        font-size: 1.3rem; 
+    }
+
+    .teamMember p {
+        font-size: 0.9rem; 
+    }
+
+    .teamGrid {
+        gap: 0px; 
+    }
+}
+
+@media (max-width: 599px) {
+    .teamContainer {
+        padding: 20px 10px;
+    }
+
+    .teamContainer h2 {
+        font-size: 1.8rem;
+    }
+
+    .teamContainer p {
+        font-size: 0.8rem; 
+    }
+}
