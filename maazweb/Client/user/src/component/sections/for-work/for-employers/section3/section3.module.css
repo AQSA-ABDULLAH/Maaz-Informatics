@@ -85,3 +85,85 @@
 .button:hover {
     background-color: #008fa3;
 }
+
+/* Responsive styling for tablet screens */
+@media (max-width: 1024px) {
+    .cards {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns layout for tablets */
+    }
+  
+    .section_layout {
+      gap: 2rem; /* Reduce gap between sections */
+    }
+  
+    .card {
+      width: 100%; /* Allow cards to stretch fully within their container */
+    }
+  
+    .heading {
+      font-size: 2.2rem; /* Slightly reduce the heading size */
+    }
+  
+    .description p {
+      font-size: 1rem; /* Reduce text size for better readability */
+    }
+  }
+  
+  /* Responsive styling for mobile screens */
+  @media (max-width: 768px) {
+    .section3 {
+        padding: 30px 30px;
+      }
+
+    .cards {
+      grid-template-columns: repeat(1, 1fr); /* Single column layout for mobile */
+    }
+  
+    .section_layout {
+      flex-direction: column; /* Stack sections vertically */
+      gap: 1.5rem;
+    }
+  
+    .heading {
+      font-size: 2rem; /* Further reduce heading size for mobile */
+    }
+  
+    .card {
+      width: 100%; /* Cards take full width on mobile */
+      height: auto; /* Remove fixed height for better content fit */
+      padding: 20px 10px; /* Adjust padding */
+    }
+  
+    .card h2 {
+      font-size: 1rem; /* Slightly increase text size in mobile */
+    }
+  
+    .description p {
+      font-size: 0.9rem; /* Smaller text size for mobile */
+    }
+  
+    .button {
+      font-size: 1.1rem; /* Reduce button font size */
+      padding: 12px 24px; /* Adjust button padding */
+    }
+  }
+  
+  /* Extra small screens */
+  @media (max-width: 480px) {
+    .section3 {
+      padding: 30px 30px;
+    }
+  
+    .heading {
+      font-size: 1.8rem; /* Reduce heading size further for very small screens */
+    }
+  
+    .description p {
+      font-size: 0.85rem; /* Smaller text size for extra small screens */
+    }
+  
+    .button {
+      font-size: 1rem;
+      padding: 10px 20px;
+    }
+  }

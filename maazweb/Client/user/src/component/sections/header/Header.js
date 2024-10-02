@@ -77,7 +77,7 @@ const Navbar = () => {
             </li>
 
             <li>
-              <Link to="/blog&news">Case Studies & Reports</Link>
+              <Link to="/blog&news">Blogs & News</Link>
             </li>
 
             <li

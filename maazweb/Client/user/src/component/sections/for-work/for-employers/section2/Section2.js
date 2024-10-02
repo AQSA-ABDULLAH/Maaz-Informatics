@@ -1,23 +1,3 @@
-// import React from 'react';
-// import styles from "./section2.module.css";
-
-// function Section2() {
-//   return (
-//     <div></div>
-//   )
-// }
-
-// export default Section2
-
-
-
-
-
-
-
-
-
-
 import React from 'react';
 import styles from "../../../chronic-care/section2/caresection2.module.css";
 import { WEBSITE_NAME } from '../../../../constant/WebsiteConstants';

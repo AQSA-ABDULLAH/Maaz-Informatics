@@ -5,6 +5,7 @@
     font-weight: 500;
 }
 
+/* Desktop and larger screens */
 .container {
     display: flex;
     justify-content: space-between;
@@ -12,6 +13,7 @@
     padding: 0px 80px;
     border-radius: 8px;
     margin: 20px;
+    flex-wrap: wrap;
 }
 
 .card {
@@ -56,7 +58,7 @@
     padding: 10px;
     border-radius: 7px;
     text-align: center;
-    margin: auto;
+    margin: 30px auto;
     font-size: 18px;
     font-weight: 500;
     color: white;
@@ -65,4 +67,90 @@
 
 .learnMore:hover {
     text-decoration: underline;
+}
+
+/* Responsive styling for tablets (max-width: 1024px) */
+@media (max-width: 1024px) {
+    .container {
+        padding: 0px 40px;
+    }
+
+    .card {
+        margin: 10px;
+        padding: 15px;
+    }
+
+    .title {
+        font-size: 21px;
+    }
+
+    .description {
+        font-size: 15px;
+    }
+
+    .learnMore {
+        width: 100%; 
+    }
+}
+
+/* Responsive styling for mobile (max-width: 768px) */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column; 
+        padding: 0px 20px;
+        margin: 10px;
+    }
+
+    .card {
+        margin: 10px 0;
+        width: 100%; 
+    }
+
+    .title {
+        font-size: 20px;
+    }
+
+    .description {
+        font-size: 14px;
+    }
+
+    .icon {
+        height: 80px; 
+    }
+
+    .learnMore {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px;
+    }
+}
+
+/* Extra small screens (max-width: 480px) */
+@media (max-width: 480px) {
+    .container_heading h2 {
+        font-size: 2rem;
+        margin-top: 4rem;
+    }
+
+    .card {
+        padding: 10px;
+        margin: 10px 0;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .description {
+        font-size: 13px;
+    }
+
+    .icon {
+        height: 60px;
+    }
+
+    .learnMore {
+        font-size: 15px;
+        padding: 10px;
+    }
 }
