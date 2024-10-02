@@ -1,58 +1,156 @@
 .careSection {
-    background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #b273c2);
-    color: white;
-    text-align: center;
-    padding: 6rem 0rem;
-  }
-  
-  .title {
-    font-size: 2rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-    color: white;
-  }
-  
-  .subtitle {
-    font-size: 1.3rem;
-    font-weight: 500;
-    margin-bottom: 2.8rem;
-  }
-  
-  .features {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-    max-width: 80rem;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+  background: linear-gradient(90deg, #76158f, #9f29bd, #a15cb3, #b273c2);
+  color: white;
+  text-align: center;
+  padding: 6rem 0rem;
 }
 
-  
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 2.8rem;
+}
+
+/* Feature container */
+.features {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.feature {
+  flex: 1 1 20%;
+  margin: 20px;
+  max-width: 300px;
+}
+
+.icon {
+  width: 200px;
+  margin-bottom: 1rem;
+}
+
+.feature h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1.8rem;
+}
+
+.feature p {
+  font-size: 1.08rem;
+  line-height: 1.4;
+}
+
+/* Button container */
+.button_div {
+  margin-top: 5rem;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Large screens (up to 1200px) */
+@media (max-width: 1200px) {
+  .features {
+      max-width: 70rem;
+  }
+
   .feature {
-    flex: 1 1 20%;
-    margin: 20px;
-    max-width: 300px;
+      flex: 1 1 45%;
+      max-width: 45%;
   }
-  
+
   .icon {
-    width: 200px;
-    margin-bottom: 1rem;
+      width: 180px;
   }
-  
+
   .feature h3 {
-    font-size: 1.25rem;
-    margin-bottom: 1.8rem;
+      font-size: 1.2rem;
   }
-  
+
   .feature p {
-    font-size: 1.08rem;
-    line-height: 1.4;
+      font-size: 1rem;
   }
-  
+}
+
+/* Medium screens (tablets, up to 768px) */
+@media (max-width: 768px) {
+  .features {
+      max-width: 50rem;
+      justify-content: center;
+  }
+
+  .feature {
+      flex: 1 1 100%;
+      max-width: 100%;
+      margin: 20px 0;
+  }
+
+  .icon {
+      width: 150px;
+  }
+
+  .feature h3 {
+      font-size: 1.15rem;
+  }
+
+  .feature p {
+      font-size: 0.95rem;
+  }
+
   .button_div {
-    margin-top: 5rem;
+      margin-top: 4rem;
   }
+}
+
+/* Small screens (mobile phones, up to 480px) */
+@media (max-width: 480px) {
+  .careSection {
+      padding: 4rem 1rem;
+  }
+
+  .title {
+      font-size: 1.75rem;
+  }
+
+  .subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+  }
+
+  .features {
+      max-width: 100%;
+  }
+
+  .feature {
+      margin: 15px 0;
+  }
+
+  .icon {
+      width: 120px;
+  }
+
+  .feature h3 {
+      font-size: 1rem;
+  }
+
+  .feature p {
+      font-size: 0.9rem;
+  }
+
+  .button_div {
+      margin-top: 3rem;
+  }
+}
+
 
   
