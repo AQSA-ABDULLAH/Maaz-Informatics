@@ -8,13 +8,13 @@
 .impactSection h2 {
   font-size: 2.5rem;
   font-weight: 500;
-  margin-bottom: 3rem; /* Reduce margin for better spacing */
+  margin-bottom: 3rem; 
   color: white;
 }
 
 .impactGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Ensure grid is responsive */
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 2rem 2.5rem;
 }
 
@@ -37,11 +37,11 @@
 /* Tablet (Below 1024px) */
 @media (max-width: 1024px) {
   .impactSection {
-    padding: 3rem 6rem; /* Reduce padding for tablets */
+    padding: 3rem 6rem; 
   }
 
   .impactSection h2 {
-    font-size: 2.2rem; /* Scale down heading size */
+    font-size: 2.2rem; 
   }
 
   .impactItem h3 {

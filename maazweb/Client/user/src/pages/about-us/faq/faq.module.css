@@ -6,6 +6,7 @@
     background-color: #f9f9f9;
     border-radius: 10px;
     padding: 10rem 4rem 2rem 10rem;
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
 }
 
 .textContainer {
@@ -19,7 +20,6 @@
     color: #222;
     text-transform: uppercase;
 }
-
 
 .subtitle {
     font-size: 18px;
@@ -46,9 +46,72 @@
     flex: 1;
     display: flex;
     justify-content: center;
+    margin-top: 2rem; /* Add some spacing for smaller screens */
 }
 
 .imageContainer img {
     max-width: 55%;
     height: auto;
 }
+
+/* Media Queries for Responsiveness */
+
+/* For tablets and smaller screens */
+@media (max-width: 1024px) {
+    .faqContainer {
+        flex-direction: column;
+        padding: 8rem 2rem 2rem 2rem; /* Reduce padding for smaller screens */
+    }
+
+    .textContainer {
+        padding-right: 0; /* Remove extra padding for smaller screens */
+        text-align: center; /* Center the text */
+    }
+
+    .imageContainer {
+        margin-top: 2rem; /* Add space between the text and image on smaller screens */
+    }
+
+    .imageContainer img {
+        max-width: 70%; /* Increase the image size slightly on smaller screens */
+    }
+}
+
+/* For mobile screens */
+@media (max-width: 768px) {
+    .faqContainer {
+        padding: 4rem 1rem 1rem 1rem; /* Further reduce padding for mobile */
+    }
+
+    .title {
+        font-size: 28px; /* Adjust title size for mobile */
+    }
+
+    .subtitle {
+        font-size: 16px; /* Adjust subtitle size for mobile */
+    }
+
+    .helpLink {
+        font-size: 14px; /* Adjust link text size for mobile */
+    }
+
+    .imageContainer img {
+        max-width: 85%; /* Increase the image size on mobile */
+    }
+}
+
+/* For small mobile screens */
+@media (max-width: 480px) {
+    .faqContainer {
+        padding: 3rem 1rem; /* Compact padding for small mobile screens */
+    }
+
+    .title {
+        font-size: 24px; /* Further reduce title size for small mobile */
+    }
+
+    .imageContainer img {
+        max-width: 90%; /* Maximize image width for small mobile */
+    }
+}
+

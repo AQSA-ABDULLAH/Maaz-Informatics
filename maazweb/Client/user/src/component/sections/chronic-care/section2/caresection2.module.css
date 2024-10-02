@@ -14,20 +14,20 @@
     font-family: 'Roboto', 'Helvetica', sans-serif;
 }
 
-.sectionContainer h2{
+.sectionContainer h2 {
     font-size: 2.3rem;
     text-align: center;
     margin-top: 4rem;
     letter-spacing: -0.07rem;
 }
 
-
-.sectionHeader p{
+.sectionHeader p {
     text-align: center;
     font-size: 20px;
     padding: 1rem 4rem 8em;
 }
 
+/* Flex container for steps */
 .stepContainer {
     display: flex;
     align-items: center;
@@ -61,12 +61,127 @@
     align-self: center;
 }
 
+/* For even steps, reverse the image and text */
 .stepContainer:nth-child(even) .image {
     order: -1;
     margin-left: 0;
     margin-right: 2rem;
 }
 
-.button_div{
+/* Button container */
+.button_div {
     margin-top: 3rem;
+}
+
+/* Media Queries for Responsive Design */
+
+/* Large screens (up to 1200px) */
+@media (max-width: 1200px) {
+    .sectionContainer {
+        max-width: 85%;
+    }
+
+    .sectionHeader p {
+        padding: 1rem 3rem 6em;
+        font-size: 1.15rem;
+    }
+
+    .textContainer h3 {
+        font-size: 1.8rem;
+    }
+
+    .textContainer p {
+        font-size: 1.2rem;
+    }
+
+    .image {
+        max-width: 380px;
+    }
+}
+
+/* Medium screens (tablets, up to 768px) */
+@media (max-width: 865px) {
+    .image {
+        max-width: 300px;
+    }
+
+    .textContainer h3 {
+        font-size: 1.7rem;
+    }
+
+    .textContainer p {
+        font-size: 1rem;
+    }
+}
+
+/* Medium screens (tablets, up to 768px) */
+@media (max-width: 768px) {
+    .sectionContainer {
+        max-width: 90%;
+    }
+
+    .sectionHeader p {
+        padding: 1rem 2rem 5em;
+        font-size: 1.1rem;
+    }
+
+    .textContainer h3 {
+        font-size: 1.6rem;
+    }
+
+    .textContainer p {
+        font-size: 1.1rem;
+    }
+
+    .image {
+        max-width: 320px;
+        margin-left: 1rem;
+    }
+
+    .stepContainer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .image {
+        margin-left: 0;
+        margin-bottom: 2rem;
+    }
+
+    .stepReverse {
+        flex-direction: column;
+    }
+}
+
+/* Small screens (mobile phones, up to 480px) */
+@media (max-width: 480px) {
+    .sectionContainer {
+        max-width: 100%;
+        padding: 2rem 1rem;
+    }
+
+    .sectionHeader p {
+        padding: 1rem 1rem 3em;
+        font-size: 1rem;
+    }
+
+    .textContainer h3 {
+        font-size: 1.4rem;
+    }
+
+    .textContainer p {
+        font-size: 1rem;
+    }
+
+    .image {
+        max-width: 260px;
+    }
+
+    .stepContainer {
+        text-align: center;
+    }
+
+    .button_div {
+        margin-top: 2rem;
+    }
 }
