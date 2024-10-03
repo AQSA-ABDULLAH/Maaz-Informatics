@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     background-color: #fff;
-    margin: 4rem 5rem;
+    margin: 2rem 1rem; 
+    padding: 1rem; 
     text-align: center;
 }
 
@@ -16,5 +17,26 @@
 .FAQ p {
     font-size: 0.9rem;
     color: #666;
-    margin: 0rem 18rem;
+    margin: 0rem 2rem; 
+}
+
+/* Media query */
+@media (min-width: 768px) {
+    .FAQ {
+        margin: 3rem 3rem; 
+    }
+
+    .FAQ p {
+        margin: 0rem 10rem; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .FAQ {
+        margin: 0; 
+    }
+
+    .FAQ p {
+        margin: 0rem 18rem;
+    }
 }
